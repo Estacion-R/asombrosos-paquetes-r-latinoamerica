@@ -1,6 +1,6 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# Asombrosos paquetes de R en Latinoamérica <img src='man/figures/logo.png' align="right" height="200" style="float:right; height:200px;" />
+# Asombrosos paquetes de R en Latinoamérica <img src='logo_asombrosos.png' align="right" height="200" style="float:right; height:200px;" />
 
 <!-- badges: start -->
 
