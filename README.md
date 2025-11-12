@@ -7,6 +7,7 @@
 Un lista de paquetes desarrollados en R por personas de Latinoamérica
 para el acceso, procesamiento, visualización y comunicación de datos.
 
+<br><br>
 ## Un paquete está en esta lista porque:
 
 - Es de código abierto, licencia libre y disponible para su descarga.
