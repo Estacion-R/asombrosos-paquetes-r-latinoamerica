@@ -1,0 +1,53 @@
+name: Revisión semanal de propuestas
+
+on:
+  schedule:
+    - cron: '0 13 * * 1'  # Lunes 10am Buenos Aires (UTC-3)
+  workflow_dispatch:
+
+jobs:
+  digest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Listar propuestas pendientes y crear digest
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { data: issues } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: 'agregar paquete',
+              state: 'open',
+              per_page: 50
+            });
+
+            if (issues.length === 0) {
+              console.log('Sin propuestas pendientes esta semana.');
+              return;
+            }
+
+            const listaIssues = issues.map(issue => {
+              const dias = Math.floor((Date.now() - new Date(issue.created_at)) / 86400000);
+              return `- [#${issue.number}](${issue.html_url}) — **${issue.title}** (hace ${dias} días)`;
+            }).join('\n');
+
+            const cuerpo = `## 📦 Propuestas pendientes de revisión
+
+            Hay **${issues.length}** propuesta(s) esperando revisión:
+
+            ${listaIssues}
+
+            ---
+            Para aprobar: agregá el label \`aprobado\` y cerrá el issue.
+            Para rechazar: agregá el label \`rechazado\`, comentá el motivo y cerrá.
+            Para pedir más info: agregá el label \`necesita-info\`.
+
+            _Generado automáticamente cada lunes._`;
+
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `📋 Revisión semanal — ${new Date().toISOString().split('T')[0]}`,
+              body: cuerpo,
+              labels: ['revisión']
+            });

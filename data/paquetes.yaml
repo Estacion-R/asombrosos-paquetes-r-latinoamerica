@@ -1,0 +1,60 @@
+# Catálogo de paquetes de R en español
+# Fuente de verdad: este archivo (data/paquetes.yaml)
+# Columnas: nombre, url, descripcion, autores, pais, categoria (1-8), hexlogo (opcional), vigente (true/false)
+#
+# Categorías:
+#   1 - Acceso y procesamiento de fuentes de datos oficiales
+#   2 - Acceso y procesamiento de datos espaciales
+#   3 - Acceso y procesamiento de información sobre temáticas específicas
+#   4 - Tratamiento de datos
+#   5 - Modelado
+#   6 - Visualización de datos
+#   7 - Conjunto de datos
+#   8 - Enseñanza / Pedagogía
+
+paquetes:
+
+  - nombre: eph
+    url: https://holatam.github.io/eph/
+    descripcion: Caja de herramientas para el procesamiento de datos con la Encuesta Permanente de Hogares (EPH-INDEC).
+    autores: Diego Kozlowski, Pablo Tiscornia, Guido Weksler, Natsumi Shokida, Ignacio Schteingart, Andy Tow
+    pais: Argentina
+    categoria: 1
+    hexlogo: https://github.com/holatam/eph/raw/master/man/figures/logo.png
+    vigente: true
+
+  - nombre: geoAr
+    url: https://politicaargentina.github.io/geoAr/
+    descripcion: Herramientas para el acceso y procesamiento de datos geoespaciales de Argentina, incluyendo Malvinas.
+    autores: Juan Pablo Ruiz Nicolini
+    pais: Argentina
+    categoria: 2
+    hexlogo: https://github.com/politicaargentina/geoAr/raw/master/man/figures/logo.png
+    vigente: true
+
+  - nombre: chilemapas
+    url: https://pacha.dev/chilemapas/
+    descripcion: Mapas de las divisiones político-administrativas de Chile.
+    autores: Mauricio Vargas
+    pais: Chile
+    categoria: 2
+    hexlogo: ~
+    vigente: true
+
+  - nombre: geobr
+    url: https://ipeagit.github.io/geobr/
+    descripcion: Acceso rápido a shapefiles oficiales del Instituto Brasileño de Geografía y Estadística (IBGE).
+    autores: Rafael H. M. Pereira, Caio Nogueira Goncalves
+    pais: Brasil
+    categoria: 2
+    hexlogo: https://github.com/ipeaGIT/geobr/raw/master/r-package/man/figures/logo.png
+    vigente: true
+
+  - nombre: discrim
+    url: https://discrim.tidymodels.org/
+    descripcion: Motores de modelos discriminantes para el ecosistema tidymodels.
+    autores: Max Kuhn, Emil Hvitfeldt
+    pais: Colombia
+    categoria: 5
+    hexlogo: ~
+    vigente: true

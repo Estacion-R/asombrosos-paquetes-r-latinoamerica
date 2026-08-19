@@ -1,0 +1,111 @@
+name: 📦 Proponer un paquete
+description: Sugerí un paquete de R para incluir en el catálogo
+title: "[PAQUETE]: "
+labels: ["agregar paquete"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ¡Gracias por contribuir al catálogo! Completá la información del paquete y lo revisaremos pronto.
+
+  - type: input
+    id: nombre_paquete
+    attributes:
+      label: Nombre del paquete
+      description: Nombre exacto como se instala en R
+      placeholder: "eph"
+    validations:
+      required: true
+
+  - type: input
+    id: url_documentacion
+    attributes:
+      label: URL de documentación o repositorio
+      description: Link al sitio oficial, pkgdown, GitHub o CRAN
+      placeholder: "https://holatam.github.io/eph/"
+    validations:
+      required: true
+
+  - type: textarea
+    id: descripcion
+    attributes:
+      label: Descripción breve
+      description: 1-2 oraciones explicando qué hace el paquete. En español.
+      placeholder: "Caja de herramientas para el procesamiento de datos con la Encuesta Permanente de Hogares (EPH-INDEC)."
+    validations:
+      required: true
+
+  - type: input
+    id: autores
+    attributes:
+      label: Autor/es
+      description: Nombre(s) de quien(es) desarrollaron el paquete
+      placeholder: "Diego Kozlowski, Pablo Tiscornia, et al."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: pais
+    attributes:
+      label: País de origen del/los autor/es
+      options:
+        - Argentina
+        - Bolivia
+        - Brasil
+        - Chile
+        - Colombia
+        - Costa Rica
+        - Cuba
+        - Ecuador
+        - El Salvador
+        - España
+        - Guatemala
+        - Honduras
+        - México
+        - Nicaragua
+        - Panamá
+        - Paraguay
+        - Perú
+        - Puerto Rico
+        - República Dominicana
+        - Uruguay
+        - Venezuela
+        - Otro (aclarar en comentarios)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: categoria
+    attributes:
+      label: Categoría principal
+      options:
+        - "1 - Acceso y procesamiento de fuentes de datos oficiales"
+        - "2 - Acceso y procesamiento de datos espaciales"
+        - "3 - Acceso y procesamiento de información sobre temáticas específicas"
+        - "4 - Tratamiento de datos"
+        - "5 - Modelado"
+        - "6 - Visualización de datos"
+        - "7 - Conjunto de datos"
+        - "8 - Enseñanza / Pedagogía"
+    validations:
+      required: true
+
+  - type: input
+    id: hexlogo
+    attributes:
+      label: URL del hexlogo (opcional)
+      placeholder: "https://github.com/holatam/eph/raw/master/man/figures/logo.png"
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: confirmacion
+    attributes:
+      label: Confirmación
+      options:
+        - label: El paquete es de código abierto
+          required: true
+        - label: El paquete está disponible públicamente (CRAN, GitHub u otro)
+          required: true
+        - label: Verifiqué que no está ya en el catálogo
+          required: true

@@ -1,0 +1,49 @@
+name: Bienvenida a contribuidores
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  bienvenida:
+    runs-on: ubuntu-latest
+    if: contains(github.event.issue.labels.*.name, 'agregar paquete')
+    steps:
+      - name: Verificar URL del paquete
+        id: check_url
+        run: |
+          BODY="${{ github.event.issue.body }}"
+          URL=$(echo "$BODY" | grep -A2 "URL de documentación" | grep "http" | head -1 | xargs)
+          if [ -n "$URL" ]; then
+            STATUS=$(curl -o /dev/null -s -w "%{http_code}" --max-time 10 "$URL" || echo "error")
+            if [ "$STATUS" = "200" ] || [ "$STATUS" = "301" ] || [ "$STATUS" = "302" ]; then
+              echo "url_ok=✅ Link verificado (HTTP $STATUS)" >> $GITHUB_OUTPUT
+            else
+              echo "url_ok=⚠️ El link devolvió código $STATUS — revisá la URL" >> $GITHUB_OUTPUT
+            fi
+          else
+            echo "url_ok=⚠️ No se pudo extraer la URL automáticamente" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Comentar bienvenida
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const urlStatus = '${{ steps.check_url.outputs.url_ok }}';
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `¡Gracias por proponer este paquete! 🎉
+
+            **Verificación automática:** ${urlStatus}
+
+            El equipo de Estación R revisará la propuesta. Checklist de revisión:
+            - [ ] El paquete es de código abierto
+            - [ ] El link de documentación funciona
+            - [ ] La categoría es apropiada
+            - [ ] No está duplicado en el catálogo
+            - [ ] La descripción es clara y en español
+
+            Te avisamos por acá cuando haya novedades.`
+            });
