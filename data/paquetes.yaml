@@ -404,3 +404,10 @@ paquetes:
   pais: No especificado
   categoria: 8
   vigente: yes
+- nombre: "paqueteTest"
+  url: "https://github.com/Estacion-R/paqueteTest"
+  descripcion: "Paquete de prueba para verificar el flujo automatizado de incorporación al catálogo."
+  autores: "Pablo Tiscornia"
+  pais: "Argentina"
+  categoria: 8
+  vigente: yes
