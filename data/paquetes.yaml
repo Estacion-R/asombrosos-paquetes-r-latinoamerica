@@ -404,3 +404,10 @@ paquetes:
   pais: No especificado
   categoria: 8
   vigente: yes
+- nombre: "testpkg"
+  url: "https://github.com/Estacion-R/asombrosos-paquetes-r-latinoamerica"
+  descripcion: "Paquete de prueba para verificar el flujo automático issue → PR."
+  autores: "Estación R"
+  pais: "Argentina"
+  categoria: 8
+  vigente: yes
