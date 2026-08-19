@@ -1,0 +1,106 @@
+/* Estilos personalizados para la app Asombrosos Paquetes */
+
+/* Mejorar aspecto de los botones */
+.btn-primary:hover {
+  background-color: #2980b9;
+  border-color: #2980b9;
+  transform: translateY(-2px);
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background-color: #7f8c8d;
+  border-color: #7f8c8d;
+  transform: translateY(-2px);
+  transition: all 0.2s ease;
+}
+
+/* Mejorar aspecto de las cards */
+.card {
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+/* Estilo para la tabla */
+table.dataTable {
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+table.dataTable thead th {
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.9em;
+  letter-spacing: 0.5px;
+}
+
+table.dataTable tbody tr:hover {
+  background-color: #f8f9fa;
+  cursor: pointer;
+}
+
+/* Links en la tabla */
+table.dataTable a {
+  color: #3498db;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+table.dataTable a:hover {
+  color: #2980b9;
+  text-decoration: underline;
+}
+
+/* Sidebar mejorado */
+.sidebar {
+  background-color: #f8f9fa;
+  border-right: 1px solid #dee2e6;
+}
+
+/* Stats boxes */
+.stats-box {
+  padding: 12px;
+  margin-bottom: 8px;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100% !important;
+  }
+}
+
+/* Loading spinner personalizado */
+.shiny-output-error {
+  color: #e74c3c;
+  font-weight: 500;
+}
+
+.shiny-output-error:before {
+  content: "⚠️ ";
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card {
+  animation: fadeIn 0.3s ease;
+}

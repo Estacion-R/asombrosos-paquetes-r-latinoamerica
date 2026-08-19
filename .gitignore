@@ -2,3 +2,10 @@
 .Rhistory
 .RData
 .Ruserdata
+
+# Documentación interna (no pública)
+DOCUMENTACION_INTERNA.md
+PLAN_DE_ACCION.md
+
+# Claude config
+.claude/

@@ -1,0 +1,13 @@
+# Shiny app specific
+rsconnect/
+.Rproj.user/
+.Rhistory
+.RData
+.Ruserdata
+
+# Deploy logs
+*.log
+
+# OS specific
+.DS_Store
+Thumbs.db
