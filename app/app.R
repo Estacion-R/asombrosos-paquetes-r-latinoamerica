@@ -1,26 +1,32 @@
-# Asombrosos Paquetes de R en Latinoamérica - Shiny App
-# Aplicación interactiva para explorar paquetes de R desarrollados en LATAM
-# Desarrollado por Estación R
+# Catálogo de Paquetes R — Estación R
 
-# Cargar librerías
 library(shiny)
 library(tidyverse)
-library(googlesheets4)
+library(yaml)
 library(DT)
 library(bslib)
 library(shinyWidgets)
 
-# Leer datos desde Google Sheets
-gs4_deauth()
-url_sheet <- "https://docs.google.com/spreadsheets/d/1xcYY1RkvOxnJlANMPtzhbdrpUgtSdF7IoEtNzE6zRKk/edit?usp=sharing"
-
-# Función para leer datos
+# Leer datos desde YAML (fuente de verdad en el repo)
 leer_paquetes <- function() {
   tryCatch({
-    paquetes <- read_sheet(url_sheet)
-    return(paquetes)
+    ruta_yaml <- file.path(dirname(getwd()), "data", "paquetes.yaml")
+    if (!file.exists(ruta_yaml)) ruta_yaml <- "../data/paquetes.yaml"
+    raw <- yaml::read_yaml(ruta_yaml)$paquetes
+    purrr::map_df(raw, function(p) {
+      tibble(
+        nro_tematica = as.integer(p$categoria),
+        paquete      = p$nombre,
+        link         = p$url,
+        descripcion  = p$descripcion,
+        autor_es     = p$autores,
+        pais         = p$pais,
+        icono        = if (!is.null(p$hexlogo)) p$hexlogo else NA_character_,
+        vigente      = isTRUE(p$vigente)
+      )
+    })
   }, error = function(e) {
-    warning("No se pudieron cargar los datos del Google Sheet")
+    warning("No se pudo leer data/paquetes.yaml: ", conditionMessage(e))
     return(NULL)
   })
 }
