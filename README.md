@@ -7,6 +7,8 @@
 Un lista de paquetes desarrollados en R por personas de Latinoamérica
 para el acceso, procesamiento, visualización y comunicación de datos.
 
+## 🚀 [Explorar el catálogo interactivo](https://connect.posit.cloud/estacionr/content/01a01b3b-6f6f-dc53-6f10-a43f944b71e0)
+
 <br><br>
 ## Un paquete está en esta lista porque:
 
