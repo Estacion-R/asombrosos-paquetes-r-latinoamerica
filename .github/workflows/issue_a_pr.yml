@@ -1,0 +1,147 @@
+name: Issue aprobado → PR al YAML
+
+on:
+  issues:
+    types: [labeled]
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  crear-pr:
+    if: github.event.label.name == 'aprobado'
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Parsear issue y crear PR
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issue = context.payload.issue;
+            const body  = issue.body || '';
+
+            // Extrae el texto que sigue a un encabezado ### del template
+            function campo(label) {
+              const re = new RegExp(
+                `###\\s+${label.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\s*\\n+([\\s\\S]*?)(?=\\n###|$)`
+              );
+              const m = body.match(re);
+              if (!m) return null;
+              const val = m[1].trim();
+              return (val === '_No response_' || val === '') ? null : val;
+            }
+
+            const nombre      = campo('Nombre del paquete');
+            const url         = campo('URL de documentación o repositorio');
+            const descripcion = campo('Descripción breve');
+            const autores     = campo('Autor/es');
+            const paisRaw     = campo('País de origen del/los autor/es');
+            const catRaw      = campo('Categoría principal');
+            const hexlogo     = campo('URL del hexlogo \\(opcional\\)');
+
+            // Validar campos obligatorios
+            if (!nombre || !url || !descripcion || !autores) {
+              await github.rest.issues.createComment({
+                ...context.repo,
+                issue_number: issue.number,
+                body: '⚠️ No pude parsear los campos del issue. Verificá que se usó la plantilla **"📦 Proponer un paquete"**.'
+              });
+              return;
+            }
+
+            // Número de categoría (el dropdown tiene formato "1 - Nombre")
+            const catMatch = catRaw ? catRaw.match(/^(\d+)/) : null;
+            const categoria = catMatch ? parseInt(catMatch[1]) : 3;
+
+            const pais = paisRaw || 'No especificado';
+
+            // Construir la entrada YAML de forma segura (quoted strings)
+            function yq(str) {
+              return '"' + str.replace(/\\/g, '\\\\').replace(/"/g, '\\"') + '"';
+            }
+
+            let entry = [
+              `\n- nombre: ${yq(nombre)}`,
+              `  url: ${yq(url)}`,
+              `  descripcion: ${yq(descripcion)}`,
+              `  autores: ${yq(autores)}`,
+              `  pais: ${yq(pais)}`,
+              `  categoria: ${categoria}`,
+              `  vigente: yes`
+            ].join('\n');
+
+            if (hexlogo) entry += `\n  hexlogo: ${yq(hexlogo)}`;
+
+            // Leer el YAML actual
+            const { data: archivo } = await github.rest.repos.getContent({
+              ...context.repo,
+              path: 'data/paquetes.yaml'
+            });
+
+            const contenidoActual = Buffer.from(archivo.content, 'base64').toString('utf8');
+            const contenidoNuevo  = contenidoActual.trimEnd() + entry + '\n';
+
+            // Crear rama desde main
+            const branch = `paquete/${nombre.toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-')}`;
+
+            const { data: mainRef } = await github.rest.git.getRef({
+              ...context.repo,
+              ref: 'heads/main'
+            });
+
+            try {
+              await github.rest.git.createRef({
+                ...context.repo,
+                ref: `refs/heads/${branch}`,
+                sha: mainRef.object.sha
+              });
+            } catch (e) {
+              // La rama ya existe — agregar timestamp para hacerla única
+              const ts = Date.now();
+              await github.rest.git.createRef({
+                ...context.repo,
+                ref: `refs/heads/${branch}-${ts}`,
+                sha: mainRef.object.sha
+              });
+            }
+
+            // Commitear el cambio en la rama
+            await github.rest.repos.createOrUpdateFileContents({
+              ...context.repo,
+              path: 'data/paquetes.yaml',
+              message: `data: agregar paquete ${nombre} (issue #${issue.number})`,
+              content: Buffer.from(contenidoNuevo).toString('base64'),
+              branch: branch,
+              sha: archivo.sha
+            });
+
+            // Abrir el PR
+            const { data: pr } = await github.rest.pulls.create({
+              ...context.repo,
+              title: `📦 Agregar: ${nombre}`,
+              body: [
+                `Agrega el paquete **${nombre}** al catálogo.`,
+                '',
+                `Cierra #${issue.number}`,
+                '',
+                `| Campo | Valor |`,
+                `|-------|-------|`,
+                `| País | ${pais} |`,
+                `| Categoría | ${catRaw || categoria} |`,
+                `| Autores | ${autores} |`,
+                `| URL | ${url} |`,
+              ].join('\n'),
+              head: branch,
+              base: 'main'
+            });
+
+            // Comentar en el issue con el link al PR
+            await github.rest.issues.createComment({
+              ...context.repo,
+              issue_number: issue.number,
+              body: `✅ PR creado automáticamente: ${pr.html_url}\n\nUna vez mergeado, el paquete aparecerá en el catálogo.`
+            });
