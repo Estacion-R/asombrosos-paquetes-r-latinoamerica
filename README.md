@@ -341,30 +341,45 @@ desarrollado en Latinoamérica y lo querés sumar? Chequeate la sección de
   predicciones entre modelos, por ejemplo regresión logística vs árbol
   de decisión vs k-Nearest Neighbours. Autor/es: Joshua Kunst
 
-## Propuesta de paquetes
+## ¿Cómo sumar un paquete?
 
-Si quieres proponer un paquete para que lo incluyamos en el repositorio,
-necesitamos los siguientes datos: \* nombre del paquete \* link a la
-documentación \* breve descripción \* autor/es \* hexlogo (optativo)
+Todas las personas son bienvenidas a contribuir, sin importar si están
+empezando en R o ya tienen experiencia.
 
-Con esta información, podremos revisarlo y analizar si lo incluimos.
+### Opción 1: Issue en GitHub ⭐ La más fácil
 
-### ¿Cómo contribuir?
+1.  Abrí un [nuevo
+    issue](https://github.com/Estacion-R/asombrosos-paquetes-r-latinoamerica/issues/new/choose)
+2.  Elegí la plantilla **"📦 Proponer un paquete"**
+3.  Completá los campos y enviá
 
-Todas las personas son bienvenidas a contribuir, independientemente de
-si recién están empezando a usar R o ya tienen más experiencia. Estas
-son las diferentes maneras de contribuir:
+Recibirás una confirmación automática con la verificación del link.
+Revisamos las propuestas todos los lunes.
 
-- Abre un Pull Request (podes aprender cómo hacerlo con esta guía
-  gratuita [¿Cómo contribuir a un proyecto en
-  GitHub?](https://docs.github.com/es/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request).
+### Opción 2: Email
 
-- Añade un nuevo
-  [issue](https://github.com/pablotis/asombrosos-paquetes-r-latinoamerica/issues)
-  con la información del paquete (necesitaras una cuenta de github).
+Escribí a **pablotisco@gmail.com** con el asunto
+`[PAQUETE] nombre-del-paquete` e incluí la información del paquete.
 
-- Envia un correo electrónico a <pablotisco@gmail.com>,
-  <andrea.gomezv11@gmail.com> o <patricia.andrea.loto@gmail.com>.
+### Información necesaria
+
+| Campo | Requerido |
+|-------|-----------|
+| Nombre del paquete | ✅ |
+| URL de documentación (CRAN, GitHub, pkgdown…) | ✅ |
+| Descripción breve en español (1-2 oraciones) | ✅ |
+| Autor/es y país | ✅ |
+| Hexlogo | Opcional |
+
+### Criterios de inclusión
+
+Un paquete entra al catálogo si:
+
+- ✅ Es de código abierto (licencia libre)
+- ✅ Está disponible para instalar (CRAN, GitHub u otro)
+- ✅ Tiene documentación accesible
+
+Más detalles en [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Licencia
 
