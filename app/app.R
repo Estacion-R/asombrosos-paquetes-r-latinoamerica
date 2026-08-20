@@ -33,6 +33,38 @@ leer_paquetes <- function() {
 
 paquetes <- leer_paquetes()
 
+# Mapeo país (nombre en español) -> código ISO 3166-1 alpha-2 para banderas
+pais_iso <- c(
+  "Argentina"       = "ar",
+  "Bolivia"         = "bo",
+  "Brazil"          = "br",
+  "Chile"           = "cl",
+  "Colombia"        = "co",
+  "Costa Rica"      = "cr",
+  "Cuba"            = "cu",
+  "Ecuador"         = "ec",
+  "El Salvador"     = "sv",
+  "Guatemala"       = "gt",
+  "Honduras"        = "hn",
+  "Mexico"          = "mx",
+  "Nicaragua"       = "ni",
+  "Panama"          = "pa",
+  "Paraguay"        = "py",
+  "Peru"            = "pe",
+  "Puerto Rico"     = "pr",
+  "Dominican Republic" = "do",
+  "Uruguay"         = "uy",
+  "Venezuela"       = "ve",
+  "No especificado" = NA_character_
+)
+
+# URL base para banderas SVG (flagcdn)
+flag_url <- function(pais) {
+  iso <- pais_iso[pais]
+  if (is.na(iso) || is.na(pais)) return(NA_character_)
+  sprintf("https://flagcdn.com/%s.svg", tolower(iso))
+}
+
 # Mapeo de categorías
 categorias <- c(
   "1" = "Datos Oficiales",
@@ -137,6 +169,7 @@ ui <- page_fluid(
         box-shadow: 4px 4px 0 #EAFF38;
         transition: all 0.2s ease;
         cursor: pointer;
+        position: relative;
       }
       .package-card:hover {
         transform: translateY(-4px);
@@ -193,7 +226,17 @@ ui <- page_fluid(
         color: #447099;
         text-decoration: underline;
       }
-      /* === Botón Estación === */
+      /* === Bandera en esquina superior derecha === */
+      .package-flag {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        width: 32px;
+        height: 24px;
+        border: 1.5px solid #151515;
+        border-radius: 0;
+        object-fit: cover;
+      }
       .btn-estacion {
         background: #447099;
         color: #FFFFFF;
@@ -509,6 +552,20 @@ server <- function(input, output, session) {
       div(
         class = "package-card",
         onclick = sprintf("window.open('%s', '_blank')", pkg$link),
+
+        # Bandera del país en esquina superior derecha
+        if (!is.na(pkg$pais) && pkg$pais != "" && pkg$pais != "No especificado") {
+          flag_src <- flag_url(pkg$pais)
+          if (!is.na(flag_src)) {
+            tags$img(
+              src = flag_src,
+              alt = pkg$pais,
+              class = "package-flag",
+              loading = "lazy",
+              onerror = "this.style.display='none';"
+            )
+          }
+        },
 
         # Header con ícono y nombre
         div(
