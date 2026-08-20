@@ -1,87 +1,292 @@
-/* Estilos personalizados para la app Asombrosos Paquetes */
+/* =============================================================================
+   Estilos personalizados — Asombrosos Paquetes de R
+   Spec visual: memory/spec-visual-shiny-estacion-r.md
+   Estilo minimalista neobrutalist-light + paleta oficial Estación R
+   ============================================================================= */
 
-/* Mejorar aspecto de los botones */
+/* Variables de paleta oficial */
+:root {
+  --er-white: #FFFFFF;
+  --er-black: #151515;
+  --er-blue: #447099;
+  --er-orange: #EE6331;
+  --er-green: #72994E;
+  --er-teal: #419599;
+  --er-burgundy: #9A4665;
+  --er-secondary: #707073;
+  --er-tertiary: #C2C2C4;
+  --er-dark: #404041;
+}
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Ubuntu', sans-serif;
+  background-color: var(--er-white);
+  color: var(--er-black);
+  line-height: 1.6;
+}
+
+/* =============================================================================
+   Botones
+   ============================================================================= */
+
+.btn-primary {
+  background-color: var(--er-blue);
+  color: var(--er-white);
+  border: 2px solid var(--er-black);
+  border-radius: 0;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
 .btn-primary:hover {
-  background-color: #2980b9;
-  border-color: #2980b9;
-  transform: translateY(-2px);
+  background-color: var(--er-black);
+  color: var(--er-orange);
+  border-color: var(--er-black);
+  transform: translateX(4px);
+}
+
+.btn-secondary {
+  background-color: var(--er-white);
+  color: var(--er-black);
+  border: 2px solid var(--er-black);
+  border-radius: 0;
+  font-weight: 500;
   transition: all 0.2s ease;
 }
 
 .btn-secondary:hover {
-  background-color: #7f8c8d;
-  border-color: #7f8c8d;
-  transform: translateY(-2px);
+  background-color: var(--er-black);
+  color: var(--er-orange);
+  transform: translateX(4px);
+}
+
+.btn-outline-primary {
+  border: 2px solid var(--er-black);
+  border-radius: 0;
+  color: var(--er-black);
+  font-weight: 500;
   transition: all 0.2s ease;
 }
 
-/* Mejorar aspecto de las cards */
+.btn-outline-primary:hover {
+  background-color: var(--er-blue);
+  color: var(--er-white);
+  border-color: var(--er-blue);
+  box-shadow: 2px 2px 0 var(--er-orange);
+}
+
+/* =============================================================================
+   Cards (Bootstrap)
+   ============================================================================= */
+
 .card {
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  transition: box-shadow 0.3s ease;
+  background: var(--er-white);
+  border: 2px solid var(--er-black);
+  border-radius: 0;
+  box-shadow: 4px 4px 0 var(--er-orange);
+  transition: all 0.2s ease;
 }
 
 .card:hover {
-  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  box-shadow: 8px 8px 0 var(--er-orange);
+  transform: translateY(-4px);
 }
 
-/* Estilo para la tabla */
+/* =============================================================================
+   Tablas (DataTables)
+   ============================================================================= */
+
 table.dataTable {
-  border-radius: 4px;
+  border: 2px solid var(--er-black);
+  border-radius: 0;
   overflow: hidden;
 }
 
+table.dataTable thead {
+  background-color: var(--er-black);
+  color: var(--er-white);
+  border-bottom: 3px solid var(--er-black);
+}
+
 table.dataTable thead th {
-  font-weight: 600;
+  font-weight: 700;
   text-transform: uppercase;
-  font-size: 0.9em;
+  font-size: 0.85rem;
   letter-spacing: 0.5px;
+  padding: 1rem;
+  border-right: 2px solid var(--er-white);
+}
+
+table.dataTable thead th:last-child {
+  border-right: none;
+}
+
+table.dataTable tbody tr {
+  border-bottom: 2px solid var(--er-black);
+  transition: background-color 0.2s ease;
 }
 
 table.dataTable tbody tr:hover {
-  background-color: #f8f9fa;
+  background-color: rgba(238, 99, 49, 0.15);
   cursor: pointer;
+}
+
+table.dataTable tbody td {
+  padding: 0.75rem 1rem;
+  border-right: 2px solid var(--er-black);
+}
+
+table.dataTable tbody td:last-child {
+  border-right: none;
 }
 
 /* Links en la tabla */
 table.dataTable a {
-  color: #3498db;
+  color: var(--er-blue);
   text-decoration: none;
   font-weight: 500;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.2s ease;
 }
 
 table.dataTable a:hover {
-  color: #2980b9;
-  text-decoration: underline;
+  border-bottom-color: var(--er-blue);
 }
 
-/* Sidebar mejorado */
-.sidebar {
-  background-color: #f8f9fa;
-  border-right: 1px solid #dee2e6;
+/* DataTables controls */
+.dataTables_wrapper .dataTables_length,
+.dataTables_wrapper .dataTables_info,
+.dataTables_wrapper .dataTables_paginate {
+  font-family: 'Ubuntu', sans-serif;
+  color: var(--er-black);
+  padding: 1rem 0;
 }
 
-/* Stats boxes */
-.stats-box {
-  padding: 12px;
-  margin-bottom: 8px;
-  border-radius: 6px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+.dataTables_wrapper .dataTables_length select {
+  border: 2px solid var(--er-black);
+  border-radius: 0;
+  padding: 0.25rem 0.5rem;
+  font-family: 'Ubuntu', sans-serif;
+  margin: 0 0.5rem;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .sidebar {
-    width: 100% !important;
-  }
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+  border: 2px solid var(--er-black);
+  background-color: var(--er-white);
+  color: var(--er-black);
+  padding: 0.5rem 1rem;
+  margin: 0 0.25rem;
+  font-weight: 500;
+  border-radius: 0;
+  transition: all 0.2s ease;
 }
 
-/* Loading spinner personalizado */
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+  background-color: var(--er-blue);
+  color: var(--er-white);
+  border-color: var(--er-blue);
+  box-shadow: 2px 2px 0 var(--er-orange);
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {
+  background-color: var(--er-black);
+  color: var(--er-white);
+  border-color: var(--er-black);
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* =============================================================================
+   Inputs / Formularios
+   ============================================================================= */
+
+.form-control,
+.form-select,
+.input-group-text {
+  border: 2px solid var(--er-black);
+  border-radius: 0;
+  font-family: 'Ubuntu', sans-serif;
+  padding: 0.5rem 0.75rem;
+  transition: all 0.2s ease;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--er-blue);
+  box-shadow: 2px 2px 0 var(--er-orange);
+  outline: none;
+}
+
+.form-label {
+  font-weight: 500;
+  color: var(--er-black);
+  margin-bottom: 0.5rem;
+}
+
+/* =============================================================================
+   shinyWidgets — pickerInput / searchInput
+   ============================================================================= */
+
+.bootstrap-select .dropdown-toggle {
+  border: 2px solid var(--er-black) !important;
+  border-radius: 0 !important;
+  font-family: 'Ubuntu', sans-serif;
+  background-color: var(--er-white);
+}
+
+.bootstrap-select .dropdown-toggle:focus {
+  border-color: var(--er-blue);
+  box-shadow: 2px 2px 0 var(--er-orange);
+}
+
+.search-input .form-control {
+  border: 2px solid var(--er-black);
+  border-radius: 0;
+}
+
+.search-input .btn {
+  border: 2px solid var(--er-black);
+  border-radius: 0;
+}
+
+/* =============================================================================
+   Navbar / Nav tabs
+   ============================================================================= */
+
+.nav-link {
+  color: var(--er-black);
+  font-weight: 500;
+  border-bottom: 3px solid transparent;
+  border-radius: 0;
+  transition: border-color 0.2s ease;
+}
+
+.nav-link:hover {
+  color: var(--er-blue);
+  border-bottom-color: var(--er-orange);
+}
+
+.nav-link.active {
+  color: var(--er-blue);
+  border-bottom-color: var(--er-blue);
+}
+
+/* =============================================================================
+   Errores / Loading
+   ============================================================================= */
+
 .shiny-output-error {
-  color: #e74c3c;
+  color: var(--er-burgundy);
   font-weight: 500;
 }
 
@@ -89,11 +294,14 @@ table.dataTable a:hover {
   content: "⚠️ ";
 }
 
-/* Animations */
-@keyframes fadeIn {
+/* =============================================================================
+   Animaciones
+   ============================================================================= */
+
+@keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
@@ -101,6 +309,26 @@ table.dataTable a:hover {
   }
 }
 
-.card {
-  animation: fadeIn 0.3s ease;
+.card,
+.package-card,
+.stats-card {
+  animation: fadeInUp 0.4s ease-out;
+}
+
+/* Scroll suave */
+html {
+  scroll-behavior: smooth;
+}
+
+/* =============================================================================
+   Responsive
+   ============================================================================= */
+
+@media (max-width: 768px) {
+  .stats-card:hover,
+  .card:hover,
+  .package-card:hover {
+    transform: none;
+    box-shadow: 4px 4px 0 var(--er-orange);
+  }
 }
