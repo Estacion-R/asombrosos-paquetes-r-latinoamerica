@@ -99,12 +99,12 @@ ui <- page_fluid(
         border-radius: 0;
         padding: 1.5rem;
         text-align: center;
-        box-shadow: 4px 4px 0 #EE6331;
+        box-shadow: 4px 4px 0 #EAFF38;
         transition: all 0.2s ease;
       }
       .stats-card:hover {
         transform: translateY(-4px);
-        box-shadow: 6px 6px 0 #EE6331;
+        box-shadow: 6px 6px 0 #EAFF38;
       }
       .stats-number {
         font-size: 2.5rem;
@@ -125,7 +125,7 @@ ui <- page_fluid(
         border-radius: 0;
         padding: 1.5rem;
         margin-bottom: 1.5rem;
-        box-shadow: 4px 4px 0 #EE6331;
+        box-shadow: 4px 4px 0 #EAFF38;
       }
       /* === Package cards === */
       .package-card {
@@ -134,13 +134,13 @@ ui <- page_fluid(
         border-radius: 0;
         padding: 1.5rem;
         margin-bottom: 1.5rem;
-        box-shadow: 4px 4px 0 #EE6331;
+        box-shadow: 4px 4px 0 #EAFF38;
         transition: all 0.2s ease;
         cursor: pointer;
       }
       .package-card:hover {
         transform: translateY(-4px);
-        box-shadow: 8px 8px 0 #EE6331;
+        box-shadow: 8px 8px 0 #EAFF38;
         border-color: #447099;
       }
       .package-name {
@@ -214,7 +214,7 @@ ui <- page_fluid(
       }
       .form-control:focus, .form-select:focus {
         border-color: #447099;
-        box-shadow: 2px 2px 0 #EE6331;
+        box-shadow: 2px 2px 0 #EAFF38;
         outline: none;
       }
       /* === Animación === */

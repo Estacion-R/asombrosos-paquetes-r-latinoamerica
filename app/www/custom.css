@@ -47,7 +47,7 @@ body {
 
 .btn-primary:hover {
   background-color: var(--er-black);
-  color: var(--er-orange);
+  color: var(--er-amarillo);
   border-color: var(--er-black);
   transform: translateX(4px);
 }
@@ -63,7 +63,7 @@ body {
 
 .btn-secondary:hover {
   background-color: var(--er-black);
-  color: var(--er-orange);
+  color: var(--er-amarillo);
   transform: translateX(4px);
 }
 
@@ -79,7 +79,7 @@ body {
   background-color: var(--er-blue);
   color: var(--er-white);
   border-color: var(--er-blue);
-  box-shadow: 2px 2px 0 var(--er-orange);
+  box-shadow: 2px 2px 0 #EAFF38;
 }
 
 /* =============================================================================
@@ -90,12 +90,12 @@ body {
   background: var(--er-white);
   border: 2px solid var(--er-black);
   border-radius: 0;
-  box-shadow: 4px 4px 0 var(--er-orange);
+  box-shadow: 4px 4px 0 #EAFF38;
   transition: all 0.2s ease;
 }
 
 .card:hover {
-  box-shadow: 8px 8px 0 var(--er-orange);
+  box-shadow: 8px 8px 0 #EAFF38;
   transform: translateY(-4px);
 }
 
@@ -192,7 +192,7 @@ table.dataTable a:hover {
   background-color: var(--er-blue);
   color: var(--er-white);
   border-color: var(--er-blue);
-  box-shadow: 2px 2px 0 var(--er-orange);
+  box-shadow: 2px 2px 0 #EAFF38;
 }
 
 .dataTables_wrapper .dataTables_paginate .paginate_button.current {
@@ -223,7 +223,7 @@ table.dataTable a:hover {
 .form-control:focus,
 .form-select:focus {
   border-color: var(--er-blue);
-  box-shadow: 2px 2px 0 var(--er-orange);
+  box-shadow: 2px 2px 0 #EAFF38;
   outline: none;
 }
 
@@ -246,7 +246,7 @@ table.dataTable a:hover {
 
 .bootstrap-select .dropdown-toggle:focus {
   border-color: var(--er-blue);
-  box-shadow: 2px 2px 0 var(--er-orange);
+  box-shadow: 2px 2px 0 #EAFF38;
 }
 
 .search-input .form-control {
@@ -273,7 +273,7 @@ table.dataTable a:hover {
 
 .nav-link:hover {
   color: var(--er-blue);
-  border-bottom-color: var(--er-orange);
+  border-bottom-color: var(--er-amarillo);
 }
 
 .nav-link.active {
@@ -329,6 +329,6 @@ html {
   .card:hover,
   .package-card:hover {
     transform: none;
-    box-shadow: 4px 4px 0 var(--er-orange);
+    box-shadow: 4px 4px 0 #EAFF38;
   }
 }
