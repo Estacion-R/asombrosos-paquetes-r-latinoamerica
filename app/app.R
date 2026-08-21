@@ -101,14 +101,17 @@ flag_url <- function(pais) {
 
 # Mapeo de categorías
 categorias <- c(
-  "1" = "Datos Oficiales",
-  "2" = "Datos Espaciales",
-  "3" = "Temáticas Específicas",
-  "4" = "Tratamiento de Datos",
-  "5" = "Modelado",
-  "6" = "Visualización",
-  "7" = "Datasets",
-  "8" = "Enseñanza"
+  "1"  = "Datos Oficiales",
+  "2"  = "Datos Espaciales",
+  "4"  = "Tratamiento de Datos",
+  "5"  = "Modelado",
+  "6"  = "Visualización",
+  "7"  = "Datasets",
+  "8"  = "Enseñanza",
+  "9"  = "Política y Elecciones",
+  "10" = "Clima y Meteorología",
+  "11" = "Economía",
+  "12" = "Bioinformática"
 )
 
 # Tema oficial Estación R — spec visual minimalista + paleta oficial
@@ -301,6 +304,25 @@ ui <- page_fluid(
       }
       .package-card { animation: fadeInUp 0.4s ease-out; }
       html { scroll-behavior: smooth; }
+      /* === Paginación === */
+      .paginacion-wrap {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 2rem;
+        padding: 1rem 0;
+        border-top: 2px solid #151515;
+      }
+      .paginacion-wrap .btn {
+        border: 2px solid #151515;
+        border-radius: 0;
+        font-weight: 500;
+      }
+      .paginacion-info {
+        font-weight: 500;
+        color: #447099;
+      }
       /* === Landing / globo === */
       .landing-wrap {
         padding: 0;
@@ -485,7 +507,7 @@ ui <- page_fluid(
               pickerInput(
                 inputId = "categoria",
                 label = "Categoría:",
-                choices = c("Todas" = "", categorias),
+                choices = c("Todas" = "", setNames(names(categorias), categorias)),
                 selected = "",
                 options = list(
                   `style` = "btn-outline-primary"
@@ -519,7 +541,8 @@ ui <- page_fluid(
         div(
           style = "margin-top: 30px;",
           uiOutput("resultados_info"),
-          uiOutput("lista_paquetes")
+          uiOutput("lista_paquetes"),
+          uiOutput("paginacion")
         )
         )  # cierra div.container del catálogo
       )
@@ -572,6 +595,24 @@ server <- function(input, output, session) {
       footer = NULL
     ))
   }
+
+  CARDS_POR_PAGINA <- 12L
+
+  pagina_actual <- reactiveVal(1L)
+
+  # Resetear paginación cuando cambian los filtros
+  observeEvent(list(input$pais, input$categoria, input$busqueda), {
+    pagina_actual(1L)
+  }, ignoreInit = TRUE)
+
+  observeEvent(input$pag_ant, {
+    pagina_actual(max(1L, pagina_actual() - 1L))
+  })
+
+  observeEvent(input$pag_sig, {
+    total_pags <- ceiling(nrow(datos_filtrados()) / CARDS_POR_PAGINA)
+    pagina_actual(min(total_pags, pagina_actual() + 1L))
+  })
 
   # Actualizar opciones de país basado en datos disponibles
   observe({
@@ -711,6 +752,25 @@ server <- function(input, output, session) {
     )
   })
 
+  # Control de paginación
+  output$paginacion <- renderUI({
+    req(datos_filtrados())
+    total <- nrow(datos_filtrados())
+    total_pags <- ceiling(total / CARDS_POR_PAGINA)
+    if (total_pags <= 1) return(NULL)
+
+    pag <- pagina_actual()
+    div(
+      class = "paginacion-wrap",
+      actionButton("pag_ant", label = icon("arrow-left"), class = "btn-outline-secondary",
+                   disabled = pag == 1),
+      span(class = "paginacion-info",
+           sprintf("Página %d de %d", pag, total_pags)),
+      actionButton("pag_sig", label = icon("arrow-right"), class = "btn-outline-secondary",
+                   disabled = pag == total_pags)
+    )
+  })
+
   # Lista de paquetes como tarjetas
   output$lista_paquetes <- renderUI({
     req(datos_filtrados())
@@ -727,6 +787,12 @@ server <- function(input, output, session) {
         )
       )
     }
+
+    # Paginar
+    pag  <- pagina_actual()
+    ini  <- (pag - 1L) * CARDS_POR_PAGINA + 1L
+    fin  <- min(pag * CARDS_POR_PAGINA, nrow(datos))
+    datos <- datos[ini:fin, ]
 
     # Crear tarjetas para cada paquete
     tarjetas <- lapply(1:nrow(datos), function(i) {

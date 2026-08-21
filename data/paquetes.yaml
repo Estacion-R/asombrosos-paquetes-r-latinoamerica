@@ -56,7 +56,7 @@ paquetes:
   descripcion: Toolbox for Argentina's Electoral Data
   autores: Juan Pablo Ruiz Nicolini
   pais: Argentina
-  categoria: 1
+  categoria: 9
   vigente: yes
   hexlogo: https://github.com/PoliticaArgentina/electorAr/raw/main/man/figures/logo.png
 - nombre: eph
@@ -110,7 +110,7 @@ paquetes:
     ciencia de datos espaciales
   autores: Lorena Abad, Lucas van der Meer, Andrea Gilardi, Robin Lovelace
   pais: Ecuador
-  categoria: 1
+  categoria: 2
   vigente: yes
   hexlogo: https://github.com/luukvdmeer/sfnetworks/raw/main/man/figures/logo.png
 - nombre: chilemapas
@@ -189,7 +189,7 @@ paquetes:
     georeferenciados y e información cartográfica
   autores: Yanina Bellini Saibene, Elio Campitelli, Paola Corrales, Natalia Gattinoni
   pais: Argentina
-  categoria: 3
+  categoria: 10
   vigente: yes
   hexlogo: https://github.com/AgRoMeteorologiaINTA/agromet/raw/master/man/figures/logo.png
 - nombre: ASpli
@@ -198,7 +198,7 @@ paquetes:
   autores: Estefania Mancini, Andrés Rabinovich, Javier Iserte, Marcelo Yanovsky,
     Ariel Chernomoretz
   pais: No especificado
-  categoria: 3
+  categoria: 12
   vigente: yes
 - nombre: CINE
   url: https://github.com/musajajorge/CINE/
@@ -208,7 +208,7 @@ paquetes:
     de Estadística e Informática)
   autores: Jorge L. C. Musaja
   pais: Peru
-  categoria: 3
+  categoria: 8
   vigente: yes
   hexlogo: https://github.com/musajajorge/CINE/raw/main/imgs/hex_emblema_CINE.png
 - nombre: concstats
@@ -220,7 +220,7 @@ paquetes:
     la incertidumbre con respecto a una situación de mercado específica.
   autores: Andreas Schneider
   pais: Paraguay
-  categoria: 3
+  categoria: 11
   vigente: yes
   hexlogo: https://github.com/ropensci/concstats/blob/master/man/figures/logo.png
 - nombre: metR
@@ -229,7 +229,7 @@ paquetes:
     meteorológicos
   autores: Elio Campitelli
   pais: No especificado
-  categoria: 3
+  categoria: 10
   vigente: yes
   hexlogo: https://camo.githubusercontent.com/48a6848fa54967a8e4113fe6e55ecbd14b855de6c169ac75ed6c5fbfc1991ad8/68747470733a2f2f656c696f63616d702e6769746875622e696f2f6d6574522f7265666572656e63652f666967757265732f6c6f676f2e706e67
 - nombre: opinAr
@@ -237,7 +237,7 @@ paquetes:
   descripcion: Argentina´s Public Opinion Toolbox
   autores: Juan Pablo Ruiz Nicolini
   pais: Argentina
-  categoria: 3
+  categoria: 9
   vigente: yes
   hexlogo: https://github.com/PoliticaArgentina/opinAr/raw/master/man/figures/logo.png
 - nombre: porArverse
@@ -246,7 +246,7 @@ paquetes:
     Argentina desde R
   autores: Juan Pablo Ruiz Nicolini
   pais: Argentina
-  categoria: 3
+  categoria: 9
   vigente: yes
   hexlogo: https://camo.githubusercontent.com/7086944caf9b9ba06dd6d90226a81694a9f71c36ccbd2cfd4420d6dc000a880e/68747470733a2f2f706f6c6974696361617267656e74696e612e6769746875622e696f2f706f6c417276657273652f7265666572656e63652f666967757265732f6c6f676f2e706e67
 - nombre: frost
@@ -257,7 +257,7 @@ paquetes:
     detectar un evento de helada.
   autores: Ana Laura Diedrichs
   pais: Argentina
-  categoria: 3
+  categoria: 10
   vigente: yes
 - nombre: tradepolicy
   url: https://github.com/pachadotdev/tradepolicy
@@ -265,7 +265,7 @@ paquetes:
     de Stata del libro An Advanced Guide to Trade Policy Analysis.
   autores: Mauricio Vargas
   pais: Chile
-  categoria: 3
+  categoria: 11
   vigente: yes
 - nombre: unheadr
   url: https://github.com/luisDVA/unheadr
