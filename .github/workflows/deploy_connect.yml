@@ -34,7 +34,7 @@ jobs:
         env:
           CONNECT_API_KEY: ${{ secrets.CONNECT_API_KEY }}
           CONNECT_SERVER: https://connect.posit.cloud
-          CONNECT_ACCOUNT: pablotiscornia
+          CONNECT_ACCOUNT: estacionr
         run: |
           Rscript -e "
           rsconnect::addServer(url = Sys.getenv('CONNECT_SERVER'), name = 'posit.cloud')
