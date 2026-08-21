@@ -303,20 +303,43 @@ ui <- page_fluid(
       html { scroll-behavior: smooth; }
       /* === Landing / globo === */
       .landing-wrap {
-        padding: 2rem 0 3rem 0;
+        padding: 0;
       }
       .landing-cta {
         text-align: center;
         margin-top: 2rem;
+        padding: 0 1rem;
       }
       .landing-cta .btn {
         margin: 0 0.5rem 0.5rem 0.5rem;
       }
       /* === Mapa container === */
       .map-container {
+        border: none;
+        box-shadow: none;
+        margin: 0;
+        width: 100vw;
+        margin-left: calc(50% - 50vw);
+      }
+      .map-container .maplibregl-map {
+        height: 100% !important;
+      }
+      /* === Navset sin card === */
+      .navset-landing .nav-tabs {
+        border-bottom: 3px solid #151515;
+        margin-bottom: 0;
+      }
+      .navset-landing .nav-link {
         border: 2px solid #151515;
-        box-shadow: 6px 6px 0 #EAFF38;
-        margin-top: 1.5rem;
+        border-bottom: none;
+        border-radius: 0;
+        font-weight: 500;
+        color: #151515;
+        background: #FFFFFF;
+      }
+      .navset-landing .nav-link.active {
+        background: #EAFF38;
+        color: #151515;
       }
     "))
   ),
@@ -347,16 +370,18 @@ ui <- page_fluid(
     )
   ),
 
-  # Contenedor principal con tabs: Mapa primero (landing), Catálogo después
+  # Contenedor principal con tabs: Mapa (landing full-width) y Catálogo
   div(
-    class = "container",
-    style = "margin-top: -20px;",
+    class = "container-fluid",
+    style = "margin-top: -20px; padding: 0;",
 
-    navset_card_tab(
+    navset_tab(
       id = "tab_principal",
       selected = "tab_mapa",
+      header = NULL,
+      footer = NULL,
 
-      # --- Tab Mapa (landing page) ---
+      # --- Tab Mapa (landing page full-width) ---
       nav_panel(
         title = icon("globe", " Mapa"),
         value = "tab_mapa",
@@ -364,41 +389,45 @@ ui <- page_fluid(
         div(
           class = "landing-wrap",
 
-          # Stats compactas arriba del globo
-          fluidRow(
-            column(
-              4,
-              div(
-                class = "stats-card",
-                icon("cube", style = "font-size: 2rem; color: #447099;"),
-                div(class = "stats-number", textOutput("total_paquetes", inline = TRUE)),
-                div(class = "stats-label", "Paquetes")
-              )
-            ),
-            column(
-              4,
-              div(
-                class = "stats-card",
-                icon("globe-americas", style = "font-size: 2rem; color: #72994E;"),
-                div(class = "stats-number", textOutput("total_paises", inline = TRUE)),
-                div(class = "stats-label", "Países")
-              )
-            ),
-            column(
-              4,
-              div(
-                class = "stats-card",
-                icon("folder-open", style = "font-size: 2rem; color: #419599;"),
-                div(class = "stats-number", textOutput("total_categorias", inline = TRUE)),
-                div(class = "stats-label", "Categorías")
+          # Stats compactas
+          div(
+            class = "container",
+            style = "padding: 1.5rem 0;",
+            fluidRow(
+              column(
+                4,
+                div(
+                  class = "stats-card",
+                  icon("cube", style = "font-size: 2rem; color: #447099;"),
+                  div(class = "stats-number", textOutput("total_paquetes", inline = TRUE)),
+                  div(class = "stats-label", "Paquetes")
+                )
+              ),
+              column(
+                4,
+                div(
+                  class = "stats-card",
+                  icon("globe-americas", style = "font-size: 2rem; color: #72994E;"),
+                  div(class = "stats-number", textOutput("total_paises", inline = TRUE)),
+                  div(class = "stats-label", "Países")
+                )
+              ),
+              column(
+                4,
+                div(
+                  class = "stats-card",
+                  icon("folder-open", style = "font-size: 2rem; color: #419599;"),
+                  div(class = "stats-number", textOutput("total_categorias", inline = TRUE)),
+                  div(class = "stats-label", "Categorías")
+                )
               )
             )
           ),
 
-          # Globo esférico
+          # Globo esférico full-width
           div(
             class = "map-container",
-            maplibreOutput("mapa_globo", height = "550px")
+            maplibreOutput("mapa_globo", height = "70vh")
           ),
 
           # CTA para entrar al catálogo
@@ -420,6 +449,10 @@ ui <- page_fluid(
       nav_panel(
         title = icon("list", " Catálogo"),
         value = "tab_catalogo",
+
+        div(
+          class = "container",
+          style = "padding-top: 20px;",
 
         # Filtros
         div(
@@ -481,6 +514,7 @@ ui <- page_fluid(
           uiOutput("resultados_info"),
           uiOutput("lista_paquetes")
         )
+        )  # cierra div.container del catálogo
       )
     ),
 
@@ -556,12 +590,6 @@ server <- function(input, output, session) {
   output$mapa_globo <- renderMaplibre({
     req(puntos_mapa)
 
-    # Radio de círculos proporcional a la cantidad de paquetes
-    # Escala: min 15px (1 paquete) → max 50px (18 paquetes)
-    max_n <- max(puntos_mapa$n_paquetes)
-    radios <- scales::rescale(puntos_mapa$n_paquetes, to = c(15, 50))
-    puntos_mapa$radio <- radios
-
     maplibre(
       style = carto_style("positron"),
       projection = "globe",
@@ -573,16 +601,18 @@ server <- function(input, output, session) {
         id = "paquetes_paises",
         source = puntos_mapa,
         circle_color = "#447099",
-        circle_radius = "get",
+        circle_radius = list(
+          "interpolate",
+          list("linear"),
+          list("get", "n_paquetes"),
+          1, 15,
+          18, 50
+        ),
         circle_opacity = 0.7,
         circle_stroke_color = "#151515",
         circle_stroke_width = 1.5,
         circle_stroke_opacity = 0.8,
-        popup = paste0(
-          "<strong>", puntos_mapa$pais, "</strong><br>",
-          puntos_mapa$n_paquetes,
-          " paquete", ifelse(puntos_mapa$n_paquetes != 1, "s", "")
-        )
+        popup = "{pais}: {n_paquetes} paquetes"
       )
   })
 
