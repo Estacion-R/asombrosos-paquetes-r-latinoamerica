@@ -1038,7 +1038,6 @@ server <- function(input, output, session) {
             div(
               div(class = "package-name", pkg$paquete),
               div(
-                span(class = "package-country", icon("map-marker-alt"), " ", pkg$pais),
                 span(class = "package-category", categoria_texto),
                 if (!is.na(pkg$subcategoria)) {
                   sub_label <- subcategoria_label[pkg$subcategoria]
