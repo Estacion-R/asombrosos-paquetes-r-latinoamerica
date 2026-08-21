@@ -22,7 +22,7 @@ paquetes:
   url: https://ipeagit.github.io/censobr/
   descripcion: Es un paquete para descargar datos del Censo de Población en Brasil
   autores: Rafael H. M. Pereira, Ipea - Institute for Applied Economic Research
-  pais: Brazil
+  pais: Brasil
   categoria: 1
   subcategoria: censos
   vigente: yes
@@ -81,7 +81,7 @@ paquetes:
   descripcion: Provides functions to download and parse information from INEGI (Official
     Mexican statistics agency)
   autores: Eduardo Flores
-  pais: Mexico
+  pais: México
   categoria: 1
   subcategoria: registros_administrativos
   vigente: yes
@@ -160,7 +160,7 @@ paquetes:
   url: https://ipeagit.github.io/geobr/
   descripcion: Download Official Spatial Data Sets of Brazil
   autores: Rafael H M Pereira
-  pais: Brazil
+  pais: Brasil
   categoria: 2
   vigente: yes
   hexlogo: https://github.com/ipeaGIT/geobr/raw/master/r-package/man/figures/geobr_logo_y.png?raw=true
@@ -179,7 +179,7 @@ paquetes:
     de los centroides y límites geográficos de las regiones, departamentos, provincias
     y distritos del Perú
   autores: Jorge L. C. Musaja
-  pais: Peru
+  pais: Perú
   categoria: 2
   vigente: yes
   hexlogo: https://github.com/musajajorge/mapsPERU/raw/main/imgs/hex_mapsPERU.png
@@ -217,7 +217,7 @@ paquetes:
     Normalizada de la Educación) para el Perú publicada por el INEI (Instituto Nacional
     de Estadística e Informática)
   autores: Jorge L. C. Musaja
-  pais: Peru
+  pais: Perú
   categoria: 8
   vigente: yes
   hexlogo: https://github.com/musajajorge/CINE/raw/main/imgs/hex_emblema_CINE.png
@@ -389,7 +389,7 @@ paquetes:
     con un efecto de desplazamiento (JavaScript/JQuery + CSS) que muestra imágenes
     justo debajo de dicha tabla de forma sencilla.
   autores: Arthur Welle
-  pais: Brazil
+  pais: Brasil
   categoria: 8
   vigente: yes
   hexlogo: https://github.com/arthurwelle/codehover/blob/master/docs/HexSticker/HexSticker.png
