@@ -598,7 +598,7 @@ server <- function(input, output, session) {
     req(puntos_mapa)
 
     maplibre(
-      style = carto_style("positron"),
+      style = carto_style("dark-matter"),
       projection = "globe",
       center = c(-60, -15),
       zoom = 1.2,
@@ -607,18 +607,18 @@ server <- function(input, output, session) {
       add_circle_layer(
         id = "paquetes_paises",
         source = puntos_mapa,
-        circle_color = "#447099",
+        circle_color = "#EAFF38",
         circle_radius = list(
           "interpolate",
           list("linear"),
           list("get", "n_paquetes"),
-          1, 15,
-          18, 50
+          1, 12,
+          18, 45
         ),
-        circle_opacity = 0.7,
-        circle_stroke_color = "#151515",
-        circle_stroke_width = 1.5,
-        circle_stroke_opacity = 0.8,
+        circle_opacity = 0.9,
+        circle_stroke_color = "#447099",
+        circle_stroke_width = 2,
+        circle_stroke_opacity = 1,
         popup = "{pais}: {n_paquetes} paquetes"
       )
   })
