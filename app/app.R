@@ -642,12 +642,12 @@ server <- function(input, output, session) {
     updatePickerInput(session, "pais", selected = pais_click)
 
     # Cambiar a la pestaña del catálogo
-    updateNavsetCardTab(session, "tab_principal", selected = "tab_catalogo")
+    nav_select("tab_principal", selected = "tab_catalogo")
   })
 
   # Botón "Ver todos los paquetes" → ir al catálogo sin filtro
   observeEvent(input$ir_catalogo, {
-    updateNavsetCardTab(session, "tab_principal", selected = "tab_catalogo")
+    nav_select("tab_principal", selected = "tab_catalogo")
   })
 
   # --- Datos filtrados reactivos ---
