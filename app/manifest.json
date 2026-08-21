@@ -3274,7 +3274,7 @@
   },
   "files": {
     "app.R": {
-      "checksum": "31a9c07ef1416a83bb8cb0fc8edb73a9"
+      "checksum": "a91c8e0c593c1792a76b8aeed0712e60"
     },
     "CAMBIOS_ESTACION_R.md": {
       "checksum": "99f537d5df669bf0fd90c029b89778c2"
@@ -3294,11 +3294,14 @@
     "www/custom.css": {
       "checksum": "47886bbba70d9ba4317274b1dd10a85d"
     },
+    "www/favicon.ico": {
+      "checksum": "772c3e92124024a3118a135f0b40ec3a"
+    },
     "www/img/logo_estacion_r_ancho.png": {
-      "checksum": "abda534b835e75b2a1363ce0fc3b1599"
+      "checksum": "fcf269abd6ebab2ae617576bae4a921e"
     },
     "www/img/logo_estacion_r_largo.png": {
-      "checksum": "21016c5d42b0ecbe504b752f5e44e87b"
+      "checksum": "52bc6eb490c6e7c33e1628051d7ded35"
     }
   },
   "users": null
