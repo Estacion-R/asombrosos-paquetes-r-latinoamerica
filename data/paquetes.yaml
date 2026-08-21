@@ -404,3 +404,14 @@ paquetes:
   pais: No especificado
   categoria: 8
   vigente: yes
+- nombre: arcenso
+  url: https://soyandrea.github.io/arcenso/
+  descripcion: Proporciona acceso a datos ordenados y curados de los censos nacionales
+    de población de Argentina (1970, 1980, 1991, 2001, 2010 y 2022), facilitando
+    la exploración y reutilización de información histórica censal con herramientas
+    de consulta, validación y visualización interactiva.
+  autores: Andrea Gomez Vargas, Emanuel Ciardullo
+  pais: Argentina
+  categoria: 1
+  vigente: yes
+  hexlogo: https://raw.githubusercontent.com/SoyAndrea/arcenso/main/man/figures/logo.png
