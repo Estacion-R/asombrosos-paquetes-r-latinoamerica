@@ -6,10 +6,6 @@ library(yaml)
 library(DT)
 library(bslib)
 library(shinyWidgets)
-library(mapgl)
-library(sf)
-library(rnaturalearth)
-library(rnaturalearthdata)
 
 # Leer datos desde YAML (fuente de verdad en el repo)
 leer_paquetes <- function() {
@@ -37,35 +33,11 @@ leer_paquetes <- function() {
 
 paquetes <- leer_paquetes()
 
-# --- Preparar datos del globo: puntos por país con cantidad de paquetes ---
-
-# Coordenadas aproximadas de capital de cada país
-coords_paises <- tibble(
-  pais = c("Argentina","Bolivia","Brazil","Chile","Colombia","Costa Rica",
-           "Cuba","Ecuador","El Salvador","Guatemala","Honduras","Mexico",
-           "Nicaragua","Panama","Paraguay","Peru","Puerto Rico",
-           "Dominican Republic","Uruguay","Venezuela"),
-  lon = c(-63.6,-67.0,-51.9,-71.5,-74.0,-84.0,
-          -77.8,-78.5,-89.2,-90.2,-87.2,-102.6,
-          -85.2,-80.8,-57.7,-75.0,-66.6,
-          -69.0,-55.8,-66.6),
-  lat = c(-35.4,-16.3,-14.2,-35.0,4.6,10.0,
-          21.5,-1.5,13.7,15.8,14.6,23.6,
-          12.9,8.5,-23.4,-9.2,18.2,
-          18.7,-32.5,6.0)
-)
-
-# Contar paquetes por país
+# --- Conteo de paquetes por país (para el grid de países) ---
 conteo_paises <- paquetes %>%
   filter(!is.na(pais), pais != "No especificado") %>%
-  count(pais, name = "n_paquetes")
-
-# SF de puntos con conteo
-puntos_mapa <- coords_paises %>%
-  left_join(conteo_paises, by = "pais") %>%
-  mutate(n_paquetes = ifelse(is.na(n_paquetes), 0, n_paquetes)) %>%
-  filter(n_paquetes > 0) %>%
-  st_as_sf(coords = c("lon","lat"), crs = 4326, remove = FALSE)
+  count(pais, name = "n_paquetes") %>%
+  arrange(desc(n_paquetes))
 
 # Mapeo país (nombre en español) -> código ISO 3166-1 alpha-2 para banderas
 pais_iso <- c(
@@ -335,23 +307,55 @@ ui <- page_fluid(
       .landing-cta .btn {
         margin: 0 0.5rem 0.5rem 0.5rem;
       }
-      /* === Mapa container === */
-      .map-container {
-        border: none;
-        box-shadow: none;
-        margin: 0;
-        width: 100vw;
-        margin-left: calc(50% - 50vw);
-        height: 70vh;
-        min-height: 500px;
+      /* === Grid de países === */
+      .paises-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 1rem;
+        padding: 1.5rem 0;
       }
-      .map-container .maplibregl-map {
-        height: 100% !important;
-        width: 100% !important;
+      .pais-card {
+        background: #FFFFFF;
+        border: 2px solid #151515;
+        box-shadow: 4px 4px 0 #EAFF38;
+        padding: 1.25rem 1rem;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.15s ease;
+        user-select: none;
       }
-      #mapa_globo {
-        height: 100% !important;
-        width: 100% !important;
+      .pais-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 7px 7px 0 #EAFF38;
+        border-color: #447099;
+      }
+      .pais-card:active {
+        transform: translateY(0);
+        box-shadow: 2px 2px 0 #EAFF38;
+      }
+      .pais-flag {
+        width: 56px;
+        height: 42px;
+        border: 1.5px solid #151515;
+        object-fit: cover;
+        display: block;
+        margin: 0 auto 0.6rem auto;
+      }
+      .pais-nombre {
+        font-weight: 700;
+        font-size: 0.85rem;
+        color: #151515;
+        margin-bottom: 0.35rem;
+        line-height: 1.2;
+      }
+      .pais-count {
+        display: inline-block;
+        background: #447099;
+        color: #FFFFFF;
+        font-size: 0.75rem;
+        font-weight: 700;
+        padding: 0.15rem 0.5rem;
+        border: 1.5px solid #151515;
       }
       /* === Navset sin card === */
       .navset-landing .nav-tabs {
@@ -455,10 +459,10 @@ ui <- page_fluid(
             )
           ),
 
-          # Globo esférico full-width
+          # Grid de países
           div(
-            class = "map-container",
-            maplibreOutput("mapa_globo", height = "100%")
+            class = "container",
+            uiOutput("grid_paises")
           ),
 
           # CTA para entrar al catálogo
@@ -635,56 +639,46 @@ server <- function(input, output, session) {
     updateSearchInput(session, "busqueda", value = "")
   })
 
-  # --- Globo esférico (landing page) ---
+  # --- Grid de países (landing page) ---
 
-  output$mapa_globo <- renderMaplibre({
-    req(puntos_mapa)
+  output$grid_paises <- renderUI({
+    req(conteo_paises)
 
-    maplibre(
-      style = carto_style("dark-matter"),
-      projection = "globe",
-      center = c(-60, -15),
-      zoom = 1.2,
-      pitch = 20
-    ) |>
-      add_circle_layer(
-        id = "paquetes_paises",
-        source = puntos_mapa,
-        circle_color = "#EAFF38",
-        circle_radius = list(
-          "interpolate",
-          list("linear"),
-          list("get", "n_paquetes"),
-          1, 12,
-          18, 45
+    cards <- lapply(seq_len(nrow(conteo_paises)), function(i) {
+      pais_nombre <- conteo_paises$pais[i]
+      n           <- conteo_paises$n_paquetes[i]
+      flag_src    <- flag_url(pais_nombre)
+
+      div(
+        class = "pais-card",
+        onclick = sprintf(
+          "Shiny.setInputValue('pais_seleccionado', '%s', {priority: 'event'})",
+          pais_nombre
         ),
-        circle_opacity = 0.9,
-        circle_stroke_color = "#447099",
-        circle_stroke_width = 2,
-        circle_stroke_opacity = 1,
-        popup = "{pais}: {n_paquetes} paquetes"
+        if (!is.na(flag_src)) {
+          tags$img(
+            src     = flag_src,
+            alt     = pais_nombre,
+            class   = "pais-flag",
+            loading = "lazy",
+            onerror = "this.style.display='none';"
+          )
+        },
+        div(class = "pais-nombre", pais_nombre),
+        span(class = "pais-count",
+             sprintf("%d paquete%s", n, ifelse(n != 1, "s", "")))
       )
+    })
+
+    div(class = "paises-grid", cards)
   })
 
-  # Click en un país del globo → filtrar catálogo y cambiar de tab
-  observeEvent(input$mapa_globo_layer_click, {
-    click <- input$mapa_globo_layer_click
-    if (is.null(click)) return()
-
-    # click puede traer propiedades del feature; buscar el país
-    pais_click <- NULL
-    if (!is.null(click$properties)) {
-      pais_click <- click$properties$pais
-    } else if (!is.null(click$pais)) {
-      pais_click <- click$pais
-    }
-
+  # Click en un país del grid → filtrar catálogo y cambiar de tab
+  observeEvent(input$pais_seleccionado, {
+    pais_click <- input$pais_seleccionado
     if (is.null(pais_click) || pais_click == "") return()
 
-    # Actualizar el filtro de país del catálogo
     updatePickerInput(session, "pais", selected = pais_click)
-
-    # Cambiar a la pestaña del catálogo
     nav_select("tab_principal", selected = "tab_catalogo")
   })
 
