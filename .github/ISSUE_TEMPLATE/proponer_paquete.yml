@@ -87,6 +87,10 @@ body:
         - "6 - Visualización de datos"
         - "7 - Conjunto de datos"
         - "8 - Enseñanza / Pedagogía"
+        - "9 - Política y Elecciones"
+        - "10 - Clima y Meteorología"
+        - "11 - Economía"
+        - "12 - Bioinformática"
     validations:
       required: true
 
