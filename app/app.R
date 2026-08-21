@@ -250,6 +250,16 @@ ui <- page_fluid(
         font-size: 0.85rem;
         font-weight: 500;
       }
+      .package-subcategory {
+        display: inline-block;
+        background: #9A4665;
+        color: #FFFFFF;
+        padding: 0.25rem 0.75rem;
+        border: 2px solid #151515;
+        border-radius: 0;
+        font-size: 0.85rem;
+        font-weight: 500;
+      }
       /* === Footer === */
       .footer-brand {
         text-align: center;
@@ -1029,7 +1039,13 @@ server <- function(input, output, session) {
               div(class = "package-name", pkg$paquete),
               div(
                 span(class = "package-country", icon("map-marker-alt"), " ", pkg$pais),
-                span(class = "package-category", categoria_texto)
+                span(class = "package-category", categoria_texto),
+                if (!is.na(pkg$subcategoria)) {
+                  sub_label <- subcategoria_label[pkg$subcategoria]
+                  if (!is.na(sub_label)) {
+                    span(class = "package-subcategory", sub_label)
+                  }
+                }
               )
             )
           ),
