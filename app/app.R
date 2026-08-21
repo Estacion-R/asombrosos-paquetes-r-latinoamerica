@@ -412,7 +412,7 @@ ui <- page_fluid(
 
       # --- Tab Mapa (landing page full-width) ---
       nav_panel(
-        title = icon("globe", " Mapa"),
+        title = tagList(icon("globe"), " Mapa"),
         value = "tab_mapa",
 
         div(
@@ -476,7 +476,7 @@ ui <- page_fluid(
 
       # --- Tab Catálogo ---
       nav_panel(
-        title = icon("list", " Catálogo"),
+        title = tagList(icon("list"), " Catálogo"),
         value = "tab_catalogo",
 
         div(
@@ -578,7 +578,7 @@ ui <- page_fluid(
         )
       ),
       p(style = "margin-top: 30px; color: #707073; font-size: 0.9rem;",
-        "© 2025 Estación R | Todos los paquetes son propiedad de sus respectivos autores")
+        "© 2026 Estación R | Todos los paquetes son propiedad de sus respectivos autores")
     )
   )
 )
