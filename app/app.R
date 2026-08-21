@@ -22,6 +22,7 @@ leer_paquetes <- function() {
         autor_es     = p$autores,
         pais         = p$pais,
         icono        = if (!is.null(p$hexlogo)) p$hexlogo else NA_character_,
+        subcategoria = if (!is.null(p$subcategoria)) p$subcategoria else NA_character_,
         vigente      = isTRUE(p$vigente)
       )
     })
@@ -38,6 +39,42 @@ conteo_paises <- paquetes %>%
   filter(!is.na(pais), pais != "No especificado") %>%
   count(pais, name = "n_paquetes") %>%
   arrange(desc(n_paquetes))
+
+# --- Conteo por categoría (para el grid de categorías) ---
+conteo_categorias <- paquetes %>%
+  count(nro_tematica, name = "n_paquetes") %>%
+  arrange(nro_tematica)
+
+# --- Conteo de subcategorías de Datos Oficiales ---
+conteo_subcategorias <- paquetes %>%
+  filter(nro_tematica == 1, !is.na(subcategoria)) %>%
+  count(subcategoria, name = "n_paquetes")
+
+# Etiquetas y emojis de categorías
+categoria_emoji <- c(
+  "1"  = "🏛️",
+  "2"  = "🗺️",
+  "4"  = "🔧",
+  "5"  = "📊",
+  "6"  = "🎨",
+  "7"  = "📁",
+  "8"  = "📚",
+  "9"  = "🗳️",
+  "10" = "☁️",
+  "11" = "💰",
+  "12" = "🧬"
+)
+
+subcategoria_label <- c(
+  "censos"                  = "Censos",
+  "encuestas"               = "Encuestas",
+  "registros_administrativos" = "Registros administrativos"
+)
+subcategoria_emoji <- c(
+  "censos"                  = "📋",
+  "encuestas"               = "📝",
+  "registros_administrativos" = "🗂️"
+)
 
 # Mapeo país (nombre en español) -> código ISO 3166-1 alpha-2 para banderas
 pais_iso <- c(
@@ -357,6 +394,116 @@ ui <- page_fluid(
         padding: 0.15rem 0.5rem;
         border: 1.5px solid #151515;
       }
+      /* === Grid de categorías === */
+      .categorias-section {
+        padding: 2rem 0 1rem 0;
+        border-top: 3px solid #151515;
+        margin-top: 1rem;
+      }
+      .categorias-titulo {
+        font-size: 1.1rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #151515;
+        margin-bottom: 1rem;
+      }
+      .categorias-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 0.75rem;
+      }
+      .categoria-card {
+        background: #FFFFFF;
+        border: 2px solid #151515;
+        box-shadow: 3px 3px 0 #EAFF38;
+        padding: 0.9rem 0.75rem;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.15s ease;
+        user-select: none;
+      }
+      .categoria-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 6px 6px 0 #EAFF38;
+        border-color: #447099;
+      }
+      .categoria-emoji {
+        font-size: 1.6rem;
+        display: block;
+        margin-bottom: 0.3rem;
+      }
+      .categoria-nombre {
+        font-weight: 700;
+        font-size: 0.8rem;
+        color: #151515;
+        margin-bottom: 0.3rem;
+        line-height: 1.2;
+      }
+      .categoria-count {
+        display: inline-block;
+        background: #419599;
+        color: #FFFFFF;
+        font-size: 0.7rem;
+        font-weight: 700;
+        padding: 0.1rem 0.45rem;
+        border: 1.5px solid #151515;
+      }
+      /* Subcategorías */
+      .subcategorias-wrap {
+        margin-top: 0.75rem;
+        padding-top: 0.75rem;
+        border-top: 2px dashed #C2C2C4;
+      }
+      .subcategorias-titulo {
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: #707073;
+        margin-bottom: 0.5rem;
+      }
+      .subcategorias-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+      .subcategoria-card {
+        background: #FFFFFF;
+        border: 2px solid #151515;
+        box-shadow: 2px 2px 0 #EAFF38;
+        padding: 0.5rem 0.7rem;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.15s ease;
+        user-select: none;
+        flex: 1;
+        min-width: 130px;
+      }
+      .subcategoria-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 4px 4px 0 #EAFF38;
+        border-color: #447099;
+      }
+      .subcategoria-emoji {
+        font-size: 1.1rem;
+        margin-right: 0.3rem;
+      }
+      .subcategoria-nombre {
+        font-weight: 700;
+        font-size: 0.78rem;
+        color: #151515;
+      }
+      .subcategoria-count {
+        display: inline-block;
+        background: #9A4665;
+        color: #FFFFFF;
+        font-size: 0.65rem;
+        font-weight: 700;
+        padding: 0.1rem 0.35rem;
+        border: 1px solid #151515;
+        margin-left: 0.3rem;
+      }
       /* === Navset sin card === */
       .navset-landing .nav-tabs {
         border-bottom: 3px solid #151515;
@@ -459,10 +606,11 @@ ui <- page_fluid(
             )
           ),
 
-          # Grid de países
+          # Grid de países + grid de categorías
           div(
             class = "container",
-            uiOutput("grid_paises")
+            uiOutput("grid_paises"),
+            uiOutput("grid_categorias")
           ),
 
           # CTA para entrar al catálogo
@@ -602,12 +750,24 @@ server <- function(input, output, session) {
     ))
   }
 
-  CARDS_POR_PAGINA <- 12L
+  CARDS_POR_PAGINA    <- 12L
+  pagina_actual       <- reactiveVal(1L)
+  subcategoria_activa <- reactiveVal(NULL)
 
-  pagina_actual <- reactiveVal(1L)
+  # Resetear subcategoría cuando el usuario cambia categoría manualmente
+  observeEvent(input$categoria, {
+    if (is.null(input$categoria) || input$categoria != "1") {
+      subcategoria_activa(NULL)
+    }
+  }, ignoreInit = TRUE)
+
+  # Resetear subcategoría al limpiar filtros
+  observeEvent(input$limpiar, {
+    subcategoria_activa(NULL)
+  }, ignoreInit = TRUE)
 
   # Resetear paginación cuando cambian los filtros
-  observeEvent(list(input$pais, input$categoria, input$busqueda), {
+  observeEvent(list(input$pais, input$categoria, input$busqueda, subcategoria_activa()), {
     pagina_actual(1L)
   }, ignoreInit = TRUE)
 
@@ -673,6 +833,83 @@ server <- function(input, output, session) {
     div(class = "paises-grid", cards)
   })
 
+  # --- Grid de categorías (landing page) ---
+
+  output$grid_categorias <- renderUI({
+    req(conteo_categorias)
+
+    # Cards de categorías
+    cat_cards <- lapply(seq_len(nrow(conteo_categorias)), function(i) {
+      cat_id  <- as.character(conteo_categorias$nro_tematica[i])
+      nombre  <- categorias[cat_id]
+      if (is.na(nombre)) return(NULL)
+      n       <- conteo_categorias$n_paquetes[i]
+      emoji   <- categoria_emoji[cat_id]
+      if (is.na(emoji)) emoji <- "📦"
+
+      div(
+        class = "categoria-card",
+        onclick = sprintf(
+          "Shiny.setInputValue('categoria_seleccionada', '%s', {priority: 'event'})",
+          cat_id
+        ),
+        span(class = "categoria-emoji", emoji),
+        div(class = "categoria-nombre", nombre),
+        span(class = "categoria-count",
+             sprintf("%d paquete%s", n, ifelse(n != 1, "s", "")))
+      )
+    })
+
+    # Bloque de subcategorías de Datos Oficiales
+    sub_cards <- lapply(seq_len(nrow(conteo_subcategorias)), function(i) {
+      sub_key <- conteo_subcategorias$subcategoria[i]
+      n       <- conteo_subcategorias$n_paquetes[i]
+      label   <- subcategoria_label[sub_key]
+      emoji   <- subcategoria_emoji[sub_key]
+
+      div(
+        class = "subcategoria-card",
+        onclick = sprintf(
+          "Shiny.setInputValue('subcategoria_seleccionada', '%s', {priority: 'event'})",
+          sub_key
+        ),
+        span(class = "subcategoria-emoji", emoji),
+        span(class = "subcategoria-nombre", label),
+        span(class = "subcategoria-count", n)
+      )
+    })
+
+    div(
+      class = "categorias-section",
+      div(class = "categorias-titulo", "Por categoría"),
+      div(class = "categorias-grid", cat_cards),
+      div(
+        class = "subcategorias-wrap",
+        div(class = "subcategorias-titulo", "↳ Datos Oficiales"),
+        div(class = "subcategorias-grid", sub_cards)
+      )
+    )
+  })
+
+  # Click en categoría → filtrar catálogo
+  observeEvent(input$categoria_seleccionada, {
+    cat_id <- input$categoria_seleccionada
+    if (is.null(cat_id) || cat_id == "") return()
+    updatePickerInput(session, "categoria", selected = cat_id)
+    updatePickerInput(session, "pais", selected = "")
+    nav_select("tab_principal", selected = "tab_catalogo")
+  })
+
+  # Click en subcategoría → filtrar por categoría 1 + subcategoría
+  observeEvent(input$subcategoria_seleccionada, {
+    sub_key <- input$subcategoria_seleccionada
+    if (is.null(sub_key) || sub_key == "") return()
+    updatePickerInput(session, "categoria", selected = "1")
+    updatePickerInput(session, "pais", selected = "")
+    subcategoria_activa(sub_key)
+    nav_select("tab_principal", selected = "tab_catalogo")
+  })
+
   # Click en un país del grid → filtrar catálogo y cambiar de tab
   observeEvent(input$pais_seleccionado, {
     pais_click <- input$pais_seleccionado
@@ -701,6 +938,12 @@ server <- function(input, output, session) {
     # Filtro por categoría
     if (!is.null(input$categoria) && input$categoria != "") {
       datos <- datos %>% filter(nro_tematica == as.integer(input$categoria))
+    }
+
+    # Filtro por subcategoría (solo aplica dentro de Datos Oficiales)
+    sub <- subcategoria_activa()
+    if (!is.null(sub) && sub != "") {
+      datos <- datos %>% filter(!is.na(subcategoria), subcategoria == sub)
     }
 
     # Filtro por búsqueda

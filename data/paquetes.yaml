@@ -7,6 +7,7 @@ paquetes:
   autores: Klaus Lehmann, Ricardo Pizarro y Ignacio Agloni
   pais: Chile
   categoria: 1
+  subcategoria: encuestas
   vigente: yes
 - nombre: casen
   url: https://github.com/pachadotdev/casen
@@ -15,6 +16,7 @@ paquetes:
   autores: M. Vargas, Kirill Müller
   pais: Chile
   categoria: 1
+  subcategoria: encuestas
   vigente: yes
 - nombre: censobr
   url: https://ipeagit.github.io/censobr/
@@ -22,6 +24,7 @@ paquetes:
   autores: Rafael H. M. Pereira, Ipea - Institute for Applied Economic Research
   pais: Brazil
   categoria: 1
+  subcategoria: censos
   vigente: yes
   hexlogo: https://github.com/ipeaGIT/censobr/blob/main/man/figures/logo.png
 - nombre: DatosAbiertosCEP
@@ -33,6 +36,7 @@ paquetes:
   autores: Nicolas Sidicaro
   pais: Argentina
   categoria: 1
+  subcategoria: registros_administrativos
   vigente: yes
 - nombre: discursAr
   url: https://github.com/PoliticaArgentina/discursAr/
@@ -40,6 +44,7 @@ paquetes:
   autores: Juan Pablo Ruiz Nicolini
   pais: Argentina
   categoria: 1
+  subcategoria: registros_administrativos
   vigente: yes
   hexlogo: https://github.com/politicaargentina/data_warehouse/raw/master/hex/discursAr.png?raw=true
 - nombre: ech
@@ -49,6 +54,7 @@ paquetes:
   autores: Gabriela Mathieu, Richard Detomasi
   pais: Uruguay
   categoria: 1
+  subcategoria: encuestas
   vigente: yes
   hexlogo: https://camo.githubusercontent.com/0886e9e7740713bd689510d08c10c97edf6a6258c8dcddffcda02bbbd37edef4/68747470733a2f2f63616c636974612e6769746875622e696f2f6563682f7265666572656e63652f666967757265732f6563685f6c6f676f2e706e67
 - nombre: electoAr
@@ -67,6 +73,7 @@ paquetes:
     Rosati y Carolina Pradier
   pais: Argentina
   categoria: 1
+  subcategoria: encuestas
   vigente: yes
   hexlogo: https://github.com/holatam/eph/raw/master/man/figures/logo.png
 - nombre: inegiR
@@ -76,6 +83,7 @@ paquetes:
   autores: Eduardo Flores
   pais: Mexico
   categoria: 1
+  subcategoria: registros_administrativos
   vigente: yes
 - nombre: occupationcross
   url: https://guidowe.github.io/occupationcross/
@@ -93,6 +101,7 @@ paquetes:
   autores: Fernando García Díaz
   pais: Argentina
   categoria: 1
+  subcategoria: registros_administrativos
   vigente: yes
   hexlogo: https://github.com/fmgarciadiaz/PortalHacienda-CRAN/raw/master/man/figures/logo.png
 - nombre: presentes
@@ -102,6 +111,7 @@ paquetes:
   autores: Diego Kozlowski, Demian Zayat y Antonio Vazquez Brust
   pais: Argentina
   categoria: 1
+  subcategoria: registros_administrativos
   vigente: yes
 - nombre: sfnetworks
   url: https://github.com/luukvdmeer/sfnetworks
@@ -413,6 +423,7 @@ paquetes:
   autores: Andrea Gomez Vargas, Emanuel Ciardullo
   pais: Argentina
   categoria: 1
+  subcategoria: censos
   vigente: yes
   hexlogo: https://raw.githubusercontent.com/SoyAndrea/arcenso/main/man/figures/logo.png
 - nombre: Argentum
