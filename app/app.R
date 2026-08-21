@@ -564,7 +564,7 @@ ui <- page_fluid(
 
   # Contenedor principal con tabs: Mapa (landing full-width) y Catálogo
   div(
-    class = "container-fluid",
+    class = "container-fluid navset-landing",
     style = "margin-top: -20px; padding: 0;",
 
     navset_tab(
