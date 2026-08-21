@@ -320,9 +320,16 @@ ui <- page_fluid(
         margin: 0;
         width: 100vw;
         margin-left: calc(50% - 50vw);
+        height: 70vh;
+        min-height: 500px;
       }
       .map-container .maplibregl-map {
         height: 100% !important;
+        width: 100% !important;
+      }
+      #mapa_globo {
+        height: 100% !important;
+        width: 100% !important;
       }
       /* === Navset sin card === */
       .navset-landing .nav-tabs {
@@ -427,7 +434,7 @@ ui <- page_fluid(
           # Globo esférico full-width
           div(
             class = "map-container",
-            maplibreOutput("mapa_globo", height = "70vh")
+            maplibreOutput("mapa_globo", height = "100%")
           ),
 
           # CTA para entrar al catálogo
