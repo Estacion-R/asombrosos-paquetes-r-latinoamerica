@@ -293,6 +293,19 @@ ui <- page_fluid(
         border-radius: 0;
         object-fit: cover;
       }
+      .badge-obsoleto {
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        background: #9A4665;
+        color: #FFFFFF;
+        padding: 4px 10px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        border: 1.5px solid #151515;
+        border-radius: 0;
+        z-index: 2;
+      }
       .btn-estacion {
         background: #447099;
         color: #FFFFFF;
@@ -698,6 +711,24 @@ ui <- page_fluid(
               icon = icon("eraser"),
               class = "btn-outline-secondary btn-sm"
             )
+          ),
+          fluidRow(
+            column(
+              12,
+              div(
+                style = "margin-top: 10px;",
+                prettyToggle(
+                  inputId = "solo_activos",
+                  label_on = "Solo paquetes activos",
+                  label_off = "Mostrando todos",
+                  value = TRUE,
+                  status = "primary",
+                  outline = TRUE,
+                  plain = TRUE,
+                  bigger = TRUE
+                )
+              )
+            )
           )
         ),
 
@@ -794,6 +825,7 @@ server <- function(input, output, session) {
     updatePickerInput(session, "pais", selected = "")
     updatePickerInput(session, "categoria", selected = "")
     updateSearchInput(session, "busqueda", value = "")
+    updatePrettyToggle(session, "solo_activos", value = TRUE)
   })
 
   # --- Grid de países (landing page) ---
@@ -892,6 +924,11 @@ server <- function(input, output, session) {
   datos_filtrados <- reactive({
     req(paquetes)
     datos <- paquetes
+
+    # Filtro por vigencia
+    if (!is.null(input$solo_activos) && input$solo_activos) {
+      datos <- datos %>% filter(vigente)
+    }
 
     # Filtro por país
     if (!is.null(input$pais) && input$pais != "") {
@@ -1003,6 +1040,14 @@ server <- function(input, output, session) {
       div(
         class = "package-card",
         onclick = sprintf("window.open('%s', '_blank')", pkg$link),
+
+        # Badge "Obsoleto" si no está vigente
+        if (!pkg$vigente) {
+          div(
+            class = "badge-obsoleto",
+            icon("archive"), " Obsoleto"
+          )
+        },
 
         # Bandera del país en esquina superior derecha
         if (!is.na(pkg$pais) && pkg$pais != "" && pkg$pais != "No especificado") {
