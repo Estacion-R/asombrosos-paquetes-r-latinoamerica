@@ -750,24 +750,11 @@ server <- function(input, output, session) {
     ))
   }
 
-  CARDS_POR_PAGINA    <- 12L
-  pagina_actual       <- reactiveVal(1L)
-  subcategoria_activa <- reactiveVal(NULL)
-
-  # Resetear subcategoría cuando el usuario cambia categoría manualmente
-  observeEvent(input$categoria, {
-    if (is.null(input$categoria) || input$categoria != "1") {
-      subcategoria_activa(NULL)
-    }
-  }, ignoreInit = TRUE)
-
-  # Resetear subcategoría al limpiar filtros
-  observeEvent(input$limpiar, {
-    subcategoria_activa(NULL)
-  }, ignoreInit = TRUE)
+  CARDS_POR_PAGINA <- 12L
+  pagina_actual    <- reactiveVal(1L)
 
   # Resetear paginación cuando cambian los filtros
-  observeEvent(list(input$pais, input$categoria, input$busqueda, subcategoria_activa()), {
+  observeEvent(list(input$pais, input$categoria, input$busqueda), {
     pagina_actual(1L)
   }, ignoreInit = TRUE)
 
@@ -860,34 +847,10 @@ server <- function(input, output, session) {
       )
     })
 
-    # Bloque de subcategorías de Datos Oficiales
-    sub_cards <- lapply(seq_len(nrow(conteo_subcategorias)), function(i) {
-      sub_key <- conteo_subcategorias$subcategoria[i]
-      n       <- conteo_subcategorias$n_paquetes[i]
-      label   <- subcategoria_label[sub_key]
-      emoji   <- subcategoria_emoji[sub_key]
-
-      div(
-        class = "subcategoria-card",
-        onclick = sprintf(
-          "Shiny.setInputValue('subcategoria_seleccionada', '%s', {priority: 'event'})",
-          sub_key
-        ),
-        span(class = "subcategoria-emoji", emoji),
-        span(class = "subcategoria-nombre", label),
-        span(class = "subcategoria-count", n)
-      )
-    })
-
     div(
       class = "categorias-section",
       div(class = "categorias-titulo", "Por categoría"),
-      div(class = "categorias-grid", cat_cards),
-      div(
-        class = "subcategorias-wrap",
-        div(class = "subcategorias-titulo", "↳ Datos Oficiales"),
-        div(class = "subcategorias-grid", sub_cards)
-      )
+      div(class = "categorias-grid", cat_cards)
     )
   })
 
@@ -897,16 +860,6 @@ server <- function(input, output, session) {
     if (is.null(cat_id) || cat_id == "") return()
     updatePickerInput(session, "categoria", selected = cat_id)
     updatePickerInput(session, "pais", selected = "")
-    nav_select("tab_principal", selected = "tab_catalogo")
-  })
-
-  # Click en subcategoría → filtrar por categoría 1 + subcategoría
-  observeEvent(input$subcategoria_seleccionada, {
-    sub_key <- input$subcategoria_seleccionada
-    if (is.null(sub_key) || sub_key == "") return()
-    updatePickerInput(session, "categoria", selected = "1")
-    updatePickerInput(session, "pais", selected = "")
-    subcategoria_activa(sub_key)
     nav_select("tab_principal", selected = "tab_catalogo")
   })
 
@@ -938,12 +891,6 @@ server <- function(input, output, session) {
     # Filtro por categoría
     if (!is.null(input$categoria) && input$categoria != "") {
       datos <- datos %>% filter(nro_tematica == as.integer(input$categoria))
-    }
-
-    # Filtro por subcategoría (solo aplica dentro de Datos Oficiales)
-    sub <- subcategoria_activa()
-    if (!is.null(sub) && sub != "") {
-      datos <- datos %>% filter(!is.na(subcategoria), subcategoria == sub)
     }
 
     # Filtro por búsqueda
