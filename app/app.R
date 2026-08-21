@@ -369,6 +369,8 @@ ui <- page_fluid(
       .navset-landing .nav-link.active {
         background: #EAFF38;
         color: #151515;
+        border-bottom: 3px solid #EAFF38;
+        margin-bottom: -3px;
       }
     "))
   ),
