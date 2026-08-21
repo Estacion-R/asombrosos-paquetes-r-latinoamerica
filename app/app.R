@@ -722,7 +722,8 @@ ui <- page_fluid(
                   label_on = "Solo paquetes activos",
                   label_off = "Mostrando todos",
                   value = TRUE,
-                  status = "primary",
+                  status_on = "primary",
+                  status_off = "default",
                   outline = TRUE,
                   plain = TRUE,
                   bigger = TRUE
