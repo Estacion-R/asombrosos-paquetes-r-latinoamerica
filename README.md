@@ -84,6 +84,14 @@ Abrí el PR con el título `feat: agregar [nombre-del-paquete]`.
 | Autor/es y país | ✅ |
 | URL del hexlogo | Opcional |
 
+### Opción 3: Escribinos
+
+Si preferís no usar GitHub, podés contactarnos por correo o redes sociales y nosotros nos encargamos de sumarlo:
+
+- ✉️ **Mail:** [pablotiscornia@estacion-r.com](mailto:pablotiscornia@estacion-r.com)
+- 🐦 **X/Twitter:** [@estacion_erre](https://twitter.com/estacion_erre)
+- 💼 **LinkedIn:** [Estación R](https://www.linkedin.com/company/estacion-r)
+
 Más detalles en [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ---
