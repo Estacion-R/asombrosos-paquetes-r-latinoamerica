@@ -59,6 +59,38 @@ preparar_datos_mapa <- function(paquetes_df) {
 shapes_mapa <- preparar_datos_mapa(paquetes)
 max_paquetes <- max(shapes_mapa$n_paquetes, na.rm = TRUE)
 
+# Mapeo país (nombre en español) -> código ISO 3166-1 alpha-2 para banderas
+pais_iso <- c(
+  "Argentina"       = "ar",
+  "Bolivia"         = "bo",
+  "Brazil"          = "br",
+  "Chile"           = "cl",
+  "Colombia"        = "co",
+  "Costa Rica"      = "cr",
+  "Cuba"            = "cu",
+  "Ecuador"         = "ec",
+  "El Salvador"     = "sv",
+  "Guatemala"       = "gt",
+  "Honduras"        = "hn",
+  "Mexico"          = "mx",
+  "Nicaragua"       = "ni",
+  "Panama"          = "pa",
+  "Paraguay"        = "py",
+  "Peru"            = "pe",
+  "Puerto Rico"     = "pr",
+  "Dominican Republic" = "do",
+  "Uruguay"         = "uy",
+  "Venezuela"       = "ve",
+  "No especificado" = NA_character_
+)
+
+# URL base para banderas SVG (flagcdn)
+flag_url <- function(pais) {
+  iso <- pais_iso[pais]
+  if (is.na(iso) || is.na(pais)) return(NA_character_)
+  sprintf("https://flagcdn.com/%s.svg", tolower(iso))
+}
+
 # Mapeo de categorías
 categorias <- c(
   "1" = "Datos Oficiales",
@@ -71,14 +103,18 @@ categorias <- c(
   "8" = "Enseñanza"
 )
 
-# Tema oficial Estación R
-# Ref: Proyectos/_activos/identidad_visual/GUIA_DE_ESTILO.md
+# Tema oficial Estación R — spec visual minimalista + paleta oficial
+# Ref: memory/spec-visual-shiny-estacion-r.md
 tema_estacion_r <- bs_theme(
   version      = 5,
   bg           = "#FFFFFF",
-  fg           = "#191919",
-  primary      = "#405BFF",
-  secondary    = "#EAFF38",
+  fg           = "#151515",
+  primary      = "#447099",
+  secondary    = "#707073",
+  success      = "#72994E",
+  info         = "#419599",
+  warning      = "#EE6331",
+  danger       = "#9A4665",
   base_font    = font_google("Ubuntu"),
   heading_font = font_google("Ubuntu", wght = c(400, 500, 700)),
   font_scale   = 1
@@ -92,117 +128,171 @@ ui <- page_fluid(
   tags$head(
     tags$link(rel = "stylesheet", href = "custom.css"),
     tags$style(HTML("
+      /* === Hero === */
       .hero-section {
-        background: linear-gradient(135deg, #447099 0%, #419599 100%);
-        color: white;
-        padding: 60px 20px;
-        margin-bottom: 40px;
-        border-radius: 0 0 20px 20px;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        background: #FFFFFF;
+        padding: 3rem 0 2rem 0;
+        border-bottom: 3px solid #151515;
+        margin-bottom: 0;
+        border-radius: 0;
       }
       .hero-title {
-        font-size: 2.5rem;
+        font-size: 3rem;
         font-weight: 700;
-        margin-bottom: 15px;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        color: #151515;
+        letter-spacing: -1px;
+        margin-bottom: 0.5rem;
+        text-shadow: none;
       }
       .hero-subtitle {
         font-size: 1.2rem;
-        opacity: 0.95;
-        margin-bottom: 20px;
+        color: #151515;
+        opacity: 1;
+        margin-bottom: 1rem;
       }
+      /* === Stats cards === */
       .stats-card {
-        background: white;
-        border-radius: 12px;
-        padding: 20px;
+        background: #FFFFFF;
+        border: 2px solid #151515;
+        border-radius: 0;
+        padding: 1.5rem;
         text-align: center;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-        border-left: 4px solid #447099;
-        transition: all 0.3s ease;
+        box-shadow: 4px 4px 0 #EAFF38;
+        transition: all 0.2s ease;
       }
       .stats-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        transform: translateY(-4px);
+        box-shadow: 6px 6px 0 #EAFF38;
       }
       .stats-number {
         font-size: 2.5rem;
         font-weight: 700;
         color: #447099;
-        margin: 10px 0;
+        margin: 0.5rem 0;
       }
       .stats-label {
-        color: #6c757d;
-        font-size: 0.95rem;
+        color: #707073;
+        font-size: 0.85rem;
         text-transform: uppercase;
         letter-spacing: 1px;
       }
+      /* === Filter card === */
       .filter-card {
-        background: #f8f9fa;
-        border-radius: 12px;
-        padding: 25px;
-        margin-bottom: 20px;
-        border: 1px solid #e9ecef;
+        background: #FFFFFF;
+        border: 2px solid #151515;
+        border-radius: 0;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        box-shadow: 4px 4px 0 #EAFF38;
       }
+      /* === Package cards === */
       .package-card {
-        background: white;
-        border-radius: 12px;
-        padding: 20px;
-        margin-bottom: 20px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        border-left: 4px solid #447099;
-        transition: all 0.3s ease;
+        background: #FFFFFF;
+        border: 2px solid #151515;
+        border-radius: 0;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        box-shadow: 4px 4px 0 #EAFF38;
+        transition: all 0.2s ease;
         cursor: pointer;
+        position: relative;
       }
       .package-card:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 6px 16px rgba(0,0,0,0.12);
-        border-left-color: #EE6331;
+        transform: translateY(-4px);
+        box-shadow: 8px 8px 0 #EAFF38;
+        border-color: #447099;
       }
       .package-name {
-        font-size: 1.3rem;
-        font-weight: 600;
-        color: #447099;
-        margin-bottom: 10px;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #151515;
+        margin-bottom: 0.5rem;
       }
+      /* === Badges === */
       .package-country {
         display: inline-block;
-        background: #72994E;
-        color: white;
-        padding: 3px 12px;
-        border-radius: 15px;
+        background: #EE6331;
+        color: #151515;
+        padding: 0.25rem 0.75rem;
+        border: 2px solid #151515;
+        border-radius: 0;
         font-size: 0.85rem;
-        margin-right: 8px;
+        font-weight: 500;
+        margin-right: 0.5rem;
       }
       .package-category {
         display: inline-block;
         background: #419599;
-        color: white;
-        padding: 3px 12px;
-        border-radius: 15px;
+        color: #FFFFFF;
+        padding: 0.25rem 0.75rem;
+        border: 2px solid #151515;
+        border-radius: 0;
         font-size: 0.85rem;
+        font-weight: 500;
       }
+      /* === Footer === */
       .footer-brand {
         text-align: center;
-        padding: 40px 20px;
-        background: #f8f9fa;
-        margin-top: 60px;
-        border-top: 3px solid #447099;
+        padding: 2rem 1.5rem;
+        background: #151515;
+        color: #FFFFFF;
+        margin-top: 4rem;
+        border-top: 3px solid #151515;
+        border-radius: 0;
+      }
+      .footer-brand p, .footer-brand h5 {
+        color: #FFFFFF;
+      }
+      .footer-brand a {
+        color: #EE6331;
+        text-decoration: none;
+        font-weight: 500;
+      }
+      .footer-brand a:hover {
+        color: #447099;
+        text-decoration: underline;
+      }
+      /* === Bandera en esquina superior derecha === */
+      .package-flag {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        width: 32px;
+        height: 24px;
+        border: 1.5px solid #151515;
+        border-radius: 0;
+        object-fit: cover;
       }
       .btn-estacion {
-        background: #EE6331;
-        color: white;
-        border: none;
-        border-radius: 8px;
-        padding: 10px 20px;
-        font-weight: 600;
-        transition: all 0.3s ease;
+        background: #447099;
+        color: #FFFFFF;
+        border: 2px solid #151515;
+        border-radius: 0;
+        padding: 0.75rem 1.5rem;
+        font-weight: 500;
+        transition: all 0.2s ease;
       }
       .btn-estacion:hover {
-        background: #d45528;
-        color: white;
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(238, 99, 49, 0.3);
+        background: #151515;
+        color: #EE6331;
+        transform: translateX(4px);
       }
+      /* === Inputs === */
+      .form-control, .form-select, .btn {
+        border-radius: 0;
+      }
+      .form-control:focus, .form-select:focus {
+        border-color: #447099;
+        box-shadow: 2px 2px 0 #EAFF38;
+        outline: none;
+      }
+      /* === Animación === */
+      @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+      .package-card { animation: fadeInUp 0.4s ease-out; }
+      html { scroll-behavior: smooth; }
     "))
   ),
 
@@ -219,7 +309,7 @@ ui <- page_fluid(
           tags$img(
             src = "img/logo_estacion_r_ancho.png",
             alt = "Estación R",
-            style = "height: 80px; margin-bottom: 25px; filter: brightness(0) invert(1);"
+            style = "height: 80px; margin-bottom: 25px;"
           ),
           h1(class = "hero-title", "📦 Asombrosos Paquetes de R"),
           h2(class = "hero-subtitle", "Descubrí paquetes desarrollados por talento latinoamericano"),
@@ -394,17 +484,17 @@ ui <- page_fluid(
           icon = icon("plus-circle"),
           class = "btn-estacion",
           style = "margin-right: 10px;",
-          onclick = "window.open('https://github.com/pablotis/asombrosos-paquetes-r-latinoamerica/issues/new/choose', '_blank')"
+          onclick = "window.open('https://github.com/Estacion-R/asombrosos-paquetes-r-latinoamerica/issues/new/choose', '_blank')"
         ),
         actionButton(
           inputId = "ir_repo",
           label = "Ver en GitHub",
           icon = icon("github"),
           class = "btn-outline-primary",
-          onclick = "window.open('https://github.com/pablotis/asombrosos-paquetes-r-latinoamerica', '_blank')"
+          onclick = "window.open('https://github.com/Estacion-R/asombrosos-paquetes-r-latinoamerica', '_blank')"
         )
       ),
-      p(style = "margin-top: 30px; color: #6c757d; font-size: 0.9rem;",
+      p(style = "margin-top: 30px; color: #707073; font-size: 0.9rem;",
         "© 2025 Estación R | Todos los paquetes son propiedad de sus respectivos autores")
     )
   )
@@ -612,7 +702,7 @@ server <- function(input, output, session) {
           class = "text-center",
           style = "padding: 60px 20px;",
           icon("search", style = "font-size: 4rem; color: #ccc;"),
-          h4("No se encontraron paquetes", style = "color: #6c757d; margin-top: 20px;"),
+          h4("No se encontraron paquetes", style = "color: #707073; margin-top: 20px;"),
           p("Intenta ajustar los filtros de búsqueda")
         )
       )
@@ -631,6 +721,20 @@ server <- function(input, output, session) {
       div(
         class = "package-card",
         onclick = sprintf("window.open('%s', '_blank')", pkg$link),
+
+        # Bandera del país en esquina superior derecha
+        if (!is.na(pkg$pais) && pkg$pais != "" && pkg$pais != "No especificado") {
+          flag_src <- flag_url(pkg$pais)
+          if (!is.na(flag_src)) {
+            tags$img(
+              src = flag_src,
+              alt = pkg$pais,
+              class = "package-flag",
+              loading = "lazy",
+              onerror = "this.style.display='none';"
+            )
+          }
+        },
 
         # Header con ícono y nombre
         div(
@@ -663,13 +767,13 @@ server <- function(input, output, session) {
 
         # Descripción
         div(
-          style = "margin-bottom: 12px; color: #495057; line-height: 1.6;",
+          style = "margin-bottom: 12px; color: #151515; line-height: 1.6;",
           pkg$descripcion
         ),
 
         # Autores
         div(
-          style = "color: #6c757d; font-size: 0.9rem; border-top: 1px solid #e9ecef; padding-top: 12px;",
+          style = "color: #707073; font-size: 0.9rem; border-top: 1px solid #C2C2C4; padding-top: 12px;",
           icon("users"),
           " ",
           strong("Autores: "),
