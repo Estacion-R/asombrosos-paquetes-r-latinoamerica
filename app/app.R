@@ -6,7 +6,7 @@ library(yaml)
 library(DT)
 library(bslib)
 library(shinyWidgets)
-library(leaflet)
+library(mapgl)
 library(sf)
 library(rnaturalearth)
 library(rnaturalearthdata)
@@ -37,27 +37,35 @@ leer_paquetes <- function() {
 
 paquetes <- leer_paquetes()
 
-# Preparar datos del mapa: conteo de paquetes por país + shapes de rnaturalearth
-preparar_datos_mapa <- function(paquetes_df) {
-  conteo <- paquetes_df %>%
-    filter(!is.na(pais), pais != "No especificado") %>%
-    count(pais, name = "n_paquetes")
-  
-  # Shapes de países de las Américas
-  sudamerica <- ne_countries(continent = "South America", returnclass = "sf")
-  norteamerica <- ne_countries(continent = "North America", returnclass = "sf")
-  shapes <- rbind(sudamerica, norteamerica)
-  
-  # Merge conteo con shapes (name_en coincide con nuestros valores de pais)
-  shapes <- shapes %>%
-    left_join(conteo, by = c("name_en" = "pais")) %>%
-    mutate(n_paquetes = ifelse(is.na(n_paquetes), 0, n_paquetes))
-  
-  shapes
-}
+# --- Preparar datos del globo: puntos por país con cantidad de paquetes ---
 
-shapes_mapa <- preparar_datos_mapa(paquetes)
-max_paquetes <- max(shapes_mapa$n_paquetes, na.rm = TRUE)
+# Coordenadas aproximadas de capital de cada país
+coords_paises <- tibble(
+  pais = c("Argentina","Bolivia","Brazil","Chile","Colombia","Costa Rica",
+           "Cuba","Ecuador","El Salvador","Guatemala","Honduras","Mexico",
+           "Nicaragua","Panama","Paraguay","Peru","Puerto Rico",
+           "Dominican Republic","Uruguay","Venezuela"),
+  lon = c(-63.6,-67.0,-51.9,-71.5,-74.0,-84.0,
+          -77.8,-78.5,-89.2,-90.2,-87.2,-102.6,
+          -85.2,-80.8,-57.7,-75.0,-66.6,
+          -69.0,-55.8,-66.6),
+  lat = c(-35.4,-16.3,-14.2,-35.0,4.6,10.0,
+          21.5,-1.5,13.7,15.8,14.6,23.6,
+          12.9,8.5,-23.4,-9.2,18.2,
+          18.7,-32.5,6.0)
+)
+
+# Contar paquetes por país
+conteo_paises <- paquetes %>%
+  filter(!is.na(pais), pais != "No especificado") %>%
+  count(pais, name = "n_paquetes")
+
+# SF de puntos con conteo
+puntos_mapa <- coords_paises %>%
+  left_join(conteo_paises, by = "pais") %>%
+  mutate(n_paquetes = ifelse(is.na(n_paquetes), 0, n_paquetes)) %>%
+  filter(n_paquetes > 0) %>%
+  st_as_sf(coords = c("lon","lat"), crs = 4326, remove = FALSE)
 
 # Mapeo país (nombre en español) -> código ISO 3166-1 alpha-2 para banderas
 pais_iso <- c(
@@ -131,7 +139,7 @@ ui <- page_fluid(
       /* === Hero === */
       .hero-section {
         background: #FFFFFF;
-        padding: 3rem 0 2rem 0;
+        padding: 2rem 0 1.5rem 0;
         border-bottom: 3px solid #151515;
         margin-bottom: 0;
         border-radius: 0;
@@ -293,6 +301,23 @@ ui <- page_fluid(
       }
       .package-card { animation: fadeInUp 0.4s ease-out; }
       html { scroll-behavior: smooth; }
+      /* === Landing / globo === */
+      .landing-wrap {
+        padding: 2rem 0 3rem 0;
+      }
+      .landing-cta {
+        text-align: center;
+        margin-top: 2rem;
+      }
+      .landing-cta .btn {
+        margin: 0 0.5rem 0.5rem 0.5rem;
+      }
+      /* === Mapa container === */
+      .map-container {
+        border: 2px solid #151515;
+        box-shadow: 6px 6px 0 #EAFF38;
+        margin-top: 1.5rem;
+      }
     "))
   ),
 
@@ -305,7 +330,6 @@ ui <- page_fluid(
         class = "row",
         div(
           class = "col-md-12 text-center",
-          # Logo de Estación R
           tags$img(
             src = "img/logo_estacion_r_ancho.png",
             alt = "Estación R",
@@ -323,52 +347,84 @@ ui <- page_fluid(
     )
   ),
 
-  # Contenedor principal con tabs
+  # Contenedor principal con tabs: Mapa primero (landing), Catálogo después
   div(
     class = "container",
     style = "margin-top: -20px;",
 
     navset_card_tab(
       id = "tab_principal",
+      selected = "tab_mapa",
+
+      # --- Tab Mapa (landing page) ---
+      nav_panel(
+        title = icon("globe", " Mapa"),
+        value = "tab_mapa",
+
+        div(
+          class = "landing-wrap",
+
+          # Stats compactas arriba del globo
+          fluidRow(
+            column(
+              4,
+              div(
+                class = "stats-card",
+                icon("cube", style = "font-size: 2rem; color: #447099;"),
+                div(class = "stats-number", textOutput("total_paquetes", inline = TRUE)),
+                div(class = "stats-label", "Paquetes")
+              )
+            ),
+            column(
+              4,
+              div(
+                class = "stats-card",
+                icon("globe-americas", style = "font-size: 2rem; color: #72994E;"),
+                div(class = "stats-number", textOutput("total_paises", inline = TRUE)),
+                div(class = "stats-label", "Países")
+              )
+            ),
+            column(
+              4,
+              div(
+                class = "stats-card",
+                icon("folder-open", style = "font-size: 2rem; color: #419599;"),
+                div(class = "stats-number", textOutput("total_categorias", inline = TRUE)),
+                div(class = "stats-label", "Categorías")
+              )
+            )
+          ),
+
+          # Globo esférico
+          div(
+            class = "map-container",
+            maplibreOutput("mapa_globo", height = "550px")
+          ),
+
+          # CTA para entrar al catálogo
+          div(
+            class = "landing-cta",
+            p(style = "color: #707073; margin-bottom: 1rem;",
+              "Hacé clic en un país para ver sus paquetes · o explorá el catálogo completo"),
+            actionButton(
+              inputId = "ir_catalogo",
+              label = "Ver todos los paquetes",
+              icon = icon("list"),
+              class = "btn-estacion"
+            )
+          )
+        )
+      ),
+
+      # --- Tab Catálogo ---
       nav_panel(
         title = icon("list", " Catálogo"),
         value = "tab_catalogo",
 
-        # Estadísticas generales
-        fluidRow(
-          column(
-            4,
-            div(
-              class = "stats-card",
-              icon("cube", style = "font-size: 2rem; color: #447099;"),
-              div(class = "stats-number", textOutput("total_paquetes", inline = TRUE)),
-              div(class = "stats-label", "Paquetes")
-            )
-          ),
-          column(
-            4,
-            div(
-              class = "stats-card",
-              icon("globe-americas", style = "font-size: 2rem; color: #72994E;"),
-              div(class = "stats-number", textOutput("total_paises", inline = TRUE)),
-              div(class = "stats-label", "Países")
-            )
-          ),
-          column(
-            4,
-            div(
-              class = "stats-card",
-              icon("folder-open", style = "font-size: 2rem; color: #419599;"),
-              div(class = "stats-number", textOutput("total_categorias", inline = TRUE)),
-              div(class = "stats-label", "Categorías")
-            )
-          )
-        ),
-
         # Filtros
         div(
           class = "filter-card",
-          style = "margin-top: 30px;",
+          style = "margin-top: 20px;",
           h4(icon("filter"), " Filtrar Paquetes", style = "margin-bottom: 20px; color: #447099;"),
           fluidRow(
             column(
@@ -425,49 +481,12 @@ ui <- page_fluid(
           uiOutput("resultados_info"),
           uiOutput("lista_paquetes")
         )
-      ),
-
-      nav_panel(
-        title = icon("map", " Mapa"),
-        value = "tab_mapa",
-
-        # Header del mapa
-        div(
-          style = "margin-bottom: 20px;",
-          # Output oculto para que conditionalPanel pueda evaluar la condición
-          textOutput("mapa_hay_seleccion", inline = TRUE),
-          tags$style("#mapa_hay_seleccion{display: none;}"),
-          h4(icon("globe-americas"), " Paquetes por país", style = "color: #447099; margin-bottom: 10px;"),
-          p(style = "color: #6c757d;", "Hacé clic en un país para filtrar el catálogo."),
-          conditionalPanel(
-            condition = "output.mapa_hay_seleccion",
-            div(
-              style = "margin-top: 10px; padding: 10px 15px; background: #f8f9fa; border-radius: 8px; border-left: 4px solid #447099;",
-              uiOutput("mapa_pais_seleccionado")
-            )
-          )
-        ),
-
-        # Mapa leaflet
-        leafletOutput("mapa_paquetes", height = "500px"),
-
-        # Botón para limpiar filtro del mapa
-        div(
-          style = "text-align: center; margin-top: 15px;",
-          actionButton(
-            inputId = "limpiar_mapa",
-            label = "Mostrar todos los países",
-            icon = icon("eraser"),
-            class = "btn-outline-secondary btn-sm"
-          )
-        )
       )
     ),
 
     # Footer
     div(
       class = "footer-brand",
-      # Logo de Estación R
       tags$img(
         src = "img/logo_estacion_r_ancho.png",
         alt = "Estación R",
@@ -507,7 +526,7 @@ server <- function(input, output, session) {
   if (is.null(paquetes)) {
     showModal(modalDialog(
       title = "Error al cargar datos",
-      "No se pudieron cargar los paquetes desde Google Sheets. Por favor, intenta más tarde.",
+      "No se pudieron cargar los paquetes. Por favor, intenta más tarde.",
       easyClose = TRUE,
       footer = NULL
     ))
@@ -532,75 +551,55 @@ server <- function(input, output, session) {
     updateSearchInput(session, "busqueda", value = "")
   })
 
-  # --- Mapa interactivo ---
+  # --- Globo esférico (landing page) ---
 
-  # Flag para mostrar/ocultar info del país seleccionado en el mapa
-  mapa_pais_sel <- reactiveVal(NULL)
+  output$mapa_globo <- renderMaplibre({
+    req(puntos_mapa)
 
-  # Output auxiliar para conditionalPanel (debe ser textOutput inline)
-  output$mapa_hay_seleccion <- renderText({
-    if (is.null(mapa_pais_sel())) "false" else "true"
-  })
+    # Radio de círculos proporcional a la cantidad de paquetes
+    # Escala: min 15px (1 paquete) → max 50px (18 paquetes)
+    max_n <- max(puntos_mapa$n_paquetes)
+    radios <- scales::rescale(puntos_mapa$n_paquetes, to = c(15, 50))
+    puntos_mapa$radio <- radios
 
-  # Paleta de colores para el mapa (claro → azul oscuro según densidad)
-  paleta_mapa <- colorNumeric(
-    palette = c("#E8F0F5", "#447099", "#151515"),
-    domain = c(0, max_paquetes),
-    na.color = "#F0F0F0"
-  )
-
-  # Renderizar mapa leaflet
-  output$mapa_paquetes <- renderLeaflet({
-    req(shapes_mapa)
-
-    pal <- paleta_mapa
-
-    leaflet(shapes_mapa) |>
-      addTiles() |>
-      addPolygons(
-        layerId = ~name_en,
-        fillColor = ~pal(n_paquetes),
-        fillOpacity = 0.7,
-        color = "#151515",
-        weight = 1.5,
-        dashArray = "",
-        highlight = highlightOptions(
-          weight = 3,
-          color = "#EE6331",
-          dashArray = "",
-          fillOpacity = 0.5,
-          bringToFront = TRUE
-        ),
-        label = sprintf(
-          "%s: %d paquete%s",
-          shapes_mapa$name_en,
-          shapes_mapa$n_paquetes,
-          ifelse(shapes_mapa$n_paquetes != 1, "s", "")
-        ),
-        labelOptions = labelOptions(
-          style = list("font-weight" = "bold", "color" = "#151515"),
-          textsize = "14px",
-          direction = "auto"
+    maplibre(
+      style = carto_style("positron"),
+      projection = "globe",
+      center = c(-60, -15),
+      zoom = 1.2,
+      pitch = 20
+    ) |>
+      add_circle_layer(
+        id = "paquetes_paises",
+        source = puntos_mapa,
+        circle_color = "#447099",
+        circle_radius = "get",
+        circle_opacity = 0.7,
+        circle_stroke_color = "#151515",
+        circle_stroke_width = 1.5,
+        circle_stroke_opacity = 0.8,
+        popup = paste0(
+          "<strong>", puntos_mapa$pais, "</strong><br>",
+          puntos_mapa$n_paquetes,
+          " paquete", ifelse(puntos_mapa$n_paquetes != 1, "s", "")
         )
-      ) |>
-      setView(lng = -60, lat = -15, zoom = 3) |>
-      addLegend(
-        position = "bottomright",
-        pal = pal,
-        values = ~n_paquetes,
-        title = "Paquetes",
-        opacity = 0.7,
-        labFormat = labelFormat(big.mark = ".")
       )
   })
 
-  # Click en un país del mapa → filtrar catálogo
-  observeEvent(input$mapa_paquetes_shape_click, {
-    click <- input$mapa_paquetes_shape_click
+  # Click en un país del globo → filtrar catálogo y cambiar de tab
+  observeEvent(input$mapa_globo_layer_click, {
+    click <- input$mapa_globo_layer_click
     if (is.null(click)) return()
 
-    pais_click <- click$id
-    mapa_pais_sel(pais_click)
+    # click puede traer propiedades del feature; buscar el país
+    pais_click <- NULL
+    if (!is.null(click$properties)) {
+      pais_click <- click$properties$pais
+    } else if (!is.null(click$pais)) {
+      pais_click <- click$pais
+    }
+
+    if (is.null(pais_click) || pais_click == "") return()
 
     # Actualizar el filtro de país del catálogo
     updatePickerInput(session, "pais", selected = pais_click)
@@ -609,29 +608,13 @@ server <- function(input, output, session) {
     updateNavsetCardTab(session, "tab_principal", selected = "tab_catalogo")
   })
 
-  # Info del país seleccionado en el mapa
-  output$mapa_pais_seleccionado <- renderUI({
-    pais <- mapa_pais_sel()
-    if (is.null(pais)) return(NULL)
-    n <- sum(paquetes$pais == pais, na.rm = TRUE)
-    div(
-      strong(icon("filter"), " Filtrando por: ", pais),
-      span(style = "color: #6c757d;", sprintf(" (%d paquete%s)", n, ifelse(n != 1, "s", "")))
-    )
+  # Botón "Ver todos los paquetes" → ir al catálogo sin filtro
+  observeEvent(input$ir_catalogo, {
+    updateNavsetCardTab(session, "tab_principal", selected = "tab_catalogo")
   })
 
-  # Limpiar filtro del mapa
-  observeEvent(input$limpiar_mapa, {
-    mapa_pais_sel(NULL)
-    updatePickerInput(session, "pais", selected = "")
-  })
+  # --- Datos filtrados reactivos ---
 
-  # Cuando se limpia el filtro general, también limpiar info del mapa
-  observeEvent(input$limpiar, {
-    mapa_pais_sel(NULL)
-  })
-
-  # Datos filtrados reactivos
   datos_filtrados <- reactive({
     req(paquetes)
     datos <- paquetes
@@ -660,20 +643,20 @@ server <- function(input, output, session) {
     datos
   })
 
-  # Estadísticas en header
+  # Estadísticas (sobre datos completos, no filtrados, para el landing)
   output$total_paquetes <- renderText({
-    req(datos_filtrados())
-    nrow(datos_filtrados())
+    req(paquetes)
+    nrow(paquetes)
   })
 
   output$total_paises <- renderText({
-    req(datos_filtrados())
-    n_distinct(datos_filtrados()$pais, na.rm = TRUE)
+    req(paquetes)
+    n_distinct(paquetes$pais[paquetes$pais != "No especificado"], na.rm = TRUE)
   })
 
   output$total_categorias <- renderText({
-    req(datos_filtrados())
-    n_distinct(datos_filtrados()$nro_tematica)
+    req(paquetes)
+    n_distinct(paquetes$nro_tematica)
   })
 
   # Info de resultados
@@ -701,7 +684,7 @@ server <- function(input, output, session) {
         div(
           class = "text-center",
           style = "padding: 60px 20px;",
-          icon("search", style = "font-size: 4rem; color: #ccc;"),
+          icon("search", style = "font-size: 4rem; color: #C2C2C4;"),
           h4("No se encontraron paquetes", style = "color: #707073; margin-top: 20px;"),
           p("Intenta ajustar los filtros de búsqueda")
         )
@@ -749,7 +732,6 @@ server <- function(input, output, session) {
                 onerror = "this.style.display='none'; this.nextElementSibling.style.display='inline-block';"
               )
             },
-            # Ícono de fallback (siempre presente pero oculto si la imagen carga)
             icon("cube", style = sprintf(
               "font-size: 2.5rem; color: #447099; margin-right: 15px; display: %s;",
               if (!is.na(pkg$icono) && pkg$icono != "") "none" else "inline-block"
@@ -782,7 +764,6 @@ server <- function(input, output, session) {
       )
     })
 
-    # Devolver todas las tarjetas
     do.call(tagList, tarjetas)
   })
 }
