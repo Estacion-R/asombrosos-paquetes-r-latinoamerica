@@ -415,3 +415,14 @@ paquetes:
   categoria: 1
   vigente: yes
   hexlogo: https://raw.githubusercontent.com/SoyAndrea/arcenso/main/man/figures/logo.png
+- nombre: Argentum
+  url: https://thomasartopoulos.github.io/argentum/
+  descripcion: Permite descubrir y leer capas geoespaciales publicadas por organismos
+    públicos argentinos a través de los estándares WFS y WMS del Open Geospatial
+    Consortium, con catálogo cacheado de endpoints, negociación de versiones y
+    descarga vectorial como objetos sf.
+  autores: Thomas Artopoulos
+  pais: Argentina
+  categoria: 2
+  vigente: yes
+  hexlogo: https://raw.githubusercontent.com/thomasartopoulos/argentum/main/man/figures/logo.png
