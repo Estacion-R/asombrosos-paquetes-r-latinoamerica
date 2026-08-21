@@ -6,6 +6,10 @@ library(yaml)
 library(DT)
 library(bslib)
 library(shinyWidgets)
+library(leaflet)
+library(sf)
+library(rnaturalearth)
+library(rnaturalearthdata)
 
 # Leer datos desde YAML (fuente de verdad en el repo)
 leer_paquetes <- function() {
@@ -32,6 +36,28 @@ leer_paquetes <- function() {
 }
 
 paquetes <- leer_paquetes()
+
+# Preparar datos del mapa: conteo de paquetes por país + shapes de rnaturalearth
+preparar_datos_mapa <- function(paquetes_df) {
+  conteo <- paquetes_df %>%
+    filter(!is.na(pais), pais != "No especificado") %>%
+    count(pais, name = "n_paquetes")
+  
+  # Shapes de países de las Américas
+  sudamerica <- ne_countries(continent = "South America", returnclass = "sf")
+  norteamerica <- ne_countries(continent = "North America", returnclass = "sf")
+  shapes <- rbind(sudamerica, norteamerica)
+  
+  # Merge conteo con shapes (name_en coincide con nuestros valores de pais)
+  shapes <- shapes %>%
+    left_join(conteo, by = c("name_en" = "pais")) %>%
+    mutate(n_paquetes = ifelse(is.na(n_paquetes), 0, n_paquetes))
+  
+  shapes
+}
+
+shapes_mapa <- preparar_datos_mapa(paquetes)
+max_paquetes <- max(shapes_mapa$n_paquetes, na.rm = TRUE)
 
 # Mapeo país (nombre en español) -> código ISO 3166-1 alpha-2 para banderas
 pais_iso <- c(
@@ -297,101 +323,145 @@ ui <- page_fluid(
     )
   ),
 
-  # Contenedor principal
+  # Contenedor principal con tabs
   div(
     class = "container",
     style = "margin-top: -20px;",
 
-    # Estadísticas generales
-    fluidRow(
-      column(
-        4,
-        div(
-          class = "stats-card",
-          icon("cube", style = "font-size: 2rem; color: #447099;"),
-          div(class = "stats-number", textOutput("total_paquetes", inline = TRUE)),
-          div(class = "stats-label", "Paquetes")
-        )
-      ),
-      column(
-        4,
-        div(
-          class = "stats-card",
-          icon("globe-americas", style = "font-size: 2rem; color: #72994E;"),
-          div(class = "stats-number", textOutput("total_paises", inline = TRUE)),
-          div(class = "stats-label", "Países")
-        )
-      ),
-      column(
-        4,
-        div(
-          class = "stats-card",
-          icon("folder-open", style = "font-size: 2rem; color: #419599;"),
-          div(class = "stats-number", textOutput("total_categorias", inline = TRUE)),
-          div(class = "stats-label", "Categorías")
-        )
-      )
-    ),
+    navset_card_tab(
+      id = "tab_principal",
+      nav_panel(
+        title = icon("list", " Catálogo"),
+        value = "tab_catalogo",
 
-    # Filtros
-    div(
-      class = "filter-card",
-      style = "margin-top: 30px;",
-      h4(icon("filter"), " Filtrar Paquetes", style = "margin-bottom: 20px; color: #447099;"),
-      fluidRow(
-        column(
-          4,
-          pickerInput(
-            inputId = "pais",
-            label = "País:",
-            choices = c("Todos" = ""),
-            selected = "",
-            options = list(
-              `live-search` = TRUE,
-              `style` = "btn-outline-primary"
+        # Estadísticas generales
+        fluidRow(
+          column(
+            4,
+            div(
+              class = "stats-card",
+              icon("cube", style = "font-size: 2rem; color: #447099;"),
+              div(class = "stats-number", textOutput("total_paquetes", inline = TRUE)),
+              div(class = "stats-label", "Paquetes")
+            )
+          ),
+          column(
+            4,
+            div(
+              class = "stats-card",
+              icon("globe-americas", style = "font-size: 2rem; color: #72994E;"),
+              div(class = "stats-number", textOutput("total_paises", inline = TRUE)),
+              div(class = "stats-label", "Países")
+            )
+          ),
+          column(
+            4,
+            div(
+              class = "stats-card",
+              icon("folder-open", style = "font-size: 2rem; color: #419599;"),
+              div(class = "stats-number", textOutput("total_categorias", inline = TRUE)),
+              div(class = "stats-label", "Categorías")
             )
           )
         ),
-        column(
-          4,
-          pickerInput(
-            inputId = "categoria",
-            label = "Categoría:",
-            choices = c("Todas" = "", categorias),
-            selected = "",
-            options = list(
-              `style` = "btn-outline-primary"
+
+        # Filtros
+        div(
+          class = "filter-card",
+          style = "margin-top: 30px;",
+          h4(icon("filter"), " Filtrar Paquetes", style = "margin-bottom: 20px; color: #447099;"),
+          fluidRow(
+            column(
+              4,
+              pickerInput(
+                inputId = "pais",
+                label = "País:",
+                choices = c("Todos" = ""),
+                selected = "",
+                options = list(
+                  `live-search` = TRUE,
+                  `style` = "btn-outline-primary"
+                )
+              )
+            ),
+            column(
+              4,
+              pickerInput(
+                inputId = "categoria",
+                label = "Categoría:",
+                choices = c("Todas" = "", categorias),
+                selected = "",
+                options = list(
+                  `style` = "btn-outline-primary"
+                )
+              )
+            ),
+            column(
+              4,
+              searchInput(
+                inputId = "busqueda",
+                label = "Buscar:",
+                placeholder = "Nombre, descripción, autor...",
+                btnSearch = icon("search"),
+                btnReset = icon("remove"),
+                width = "100%"
+              )
+            )
+          ),
+          div(
+            style = "text-align: right; margin-top: 15px;",
+            actionButton(
+              inputId = "limpiar",
+              label = "Limpiar filtros",
+              icon = icon("eraser"),
+              class = "btn-outline-secondary btn-sm"
             )
           )
         ),
-        column(
-          4,
-          searchInput(
-            inputId = "busqueda",
-            label = "Buscar:",
-            placeholder = "Nombre, descripción, autor...",
-            btnSearch = icon("search"),
-            btnReset = icon("remove"),
-            width = "100%"
-          )
+
+        # Resultados
+        div(
+          style = "margin-top: 30px;",
+          uiOutput("resultados_info"),
+          uiOutput("lista_paquetes")
         )
       ),
-      div(
-        style = "text-align: right; margin-top: 15px;",
-        actionButton(
-          inputId = "limpiar",
-          label = "Limpiar filtros",
-          icon = icon("eraser"),
-          class = "btn-outline-secondary btn-sm"
+
+      nav_panel(
+        title = icon("map", " Mapa"),
+        value = "tab_mapa",
+
+        # Header del mapa
+        div(
+          style = "margin-bottom: 20px;",
+          # Output oculto para que conditionalPanel pueda evaluar la condición
+          textOutput("mapa_hay_seleccion", inline = TRUE),
+          tags$style("#mapa_hay_seleccion{display: none;}"),
+          h4(icon("globe-americas"), " Paquetes por país", style = "color: #447099; margin-bottom: 10px;"),
+          p(style = "color: #6c757d;", "Hacé clic en un país para filtrar el catálogo."),
+          conditionalPanel(
+            condition = "output.mapa_hay_seleccion",
+            div(
+              style = "margin-top: 10px; padding: 10px 15px; background: #f8f9fa; border-radius: 8px; border-left: 4px solid #447099;",
+              uiOutput("mapa_pais_seleccionado")
+            )
+          )
+        ),
+
+        # Mapa leaflet
+        leafletOutput("mapa_paquetes", height = "500px"),
+
+        # Botón para limpiar filtro del mapa
+        div(
+          style = "text-align: center; margin-top: 15px;",
+          actionButton(
+            inputId = "limpiar_mapa",
+            label = "Mostrar todos los países",
+            icon = icon("eraser"),
+            class = "btn-outline-secondary btn-sm"
+          )
         )
       )
-    ),
-
-    # Resultados
-    div(
-      style = "margin-top: 30px;",
-      uiOutput("resultados_info"),
-      uiOutput("lista_paquetes")
     ),
 
     # Footer
@@ -460,6 +530,105 @@ server <- function(input, output, session) {
     updatePickerInput(session, "pais", selected = "")
     updatePickerInput(session, "categoria", selected = "")
     updateSearchInput(session, "busqueda", value = "")
+  })
+
+  # --- Mapa interactivo ---
+
+  # Flag para mostrar/ocultar info del país seleccionado en el mapa
+  mapa_pais_sel <- reactiveVal(NULL)
+
+  # Output auxiliar para conditionalPanel (debe ser textOutput inline)
+  output$mapa_hay_seleccion <- renderText({
+    if (is.null(mapa_pais_sel())) "false" else "true"
+  })
+
+  # Paleta de colores para el mapa (claro → azul oscuro según densidad)
+  paleta_mapa <- colorNumeric(
+    palette = c("#E8F0F5", "#447099", "#151515"),
+    domain = c(0, max_paquetes),
+    na.color = "#F0F0F0"
+  )
+
+  # Renderizar mapa leaflet
+  output$mapa_paquetes <- renderLeaflet({
+    req(shapes_mapa)
+
+    pal <- paleta_mapa
+
+    leaflet(shapes_mapa) |>
+      addTiles() |>
+      addPolygons(
+        layerId = ~name_en,
+        fillColor = ~pal(n_paquetes),
+        fillOpacity = 0.7,
+        color = "#151515",
+        weight = 1.5,
+        dashArray = "",
+        highlight = highlightOptions(
+          weight = 3,
+          color = "#EE6331",
+          dashArray = "",
+          fillOpacity = 0.5,
+          bringToFront = TRUE
+        ),
+        label = sprintf(
+          "%s: %d paquete%s",
+          shapes_mapa$name_en,
+          shapes_mapa$n_paquetes,
+          ifelse(shapes_mapa$n_paquetes != 1, "s", "")
+        ),
+        labelOptions = labelOptions(
+          style = list("font-weight" = "bold", "color" = "#151515"),
+          textsize = "14px",
+          direction = "auto"
+        )
+      ) |>
+      setView(lng = -60, lat = -15, zoom = 3) |>
+      addLegend(
+        position = "bottomright",
+        pal = pal,
+        values = ~n_paquetes,
+        title = "Paquetes",
+        opacity = 0.7,
+        labFormat = labelFormat(big.mark = ".")
+      )
+  })
+
+  # Click en un país del mapa → filtrar catálogo
+  observeEvent(input$mapa_paquetes_shape_click, {
+    click <- input$mapa_paquetes_shape_click
+    if (is.null(click)) return()
+
+    pais_click <- click$id
+    mapa_pais_sel(pais_click)
+
+    # Actualizar el filtro de país del catálogo
+    updatePickerInput(session, "pais", selected = pais_click)
+
+    # Cambiar a la pestaña del catálogo
+    updateNavsetCardTab(session, "tab_principal", selected = "tab_catalogo")
+  })
+
+  # Info del país seleccionado en el mapa
+  output$mapa_pais_seleccionado <- renderUI({
+    pais <- mapa_pais_sel()
+    if (is.null(pais)) return(NULL)
+    n <- sum(paquetes$pais == pais, na.rm = TRUE)
+    div(
+      strong(icon("filter"), " Filtrando por: ", pais),
+      span(style = "color: #6c757d;", sprintf(" (%d paquete%s)", n, ifelse(n != 1, "s", "")))
+    )
+  })
+
+  # Limpiar filtro del mapa
+  observeEvent(input$limpiar_mapa, {
+    mapa_pais_sel(NULL)
+    updatePickerInput(session, "pais", selected = "")
+  })
+
+  # Cuando se limpia el filtro general, también limpiar info del mapa
+  observeEvent(input$limpiar, {
+    mapa_pais_sel(NULL)
   })
 
   # Datos filtrados reactivos
