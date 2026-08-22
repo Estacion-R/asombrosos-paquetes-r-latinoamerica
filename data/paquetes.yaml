@@ -371,5 +371,6 @@ paquetes:
   descripcion: "El objetivo de este paquete es simplificar el análisis de datos territoriales de Chile, facilitando tareas de limpieza y procesamiento de datos que suelen ser necesarias al trabajar con datos de Chile a nivel comunal y regional."
   autores: "Bastián Olea Herrera"
   pais: "Chile"
-  categoria: 1
+  categoria: 2
+  hexlogo: https://raw.githubusercontent.com/bastianolea/territorial/main/man/figures/logo.png
   vigente: yes
