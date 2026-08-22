@@ -563,8 +563,8 @@ ui <- page_fluid(
             alt = "Estación R",
             style = "height: 80px; margin-bottom: 25px;"
           ),
-          h1(class = "hero-title", "📦 Asombrosos Paquetes de R"),
-          h2(class = "hero-subtitle", "Descubrí paquetes desarrollados por talento latinoamericano"),
+          h1(class = "hero-title", "Asombrosos Paquetes de R Latinoamericanos"),
+          h2(class = "hero-subtitle", "Descubrí paquetes desarrollados por la comunidad latinoamericana de #rstatsES"),
           p(style = "margin-top: 20px; font-size: 1.05rem;",
             "Una colección curada de herramientas de código abierto creadas en Latinoamérica",
             br(),
