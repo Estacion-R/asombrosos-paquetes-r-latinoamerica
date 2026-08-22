@@ -1,4 +1,4 @@
-# Catálogo de Paquetes R — Estación R
+# Catálogo de Paquetes R de Latinoamérica — Estación R
 
 library(shiny)
 library(tidyverse)
@@ -142,6 +142,7 @@ tema_estacion_r <- bs_theme(
 
 # UI
 ui <- page_fluid(
+  title = "Catálogo de Paquetes R de Latinoamérica",
   theme = tema_estacion_r,
 
   # CSS personalizado
@@ -559,11 +560,11 @@ ui <- page_fluid(
         div(
           class = "col-md-12 text-center",
           tags$img(
-            src = "img/logo_estacion_r_ancho.png",
-            alt = "Estación R",
-            style = "height: 80px; margin-bottom: 25px;"
+            src = "img/logo_asombrosos.png",
+            alt = "Catálogo de Paquetes R de Latinoamérica",
+            style = "height: 120px; margin-bottom: 20px;"
           ),
-          h1(class = "hero-title", "Asombrosos Paquetes de R Latinoamericanos"),
+          h1(class = "hero-title", "Catálogo de Paquetes R de Latinoamérica"),
           h2(class = "hero-subtitle", "Descubrí paquetes desarrollados por la comunidad latinoamericana de #rstatsES"),
           p(style = "margin-top: 20px; font-size: 1.05rem;",
             "Una colección curada de herramientas de código abierto creadas en Latinoamérica",

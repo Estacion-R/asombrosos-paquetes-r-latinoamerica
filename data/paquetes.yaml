@@ -343,7 +343,7 @@ paquetes:
   categoria: 8
   vigente: true
 - nombre: klassets
-  url: Joshua Kunst
+  url: https://github.com/jbkunst/klassets
   descripcion: 'Es una colección de funciones para simular conjuntos de datos para: enseñar cómo funcionan algunos modelos estadísticos y algoritmos de aprendizaje automático, como también ilustrar algunos hechos particulares como la heteroscedasticidad o la paradoja de Simpson e incluso, comparar las predicciones entre modelos, por ejemplo regresión logística vs árbol de decisión vs k-Nearest Neighbours'
   autores: Joshua Kunst
   pais: Chile
