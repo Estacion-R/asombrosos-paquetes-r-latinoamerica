@@ -1,0 +1,124 @@
+name: Digest semanal de paquetes para redes
+
+on:
+  schedule:
+    - cron: '0 14 * * 1'  # Lunes 11am Buenos Aires (UTC-3)
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  digest:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # historial completo para git log
+
+      - name: Detectar paquetes nuevos y crear borrador para redes
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: |
+          # Paquetes incorporados en los últimos 7 días
+          OLD_SHA=$(git log --since="7 days ago" --pretty=format:"%H" -- data/paquetes.yaml | tail -1)
+
+          if [ -z "$OLD_SHA" ]; then
+            echo "Sin cambios en paquetes.yaml en los últimos 7 días. No se crea issue."
+            exit 0
+          fi
+
+          # YAML viejo (antes del primer commit de la semana)
+          git show "${OLD_SHA}~1:data/paquetes.yaml" > /tmp/paquetes_old.yaml 2>/dev/null || \
+            echo "paquetes: []" > /tmp/paquetes_old.yaml
+
+          python3 - << 'PYEOF'
+          import yaml, sys, os, subprocess, json
+          from datetime import date
+
+          PAISES_FLAG = {
+            "Argentina": "🇦🇷", "Brasil": "🇧🇷", "Chile": "🇨🇱",
+            "Colombia": "🇨🇴", "México": "🇲🇽", "Uruguay": "🇺🇾",
+            "Paraguay": "🇵🇾", "Perú": "🇵🇪", "Bolivia": "🇧🇴",
+            "Ecuador": "🇪🇨", "Venezuela": "🇻🇪", "Cuba": "🇨🇺",
+            "Costa Rica": "🇨🇷", "Guatemala": "🇬🇹", "Panamá": "🇵🇦",
+          }
+
+          with open("data/paquetes.yaml", encoding="utf-8") as f:
+              actual = yaml.safe_load(f)["paquetes"]
+          with open("/tmp/paquetes_old.yaml", encoding="utf-8") as f:
+              viejo = yaml.safe_load(f) or {}
+              nombres_viejos = {p["nombre"] for p in (viejo.get("paquetes") or [])}
+
+          nuevos = [p for p in actual if p["nombre"] not in nombres_viejos]
+
+          if not nuevos:
+              print("Sin paquetes nuevos esta semana.")
+              sys.exit(0)
+
+          hoy = date.today().isoformat()
+          lineas = []
+          for p in nuevos:
+              flag = PAISES_FLAG.get(p.get("pais", ""), "🌎")
+              url = p.get("url", "")
+              # URL corta: quitar https://
+              url_corta = url.replace("https://", "").replace("http://", "").rstrip("/")
+              desc = p.get("descripcion", "")
+              if len(desc) > 100:
+                  desc = desc[:97] + "..."
+              lineas.append(f"{flag} **{p['nombre']}** — {desc}\n🔗 {url_corta}")
+
+          cuerpo_post = "\n\n".join(lineas)
+          n = len(nuevos)
+          titulo_post = f"📦 {'Hay' if n > 1 else 'Hay'} {n} paquete{'s' if n > 1 else ''} nuevo{'s' if n > 1 else ''} en el catálogo esta semana:"
+
+          issue_body = f"""## Borrador para redes — {hoy}
+
+          Copiá y pegá en X, Instagram y LinkedIn. Revisá antes de publicar.
+
+          ---
+
+          {titulo_post}
+
+          {cuerpo_post}
+
+          ---
+
+          > Generado automáticamente. Editá el texto antes de publicar.
+          > Ver catálogo completo: https://estacionr-asombrosos-paquetes-r-latinoamerica.share.connect.posit.cloud/
+          """
+
+          # Escribir a archivo para que el siguiente step lo use
+          with open("/tmp/digest_issue.json", "w") as f:
+              json.dump({
+                  "title": f"📢 Borrador redes — {n} paquete(s) nuevo(s) — {hoy}",
+                  "body": issue_body,
+                  "n": n
+              }, f)
+
+          print(f"OK: {n} paquetes nuevos detectados")
+          PYEOF
+
+      - name: Crear issue con el borrador
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: |
+          if [ ! -f /tmp/digest_issue.json ]; then
+            echo "Sin issue que crear."
+            exit 0
+          fi
+
+          TITLE=$(python3 -c "import json; d=json.load(open('/tmp/digest_issue.json')); print(d['title'])")
+          BODY=$(python3 -c "import json; d=json.load(open('/tmp/digest_issue.json')); print(d['body'])")
+
+          gh issue create \
+            --repo "$REPO" \
+            --title "$TITLE" \
+            --body "$BODY" \
+            --label "revisión"

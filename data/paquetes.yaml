@@ -508,4 +508,12 @@ paquetes:
   pais: Argentina
   categoria: 1
   subcategoria: encuestas
+- nombre: sivirep
+  url: https://github.com/epiverse-trace/sivirep
+  descripcion: Permite procesar datos del sistema de vigilancia epidemiológica
+    SIVIGILA de Colombia y generar informes epidemiológicos automatizados
+    de salud pública.
+  autores: Geraldine Gómez-Millán, Zulma M. Cucunubá, Jennifer A. Mendez-Romero
+  pais: Colombia
+  categoria: 12
   vigente: true
