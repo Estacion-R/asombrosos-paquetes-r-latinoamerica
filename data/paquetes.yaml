@@ -1,9 +1,9 @@
 paquetes:
 - nombre: calidad
   url: https://inesscc.github.io/calidad/articles/tutorial.html
-  descripcion: Proporciona indicadores de calidad para estimaciones provenientes de
-    muestreos complejos, con lo cual se busca contribuir a un adecuado uso de los
-    datos publicados por las oficinas de estadísticas de la región
+  descripcion: Proporciona indicadores de calidad para estimaciones provenientes
+    de muestreos complejos, con lo cual se busca contribuir a un adecuado
+    uso de los datos publicados por las oficinas de estadísticas de la región
   autores: Klaus Lehmann, Ricardo Pizarro y Ignacio Agloni
   pais: Chile
   categoria: 1
@@ -11,8 +11,8 @@ paquetes:
   vigente: true
 - nombre: casen
   url: https://github.com/pachadotdev/casen
-  descripcion: Proporciona un conjunto de funciones para realizar estadistica descriptiva
-    e inferencia con el disenio complejo de la encuesta CASEN
+  descripcion: Proporciona un conjunto de funciones para realizar estadistica
+    descriptiva e inferencia con el disenio complejo de la encuesta CASEN
   autores: M. Vargas, Kirill Müller
   pais: Chile
   categoria: 1
@@ -20,7 +20,8 @@ paquetes:
   vigente: true
 - nombre: censobr
   url: https://ipeagit.github.io/censobr/
-  descripcion: Es un paquete para descargar datos del Censo de Población en Brasil
+  descripcion: Es un paquete para descargar datos del Censo de Población en
+    Brasil
   autores: Rafael H. M. Pereira, Ipea - Institute for Applied Economic Research
   pais: Brasil
   categoria: 1
@@ -29,10 +30,10 @@ paquetes:
   hexlogo: https://github.com/ipeaGIT/censobr/blob/main/man/figures/logo.png
 - nombre: DatosAbiertosCEP
   url: https://github.com/CEProduccionXXI/DatosAbiertosCEP
-  descripcion: La librería DatosAbiertosCEP tiene por objetivo colaborar en el acceso
-    y procesamiento de los datos puestos disposición por el Centro de Estudios para
-    la Producción XXI, en la página de Datos Abiertos de la Secretaría de Industria
-    y Desarrollo Productivo del Ministerio de Economía.
+  descripcion: La librería DatosAbiertosCEP tiene por objetivo colaborar en
+    el acceso y procesamiento de los datos puestos disposición por el Centro
+    de Estudios para la Producción XXI, en la página de Datos Abiertos de
+    la Secretaría de Industria y Desarrollo Productivo del Ministerio de Economía.
   autores: Nicolas Sidicaro
   pais: Argentina
   categoria: 1
@@ -67,10 +68,10 @@ paquetes:
   hexlogo: https://github.com/PoliticaArgentina/electorAr/raw/main/man/figures/logo.png
 - nombre: eph
   url: https://holatam.github.io/eph/
-  descripcion: Una caja de herramientas para el procesamiento de datos con la Encuesta
-    Permanente de Hogares (EPH-INDEC)
-  autores: Diego Kozlowski, Pablo Tiscornia, Guido Weksler, Natsumi Shokida, German
-    Rosati y Carolina Pradier
+  descripcion: Una caja de herramientas para el procesamiento de datos con
+    la Encuesta Permanente de Hogares (EPH-INDEC)
+  autores: Diego Kozlowski, Pablo Tiscornia, Guido Weksler, Natsumi Shokida,
+    German Rosati y Carolina Pradier
   pais: Argentina
   categoria: 1
   subcategoria: encuestas
@@ -78,8 +79,8 @@ paquetes:
   hexlogo: https://github.com/holatam/eph/raw/master/man/figures/logo.png
 - nombre: inegiR
   url: https://github.com/Eflores89/inegiR
-  descripcion: Provides functions to download and parse information from INEGI (Official
-    Mexican statistics agency)
+  descripcion: Provides functions to download and parse information from INEGI
+    (Official Mexican statistics agency)
   autores: Eduardo Flores
   pais: México
   categoria: 1
@@ -87,9 +88,9 @@ paquetes:
   vigente: true
 - nombre: occupationcross
   url: https://guidowe.github.io/occupationcross/
-  descripcion: ocupationcross está diseñado para facilitar la compatibilización de
-    los clasificadores nacionales de ocupaciones utilizados en encuestas y censos
-    de distintos países
+  descripcion: ocupationcross está diseñado para facilitar la compatibilización
+    de los clasificadores nacionales de ocupaciones utilizados en encuestas
+    y censos de distintos países
   autores: Guido Weksler y Facundo Lastra
   pais: Argentina
   categoria: 1
@@ -115,9 +116,9 @@ paquetes:
   vigente: true
 - nombre: sfnetworks
   url: https://github.com/luukvdmeer/sfnetworks
-  descripcion: Es un paquete R para el análisis de redes geoespaciales. Conecta las
-    funcionalidades del paquete tidygraph para análisis de redes y el paquete sf para
-    ciencia de datos espaciales
+  descripcion: Es un paquete R para el análisis de redes geoespaciales. Conecta
+    las funcionalidades del paquete tidygraph para análisis de redes y el
+    paquete sf para ciencia de datos espaciales
   autores: Lorena Abad, Lucas van der Meer, Andrea Gilardi, Robin Lovelace
   pais: Ecuador
   categoria: 2
@@ -132,8 +133,8 @@ paquetes:
   vigente: true
 - nombre: cageo
   url: https://manuelspinola.github.io/cageo/
-  descripcion: cageo es un paquete de R que contiene datos geoespaciales de América
-    Central.
+  descripcion: cageo es un paquete de R que contiene datos geoespaciales de
+    América Central.
   autores: Manuel Spínola
   pais: Costa Rica
   categoria: 2
@@ -141,8 +142,8 @@ paquetes:
   hexlogo: https://github.com/ManuelSpinola/cageo/blob/main/man/figures/logo.png
 - nombre: crgeo
   url: https://manuelspinola.github.io/crgeo/
-  descripcion: crgeo es un paquete de R que contiene datos geoespaciales de Costa
-    Rica
+  descripcion: crgeo es un paquete de R que contiene datos geoespaciales de
+    Costa Rica
   autores: Manuel Spínola
   pais: Costa Rica
   categoria: 2
@@ -166,8 +167,8 @@ paquetes:
   hexlogo: https://github.com/ipeaGIT/geobr/raw/master/r-package/man/figures/geobr_logo_y.png?raw=true
 - nombre: geouy
   url: https://github.com/RichDeto/geouy
-  descripcion: geouy is an R package that allows users to easily access official spatial
-    data sets of Uruguay
+  descripcion: geouy is an R package that allows users to easily access official
+    spatial data sets of Uruguay
   autores: Richard Detomasi
   pais: Uruguay
   categoria: 2
@@ -175,9 +176,9 @@ paquetes:
   hexlogo: https://github.com/RichDeto/geouy/raw/master/man/figures/geouy_logo_b.png
 - nombre: mapsPERU
   url: https://github.com/musajajorge/mapsPERU
-  descripcion: mapsPERU es un paquete que proporciona conjuntos de datos con información
-    de los centroides y límites geográficos de las regiones, departamentos, provincias
-    y distritos del Perú
+  descripcion: mapsPERU es un paquete que proporciona conjuntos de datos con
+    información de los centroides y límites geográficos de las regiones, departamentos,
+    provincias y distritos del Perú
   autores: Jorge L. C. Musaja
   pais: Perú
   categoria: 2
@@ -185,8 +186,8 @@ paquetes:
   hexlogo: https://github.com/musajajorge/mapsPERU/raw/main/imgs/hex_mapsPERU.png
 - nombre: RUMBA
   url: https://github.com/bitsandbricks/RUMBA
-  descripcion: Un conjunto de herramientas para el análisis de la Región Urbana Metropolitana
-    de Buenos Aires usando R
+  descripcion: Un conjunto de herramientas para el análisis de la Región Urbana
+    Metropolitana de Buenos Aires usando R
   autores: Antonio Vazquez Brust
   pais: Argentina
   categoria: 2
@@ -194,17 +195,19 @@ paquetes:
   hexlogo: https://github.com/bitsandbricks/RUMBA/raw/master/inst/figures/RUMBA_logo.png
 - nombre: agromet
   url: https://github.com/AgRoMeteorologiaINTA/agromet
-  descripcion: Conjunto de funciones para calcular índices y estadísticos climáticos
-    hidrológicos a partir de datos tidy. Incluye una función para graficar resultados
-    georeferenciados y e información cartográfica
-  autores: Yanina Bellini Saibene, Elio Campitelli, Paola Corrales, Natalia Gattinoni
+  descripcion: Conjunto de funciones para calcular índices y estadísticos
+    climáticos hidrológicos a partir de datos tidy. Incluye una función para
+    graficar resultados georeferenciados y e información cartográfica
+  autores: Yanina Bellini Saibene, Elio Campitelli, Paola Corrales, Natalia
+    Gattinoni
   pais: Argentina
   categoria: 10
   vigente: true
   hexlogo: https://github.com/AgRoMeteorologiaINTA/agromet/raw/master/man/figures/logo.png
 - nombre: ASpli
   url: https://bioconductor.org/packages/release/bioc/html/ASpli.html
-  descripcion: An integrative R package for analysing alternative splicing using RNAseq
+  descripcion: An integrative R package for analysing alternative splicing
+    using RNAseq
   autores: Estefania Mancini, Andrés Rabinovich, Javier Iserte, Marcelo Yanovsky,
     Ariel Chernomoretz
   pais: Argentina
@@ -212,10 +215,10 @@ paquetes:
   vigente: true
 - nombre: CINE
   url: https://github.com/musajajorge/CINE/
-  descripcion: CINE es un paquete que utiliza la lematización de términos educativos
-    para clasificar los programas educativos según la CINE (Clasificación Internacional
-    Normalizada de la Educación) para el Perú publicada por el INEI (Instituto Nacional
-    de Estadística e Informática)
+  descripcion: CINE es un paquete que utiliza la lematización de términos
+    educativos para clasificar los programas educativos según la CINE (Clasificación
+    Internacional Normalizada de la Educación) para el Perú publicada por
+    el INEI (Instituto Nacional de Estadística e Informática)
   autores: Jorge L. C. Musaja
   pais: Perú
   categoria: 8
@@ -223,11 +226,12 @@ paquetes:
   hexlogo: https://github.com/musajajorge/CINE/raw/main/imgs/hex_emblema_CINE.png
 - nombre: concstats
   url: https://docs.ropensci.org/concstats/
-  descripcion: El objetivo del paquete concstats es proporcionar un conjunto de medidas
-    alternativas y/o adicionales para investigadores en ciencias sociales y profesionales
-    en instituciones relacionadas con la competencia de manera regular, con el fin
-    de determinar mejor la estructura de un mercado dado y, por lo tanto, reducir
-    la incertidumbre con respecto a una situación de mercado específica.
+  descripcion: El objetivo del paquete concstats es proporcionar un conjunto
+    de medidas alternativas y/o adicionales para investigadores en ciencias
+    sociales y profesionales en instituciones relacionadas con la competencia
+    de manera regular, con el fin de determinar mejor la estructura de un
+    mercado dado y, por lo tanto, reducir la incertidumbre con respecto a
+    una situación de mercado específica.
   autores: Andreas Schneider
   pais: Paraguay
   categoria: 11
@@ -235,8 +239,8 @@ paquetes:
   hexlogo: https://github.com/ropensci/concstats/blob/master/man/figures/logo.png
 - nombre: metR
   url: https://eliocamp.github.io/metR/
-  descripcion: Funciones útiles y extensiones de ggplot2 para manejar y graficar datos
-    meteorológicos
+  descripcion: Funciones útiles y extensiones de ggplot2 para manejar y graficar
+    datos meteorológicos
   autores: Elio Campitelli
   pais: Argentina
   categoria: 10
@@ -252,8 +256,8 @@ paquetes:
   hexlogo: https://github.com/PoliticaArgentina/opinAr/raw/master/man/figures/logo.png
 - nombre: porArverse
   url: https://politicaargentina.github.io/polArverse/
-  descripcion: Universo de paquetes para trabajar con herramientas y datos de Política
-    Argentina desde R
+  descripcion: Universo de paquetes para trabajar con herramientas y datos
+    de Política Argentina desde R
   autores: Juan Pablo Ruiz Nicolini
   pais: Argentina
   categoria: 9
@@ -261,26 +265,27 @@ paquetes:
   hexlogo: https://camo.githubusercontent.com/7086944caf9b9ba06dd6d90226a81694a9f71c36ccbd2cfd4420d6dc000a880e/68747470733a2f2f706f6c6974696361617267656e74696e612e6769746875622e696f2f706f6c417276657273652f7265666572656e63652f666967757265732f6c6f676f2e706e67
 - nombre: frost
   url: https://github.com/anadiedrichs/frost
-  descripcion: Predicción de la temperatura mínima para la previsión de heladas en
-    la agricultura. Este paquete contiene una recopilación de métodos empíricos utilizados
-    por agricultores e ingenieros agrónomos para predecir la temperatura mínima para
-    detectar un evento de helada.
+  descripcion: Predicción de la temperatura mínima para la previsión de heladas
+    en la agricultura. Este paquete contiene una recopilación de métodos empíricos
+    utilizados por agricultores e ingenieros agrónomos para predecir la temperatura
+    mínima para detectar un evento de helada.
   autores: Ana Laura Diedrichs
   pais: Argentina
   categoria: 10
   vigente: true
 - nombre: tradepolicy
   url: https://github.com/pachadotdev/tradepolicy
-  descripcion: Este paquete proporciona funciones para replicar los resultados originales
-    de Stata del libro An Advanced Guide to Trade Policy Analysis.
+  descripcion: Este paquete proporciona funciones para replicar los resultados
+    originales de Stata del libro An Advanced Guide to Trade Policy Analysis.
   autores: Mauricio Vargas
   pais: Chile
   categoria: 11
   vigente: true
 - nombre: unheadr
   url: https://github.com/luisDVA/unheadr
-  descripcion: El objetivo de unheadr es ayudar a limpiar datos cuando tiene subencabezados
-    incrustados, o cuando los valores se ajustan en varias filas
+  descripcion: El objetivo de unheadr es ayudar a limpiar datos cuando tiene
+    subencabezados incrustados, o cuando los valores se ajustan en varias
+    filas
   autores: Luis Verde Arregoitia
   pais: México
   categoria: 4
@@ -288,8 +293,8 @@ paquetes:
   hexlogo: https://github.com/luisDVA/unheadr/raw/master/man/figures/logosmall.png
 - nombre: sknifedatar
   url: https://rafzamb.github.io/sknifedatar/
-  descripcion: Una extensión del ecosistema modeltime. Con este paquete vas a poder
-    trabajar con modelado y visualización de múltiples series de tiempo
+  descripcion: Una extensión del ecosistema modeltime. Con este paquete vas
+    a poder trabajar con modelado y visualización de múltiples series de tiempo
   autores: Rafael Zambrano y Karina Bartolome
   pais: Argentina
   categoria: 5
@@ -297,8 +302,9 @@ paquetes:
   hexlogo: https://camo.githubusercontent.com/96312cc1dc9e7667393dd53a4945ef4e882c4aced55e6544fe38f3a9e44ffef7/68747470733a2f2f7261667a616d622e6769746875622e696f2f736b6e69666564617461722f7265666572656e63652f666967757265732f6c6f676f2e706e67
 - nombre: funModeling
   url: http://pablo14.github.io/funModeling/
-  descripcion: Este paquete contiene un conjunto de funciones relacionadas con el
-    análisis exploratorio de datos, la preparación de datos y el rendimiento de modelos.
+  descripcion: Este paquete contiene un conjunto de funciones relacionadas
+    con el análisis exploratorio de datos, la preparación de datos y el rendimiento
+    de modelos.
   autores: Pablo Casas
   pais: Argentina
   categoria: 5
@@ -306,8 +312,8 @@ paquetes:
   hexlogo: https://camo.githubusercontent.com/52411c3ab2079010da71b6749d45912eee7890207895dff78ebe91f239e91521/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f64617461736369656e63656865726f65732e636f6d2f696d672f626c6f672f66756e4d6f64656c696e675f6c6f676f5f68712e706e67
 - nombre: rsppfp
   url: https://github.com/melvidoni/rsppfp
-  descripcion: Implementa diferentes algoritmos para transformar grafos en el problema
-    del camino más corto con caminos prohibidos (SPPFP)
+  descripcion: Implementa diferentes algoritmos para transformar grafos en
+    el problema del camino más corto con caminos prohibidos (SPPFP)
   autores: Melina Vidoni
   pais: Argentina
   categoria: 5
@@ -315,9 +321,9 @@ paquetes:
   hexlogo: https://github.com/melvidoni/rsppfp/blob/master/man/figs/logo.png
 - nombre: ggperiodic
   url: https://github.com/eliocamp/ggperiodic
-  descripcion: ggperiodic is an attempt to solve the issue of plotting periodic data
-    in ggplot2. It automatically augments your data to wrap it around to any arbitrary
-    domain
+  descripcion: ggperiodic is an attempt to solve the issue of plotting periodic
+    data in ggplot2. It automatically augments your data to wrap it around
+    to any arbitrary domain
   autores: Elio Campitelli
   pais: Argentina
   categoria: 6
@@ -325,8 +331,8 @@ paquetes:
   hexlogo: https://github.com/eliocamp/ggperiodic/raw/master/man/figures/logo.png
 - nombre: ggnewscale
   url: https://eliocamp.github.io/ggnewscale/
-  descripcion: Paquete que intenta hacer menos doloroso el uso de de múltiples escalas
-    en ggplot2
+  descripcion: Paquete que intenta hacer menos doloroso el uso de de múltiples
+    escalas en ggplot2
   autores: Elio Campitelli
   pais: Argentina
   categoria: 6
@@ -334,8 +340,8 @@ paquetes:
   hexlogo: https://camo.githubusercontent.com/832610c74855a838332287661c9382517654248ce5cc90fb7649000f4538d56c/68747470733a2f2f656c696f63616d702e6769746875622e696f2f67676e65777363616c652f7265666572656e63652f666967757265732f6c6f676f2e706e67
 - nombre: makePalette
   url: https://github.com/musajajorge/makePalette/
-  descripcion: Paquete que contiene funciones que le permiten crear su propia paleta
-    de colores a partir de una imagen, utilizando algoritmos matemáticos
+  descripcion: Paquete que contiene funciones que le permiten crear su propia
+    paleta de colores a partir de una imagen, utilizando algoritmos matemáticos
   autores: Jorge L. C. Musaja
   pais: Perú
   categoria: 6
@@ -343,9 +349,9 @@ paquetes:
   hexlogo: https://github.com/musajajorge/makePalette/raw/main/imgs/hex_emblema_makePalette.png
 - nombre: polArViz
   url: https://politicaargentina.github.io/polArViz/
-  descripcion: Librería auxiliar del polArverse que contiene funciones para visualizaciones
-    que permiten explorar radpidamente la variedad de datos del universo político
-    de Argentina
+  descripcion: Librería auxiliar del polArverse que contiene funciones para
+    visualizaciones que permiten explorar radpidamente la variedad de datos
+    del universo político de Argentina
   autores: Juan Pablo Ruiz Nicolini
   pais: Argentina
   categoria: 6
@@ -361,23 +367,24 @@ paquetes:
   hexlogo: https://github.com/musajajorge/popPyramid/raw/main/imgs/hex_emblema_pyramid.png
 - nombre: datos
   url: https://cienciadedatos.github.io/datos/
-  descripcion: Este paquete provee la traducción al español de conjuntos de datos
-    en inglés originalmente disponibles en otros paquetes de R. Los datos traducidos
-    son los que se utilizan en los ejemplos del libro <a href="https://es.r4ds.hadley.nz/">R
-    para Ciencia de Datos</a>
-  autores: Riva Quiroga, Edgar Ruiz, Mauricio Vargas, Mauro Lepore, Rayna Harris y
-    Daniela Vasquez.
+  descripcion: Este paquete provee la traducción al español de conjuntos de
+    datos en inglés originalmente disponibles en otros paquetes de R. Los
+    datos traducidos son los que se utilizan en los ejemplos del libro <a
+    href="https://es.r4ds.hadley.nz/">R para Ciencia de Datos</a>
+  autores: Riva Quiroga, Edgar Ruiz, Mauricio Vargas, Mauro Lepore, Rayna
+    Harris y Daniela Vasquez.
   pais: Chile
   categoria: 7
   vigente: true
   hexlogo: https://camo.githubusercontent.com/145140f540c1baa91ccd9a16b753e70793283f9e0056c0254e5282b5b4e855d6/68747470733a2f2f6369656e63696164656461746f732e6769746875622e696f2f6461746f732f7265666572656e63652f666967757265732f6c6f676f2e706e67
 - nombre: guaguas
   url: https://rivaquiroga.github.io/guaguas/index.html
-  descripcion: Datos sobre nombres de guaguas (bebés) registrados en Chile entre 1920
-    y 2021, según el Servicio de Registro Civil e Identificación. Incluye solo los
-    que fueron inscritos como primer nombre. Este dataset permite explorar tendencias
-    en los nombres registrados durante el último siglo y puede utilizarse como fuente
-    de ejemplos para aprender/enseñar a trabajar con datos
+  descripcion: Datos sobre nombres de guaguas (bebés) registrados en Chile
+    entre 1920 y 2021, según el Servicio de Registro Civil e Identificación.
+    Incluye solo los que fueron inscritos como primer nombre. Este dataset
+    permite explorar tendencias en los nombres registrados durante el último
+    siglo y puede utilizarse como fuente de ejemplos para aprender/enseñar
+    a trabajar con datos
   autores: Riva Quiroga
   pais: Chile
   categoria: 7
@@ -385,9 +392,9 @@ paquetes:
   hexlogo: https://camo.githubusercontent.com/d911a6c0f699ed2dd77a4181d5fc2db2e21c76805e453d5563b2b36db5659818/68747470733a2f2f72697661717569726f67612e6769746875622e696f2f677561677561732f7265666572656e63652f666967757265732f677561677561732d6865782e706e67
 - nombre: codehover
   url: https://arthurwelle.github.io/codehover/articles/codehover_intro.html
-  descripcion: El objetivo de codehover es facilitar la creación de una tabla HTML
-    con un efecto de desplazamiento (JavaScript/JQuery + CSS) que muestra imágenes
-    justo debajo de dicha tabla de forma sencilla.
+  descripcion: El objetivo de codehover es facilitar la creación de una tabla
+    HTML con un efecto de desplazamiento (JavaScript/JQuery + CSS) que muestra
+    imágenes justo debajo de dicha tabla de forma sencilla.
   autores: Arthur Welle
   pais: Brasil
   categoria: 8
@@ -395,31 +402,32 @@ paquetes:
   hexlogo: https://github.com/arthurwelle/codehover/blob/master/docs/HexSticker/HexSticker.png
 - nombre: metamer
   url: https://eliocamp.github.io/metamer/#metamer
-  descripcion: Implementa el algoritmo propuesto por Matejka & Fitzmaurice (2017)
-    para crear metamers (conjuntos de datos con propiedades estadísticas idénticas
-    pero gráficos muy diferentes) con un esquema de recocido derivado de de Vicente
-    et al
+  descripcion: Implementa el algoritmo propuesto por Matejka & Fitzmaurice
+    (2017) para crear metamers (conjuntos de datos con propiedades estadísticas
+    idénticas pero gráficos muy diferentes) con un esquema de recocido derivado
+    de de Vicente et al
   autores: Elio Campitelli
   pais: Argentina
   categoria: 8
   vigente: true
 - nombre: klassets
   url: https://github.com/jbkunst/klassets
-  descripcion: 'Es una colección de funciones para simular conjuntos de datos para:
-    enseñar cómo funcionan algunos modelos estadísticos y algoritmos de aprendizaje
-    automático, como también ilustrar algunos hechos particulares como la heteroscedasticidad
-    o la paradoja de Simpson e incluso, comparar las predicciones entre modelos, por
-    ejemplo regresión logística vs árbol de decisión vs k-Nearest Neighbours'
+  descripcion: 'Es una colección de funciones para simular conjuntos de datos
+    para: enseñar cómo funcionan algunos modelos estadísticos y algoritmos
+    de aprendizaje automático, como también ilustrar algunos hechos particulares
+    como la heteroscedasticidad o la paradoja de Simpson e incluso, comparar
+    las predicciones entre modelos, por ejemplo regresión logística vs árbol
+    de decisión vs k-Nearest Neighbours'
   autores: Joshua Kunst
   pais: Chile
   categoria: 8
   vigente: true
 - nombre: arcenso
   url: https://soyandrea.github.io/arcenso/
-  descripcion: Proporciona acceso a datos ordenados y curados de los censos nacionales
-    de población de Argentina (1970, 1980, 1991, 2001, 2010 y 2022), facilitando la
-    exploración y reutilización de información histórica censal con herramientas de
-    consulta, validación y visualización interactiva.
+  descripcion: Proporciona acceso a datos ordenados y curados de los censos
+    nacionales de población de Argentina (1970, 1980, 1991, 2001, 2010 y 2022),
+    facilitando la exploración y reutilización de información histórica censal
+    con herramientas de consulta, validación y visualización interactiva.
   autores: Andrea Gomez Vargas, Emanuel Ciardullo
   pais: Argentina
   categoria: 1
@@ -428,10 +436,10 @@ paquetes:
   hexlogo: https://raw.githubusercontent.com/SoyAndrea/arcenso/main/man/figures/logo.png
 - nombre: Argentum
   url: https://thomasartopoulos.github.io/argentum/
-  descripcion: Permite descubrir y leer capas geoespaciales publicadas por organismos
-    públicos argentinos a través de los estándares WFS y WMS del Open Geospatial Consortium,
-    con catálogo cacheado de endpoints, negociación de versiones y descarga vectorial
-    como objetos sf.
+  descripcion: Permite descubrir y leer capas geoespaciales publicadas por
+    organismos públicos argentinos a través de los estándares WFS y WMS del
+    Open Geospatial Consortium, con catálogo cacheado de endpoints, negociación
+    de versiones y descarga vectorial como objetos sf.
   autores: Thomas Artopoulos
   pais: Argentina
   categoria: 2
@@ -439,26 +447,28 @@ paquetes:
   hexlogo: https://raw.githubusercontent.com/thomasartopoulos/argentum/main/man/figures/logo.png
 - nombre: territorial
   url: https://bastianolea.github.io/territorial/
-  descripcion: El objetivo de este paquete es simplificar el análisis de datos territoriales
-    de Chile, facilitando tareas de limpieza y procesamiento de datos que suelen ser
-    necesarias al trabajar con datos de Chile a nivel comunal y regional.
+  descripcion: El objetivo de este paquete es simplificar el análisis de datos
+    territoriales de Chile, facilitando tareas de limpieza y procesamiento
+    de datos que suelen ser necesarias al trabajar con datos de Chile a nivel
+    comunal y regional.
   autores: Bastián Olea Herrera
   pais: Chile
   categoria: 2
   hexlogo: https://raw.githubusercontent.com/bastianolea/territorial/main/man/figures/logo.png
-  vigente: yes
+  vigente: true
 - nombre: ismtchile
   url: https://cran.r-project.org/web/packages/ismtchile/index.html
-  descripcion: Facilita el cálculo y distribución del Índice Socio Material Territorial (ISMT), elaborado por el Observatorio de Ciudades UC de Chile.
+  descripcion: Facilita el cálculo y distribución del Índice Socio Material
+    Territorial (ISMT), elaborado por el Observatorio de Ciudades UC de Chile.
   autores: Martín Rosas Araya
   pais: Chile
   categoria: 3
   vigente: true
 - nombre: importinegi
   url: https://github.com/crenteriam/importinegi
-  descripcion: Paquete para descargar y gestionar bases de datos abiertas del INEGI,
-    incluyendo censos, encuestas de hogares y ocupación, y datos geoespaciales de
-    México.
+  descripcion: Paquete para descargar y gestionar bases de datos abiertas
+    del INEGI, incluyendo censos, encuestas de hogares y ocupación, y datos
+    geoespaciales de México.
   autores: crenteriam
   pais: México
   categoria: 1
@@ -466,25 +476,35 @@ paquetes:
   vigente: true
 - nombre: mxmaps
   url: https://www.diegovalle.net/mxmaps/
-  descripcion: Crea mapas coropléticos de México a nivel estatal y municipal, con
-    soporte para mapas interactivos con Leaflet.
+  descripcion: Crea mapas coropléticos de México a nivel estatal y municipal,
+    con soporte para mapas interactivos con Leaflet.
   autores: Diego Valle-Jones
   pais: México
   vigente: true
 - nombre: rsinaica
   url: https://hoyodesmog.diegovalle.net/rsinaica/
-  descripcion: Facilita la descarga de datos de calidad del aire del Sistema Nacional
-    de Información de la Calidad del Aire (SINAICA) de México, con datos de más de
-    cien estaciones de monitoreo.
+  descripcion: Facilita la descarga de datos de calidad del aire del Sistema
+    Nacional de Información de la Calidad del Aire (SINAICA) de México, con
+    datos de más de cien estaciones de monitoreo.
   autores: Diego Valle-Jones
   pais: México
   categoria: 10
   vigente: true
 - nombre: colmaps
   url: https://github.com/nebulae-co/colmaps
-  descripcion: Paquete con datos de límites geográficos actualizados de Colombia (municipios
-    y departamentos) y un wrapper de ggplot2 para crear mapas coropléticos.
+  descripcion: Paquete con datos de límites geográficos actualizados de Colombia
+    (municipios y departamentos) y un wrapper de ggplot2 para crear mapas
+    coropléticos.
   autores: nebulae-co
   pais: Colombia
   categoria: 2
+  vigente: true
+- nombre: vaccineff
+  url: https://github.com/epiverse-trace/vaccineff
+  descripcion: Herramientas para la estimación de la efectividad vacunal y
+    cálculo de métricas de vacunación a partir de datos de cohorte o de casos
+    y controles.
+  autores: David Santiago Quevedo, Zulma M. Cucunubá
+  pais: Colombia
+  categoria: 12
   vigente: true
