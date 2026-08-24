@@ -374,3 +374,10 @@ paquetes:
   categoria: 2
   hexlogo: https://raw.githubusercontent.com/bastianolea/territorial/main/man/figures/logo.png
   vigente: yes
+- nombre: colmaps
+  url: https://github.com/nebulae-co/colmaps
+  descripcion: Paquete con datos de límites geográficos actualizados de Colombia (municipios y departamentos) y un wrapper de ggplot2 para crear mapas coropléticos.
+  autores: nebulae-co
+  pais: Colombia
+  categoria: 2
+  vigente: true
