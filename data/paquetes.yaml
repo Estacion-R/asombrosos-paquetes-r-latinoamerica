@@ -379,5 +379,16 @@ paquetes:
   descripcion: Crea mapas coropléticos de México a nivel estatal y municipal, con soporte para mapas interactivos con Leaflet.
   autores: Diego Valle-Jones
   pais: México
+- nombre: rsinaica
+  url: https://hoyodesmog.diegovalle.net/rsinaica/
+  descripcion: Facilita la descarga de datos de calidad del aire del Sistema Nacional de Información de la Calidad del Aire (SINAICA) de México, con datos de más de cien estaciones de monitoreo.
+  autores: Diego Valle-Jones
+  pais: México
+  categoria: 10
+- nombre: colmaps
+  url: https://github.com/nebulae-co/colmaps
+  descripcion: Paquete con datos de límites geográficos actualizados de Colombia (municipios y departamentos) y un wrapper de ggplot2 para crear mapas coropléticos.
+  autores: nebulae-co
+  pais: Colombia
   categoria: 2
   vigente: true
