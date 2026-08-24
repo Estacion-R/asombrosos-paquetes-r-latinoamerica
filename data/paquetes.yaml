@@ -517,3 +517,67 @@ paquetes:
   pais: Colombia
   categoria: 12
   vigente: true
+- nombre: vaccineff
+  url: https://github.com/epiverse-trace/vaccineff
+  descripcion: Herramientas para la estimación de la efectividad vacunal y
+    cálculo de métricas de vacunación a partir de datos de cohorte o de casos
+    y controles.
+  autores: David Santiago Quevedo, Zulma M. Cucunubá
+  pais: Colombia
+  categoria: 12
+  vigente: true
+- nombre: serofoi
+  url: https://github.com/epiverse-trace/serofoi
+  descripcion: Estima la fuerza de infección histórica de un patógeno a partir
+    de estudios de seroprevalencia poblacional, usando modelos bayesianos.
+  autores: N. T. Dominguez, Zulma M. Cucunubá, Ben Lambert
+  pais: Colombia
+  categoria: 12
+  vigente: true
+- nombre: argendataR
+  url: https://github.com/argendatafundar/argendataR
+  descripcion: Librería de R para ETL de Argendata, plataforma de datos económicos
+    y sociales de Argentina con más de 200 indicadores estandarizados.
+  autores: Juan Pablo Ruiz Nicolini, Juan Gabriel Juara
+  pais: Argentina
+  categoria: 1
+  subcategoria: registros_administrativos
+  vigente: true
+- nombre: UnalR
+  url: https://github.com/estadisticaun/UnalR
+  descripcion: Simplifica y unifica herramientas de procesamiento estadístico
+    y visualización para la Universidad Nacional de Colombia, con funciones
+    para tablas, gráficos y reportes.
+  autores: Jeison Mauricio Alarcon Becerra
+  pais: Colombia
+  categoria: 5
+  vigente: true
+- nombre: rcdo
+  url: https://github.com/eliocamp/rcdo
+  descripcion: Wrapper de R para CDO (Climate Data Operators), la herramienta
+    de línea de comandos para operaciones con datos climáticos en formato
+    NetCDF.
+  autores: Elio Campitelli
+  pais: Argentina
+  categoria: 10
+  vigente: true
+- nombre: SisINTAR
+  url: https://github.com/INTA-Suelos/SisINTAR
+  descripcion: Permite procesar y acceder a los datos del Sistema de Información
+    de Suelos del INTA (SISINTA) de Argentina, incluyendo perfiles de suelo
+    georreferenciados.
+  autores: Elio Campitelli, Paola Corrales, Marcos Angelini, Yanina Noemí
+    Bellini Saibene
+  pais: Argentina
+  categoria: 1
+  subcategoria: registros_administrativos
+  vigente: true
+- nombre: infiltrodiscR
+  url: https://cran.r-project.org/web/packages/infiltrodiscR/index.html
+  descripcion: 'Funciones para modelado de datos del infiltrómetro de minidisco:
+    calcula infiltración acumulada, raíz cuadrada del tiempo y el parámetro
+    A según propiedades físicas del suelo.'
+  autores: Carolina V. Giraldo, Sara E. Acevedo, Carlos A. Bonilla
+  pais: Chile
+  categoria: 5
+  vigente: true
