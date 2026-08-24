@@ -374,3 +374,10 @@ paquetes:
   categoria: 2
   hexlogo: https://raw.githubusercontent.com/bastianolea/territorial/main/man/figures/logo.png
   vigente: yes
+- nombre: mxmaps
+  url: https://www.diegovalle.net/mxmaps/
+  descripcion: Crea mapas coropléticos de México a nivel estatal y municipal, con soporte para mapas interactivos con Leaflet.
+  autores: Diego Valle-Jones
+  pais: México
+  categoria: 2
+  vigente: true
