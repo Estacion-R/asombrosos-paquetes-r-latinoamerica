@@ -374,3 +374,11 @@ paquetes:
   categoria: 2
   hexlogo: https://raw.githubusercontent.com/bastianolea/territorial/main/man/figures/logo.png
   vigente: yes
+- nombre: importinegi
+  url: https://github.com/crenteriam/importinegi
+  descripcion: Paquete para descargar y gestionar bases de datos abiertas del INEGI, incluyendo censos, encuestas de hogares y ocupación, y datos geoespaciales de México.
+  autores: crenteriam
+  pais: México
+  categoria: 1
+  subcategoria: registros_administrativos
+  vigente: true
