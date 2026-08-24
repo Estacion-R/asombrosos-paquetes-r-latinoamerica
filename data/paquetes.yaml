@@ -499,6 +499,15 @@ paquetes:
   pais: Colombia
   categoria: 2
   vigente: true
+- nombre: metasurvey
+  url: https://cran.r-project.org/web/packages/metasurvey/index.html
+  descripcion: Pipelines reproducibles para el análisis de encuestas complejas
+    con muestreo complejo. Soporta paneles rotantes con pesos bootstrap y
+    sistema de recetas compartibles entre ediciones.
+  autores: Mauro Loprete
+  pais: Argentina
+  categoria: 1
+  subcategoria: encuestas
 - nombre: sivirep
   url: https://github.com/epiverse-trace/sivirep
   descripcion: Permite procesar datos del sistema de vigilancia epidemiológica
