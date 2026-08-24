@@ -374,3 +374,10 @@ paquetes:
   categoria: 2
   hexlogo: https://raw.githubusercontent.com/bastianolea/territorial/main/man/figures/logo.png
   vigente: yes
+- nombre: rsinaica
+  url: https://hoyodesmog.diegovalle.net/rsinaica/
+  descripcion: Facilita la descarga de datos de calidad del aire del Sistema Nacional de Información de la Calidad del Aire (SINAICA) de México, con datos de más de cien estaciones de monitoreo.
+  autores: Diego Valle-Jones
+  pais: México
+  categoria: 10
+  vigente: true
