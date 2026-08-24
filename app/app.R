@@ -528,24 +528,49 @@ ui <- page_fluid(
         border: 1px solid #151515;
         margin-left: 0.3rem;
       }
-      /* === Navset sin card === */
+      /* === Toggle full-width B: tabs 50/50 centradas === */
       .navset-landing .nav-tabs {
-        border-bottom: 3px solid #151515;
-        margin-bottom: 0;
+        display: flex !important;
+        border: 2px solid #151515 !important;
+        border-radius: 0 !important;
+        margin-bottom: 0 !important;
+        gap: 0 !important;
+        padding: 0 !important;
+        box-shadow: 4px 4px 0 #EAFF38;
+      }
+      .navset-landing .nav-tabs .nav-item {
+        flex: 1;
+        margin: 0 !important;
       }
       .navset-landing .nav-link {
-        border: 2px solid #151515;
-        border-bottom: none;
-        border-radius: 0;
-        font-weight: 500;
-        color: #151515;
-        background: #FFFFFF;
+        width: 100%;
+        display: block;
+        text-align: center;
+        border: none !important;
+        border-right: 2px solid #151515 !important;
+        border-radius: 0 !important;
+        font-weight: 700 !important;
+        color: #707073 !important;
+        background: #FFFFFF !important;
+        padding: 0.85rem 1rem !important;
+        font-size: 1rem !important;
+        letter-spacing: 0.3px;
+        transition: background 0.15s ease, color 0.15s ease;
+        margin: 0 !important;
+      }
+      .navset-landing .nav-tabs .nav-item:last-child .nav-link {
+        border-right: none !important;
       }
       .navset-landing .nav-link.active {
-        background: #EAFF38;
-        color: #151515;
-        border-bottom: 3px solid #EAFF38;
-        margin-bottom: -3px;
+        background: #151515 !important;
+        color: #EAFF38 !important;
+        border-bottom: none !important;
+        margin-bottom: 0 !important;
+        box-shadow: none !important;
+      }
+      .navset-landing .nav-link:hover:not(.active) {
+        background: #f8f8f8 !important;
+        color: #151515 !important;
       }
     "))
   ),
