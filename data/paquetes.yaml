@@ -374,3 +374,10 @@ paquetes:
   categoria: 2
   hexlogo: https://raw.githubusercontent.com/bastianolea/territorial/main/man/figures/logo.png
   vigente: yes
+- nombre: ismtchile
+  url: https://cran.r-project.org/web/packages/ismtchile/index.html
+  descripcion: Facilita el cálculo y distribución del Índice Socio Material Territorial (ISMT), elaborado por el Observatorio de Ciudades UC de Chile.
+  autores: Martín Rosas Araya
+  pais: Chile
+  categoria: 3
+  vigente: true
