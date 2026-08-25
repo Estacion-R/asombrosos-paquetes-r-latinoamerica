@@ -590,3 +590,11 @@ paquetes:
   pais: Uruguay
   categoria: 9
   vigente: true
+- nombre: priorcovmatrix
+  url: https://github.com/nachalca/PriorCovmatrix
+  descripcion: Herramientas para explorar, visualizar y estimar matrices de covarianzas
+    a priori en modelos Bayesianos.
+  autores: Ignacio Alvarez-Castro
+  pais: Uruguay
+  categoria: 5
+  vigente: true
