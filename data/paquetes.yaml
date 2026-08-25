@@ -590,3 +590,11 @@ paquetes:
   pais: Uruguay
   categoria: 9
   vigente: true
+- nombre: shinyWYSIWYG
+  url: https://github.com/jcrodriguez1989/shinyWYSIWYG
+  descripcion: Editor WYSIWYG (What You See Is What You Get) para aplicaciones Shiny,
+    permite editar texto enriquecido directamente en la interfaz.
+  autores: Juan Cruz Rodriguez
+  pais: Argentina
+  categoria: 4
+  vigente: true
