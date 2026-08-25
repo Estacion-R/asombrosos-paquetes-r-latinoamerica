@@ -590,3 +590,11 @@ paquetes:
   pais: Uruguay
   categoria: 9
   vigente: true
+- nombre: karel
+  url: https://github.com/ropensci/karel
+  descripcion: Implementación del robot Karel en R para la enseñanza de programación.
+    Permite aprender conceptos de control de flujo y funciones de forma visual e interactiva.
+  autores: Marcos Prunello
+  pais: Argentina
+  categoria: 8
+  vigente: true
