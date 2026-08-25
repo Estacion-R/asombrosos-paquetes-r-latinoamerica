@@ -141,12 +141,25 @@ tema_estacion_r <- bs_theme(
 )
 
 # UI
+# GA4 Measurement ID — configurar como variable de entorno GA_MEASUREMENT_ID
+ga_id <- Sys.getenv("GA_MEASUREMENT_ID", unset = "")
+
 ui <- page_fluid(
   title = "Catálogo de Paquetes R de Latinoamérica",
   theme = tema_estacion_r,
 
   # CSS personalizado
   tags$head(
+    # Google Analytics 4
+    if (nchar(ga_id) > 0) tagList(
+      tags$script(async = NA, src = paste0("https://www.googletagmanager.com/gtag/js?id=", ga_id)),
+      tags$script(HTML(sprintf("
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '%s');
+      ", ga_id)))
+    ),
     tags$link(rel = "stylesheet", href = "custom.css"),
     tags$style(HTML("
       /* === Hero === */
@@ -868,8 +881,8 @@ server <- function(input, output, session) {
       div(
         class = "pais-card",
         onclick = sprintf(
-          "Shiny.setInputValue('pais_seleccionado', '%s', {priority: 'event'})",
-          pais_nombre
+          "if(typeof gtag!=='undefined')gtag('event','filter_country',{'country':'%s'}); Shiny.setInputValue('pais_seleccionado', '%s', {priority: 'event'})",
+          pais_nombre, pais_nombre
         ),
         if (!is.na(flag_src)) {
           tags$img(
@@ -906,8 +919,8 @@ server <- function(input, output, session) {
       div(
         class = "categoria-card",
         onclick = sprintf(
-          "Shiny.setInputValue('categoria_seleccionada', '%s', {priority: 'event'})",
-          cat_id
+          "if(typeof gtag!=='undefined')gtag('event','filter_category',{'category_id':'%s','category_name':'%s'}); Shiny.setInputValue('categoria_seleccionada', '%s', {priority: 'event'})",
+          cat_id, nombre, cat_id
         ),
         span(class = "categoria-emoji", emoji),
         div(class = "categoria-nombre", nombre),
@@ -1066,7 +1079,10 @@ server <- function(input, output, session) {
 
       div(
         class = "package-card",
-        onclick = sprintf("window.open('%s', '_blank')", pkg$link),
+        onclick = sprintf(
+          "if(typeof gtag!=='undefined')gtag('event','package_click',{'package_name':'%s','package_country':'%s','package_category':%d}); window.open('%s','_blank')",
+          pkg$paquete, pkg$pais, pkg$nro_tematica, pkg$link
+        ),
 
         # Badge "Obsoleto" si no está vigente
         if (!pkg$vigente) {
