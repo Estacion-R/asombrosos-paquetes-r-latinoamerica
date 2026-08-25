@@ -590,3 +590,11 @@ paquetes:
   pais: Uruguay
   categoria: 9
   vigente: true
+- nombre: speech
+  url: https://github.com/Nicolas-Schmidt/speech
+  descripcion: Extrae, procesa y disponibiliza los discursos de legisladores del Parlamento
+    uruguayo para el análisis de texto de intervenciones parlamentarias históricas.
+  autores: Nicolás Schmidt, Elina Gómez
+  pais: Uruguay
+  categoria: 9
+  vigente: true
