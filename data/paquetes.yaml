@@ -590,3 +590,11 @@ paquetes:
   pais: Uruguay
   categoria: 9
   vigente: true
+- nombre: d4t4tur
+  url: https://github.com/dnme-minturdep/d4t4tur
+  descripcion: Meta-paquete de la DNMyE (Ministerio de Turismo Argentina) que centraliza
+    funciones y datos para el análisis de estadísticas de turismo.
+  autores: Juan Pablo Ruiz Nicolini, Pablo Tiscornia (DNMyE - Ministerio de Turismo)
+  pais: Argentina
+  categoria: 1
+  vigente: true
