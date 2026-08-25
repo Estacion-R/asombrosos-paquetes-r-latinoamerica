@@ -581,3 +581,12 @@ paquetes:
   pais: Chile
   categoria: 5
   vigente: true
+- nombre: esaps
+  url: https://github.com/Nicolas-Schmidt/esaps
+  descripcion: 'Cálculo de indicadores de sistemas electorales y de partidos: volatilidad
+    (Pedersen), fragmentación, desproporcionalidad (Gallagher), número efectivo de
+    partidos (Laakso/Taagepera).'
+  autores: Nicolás Schmidt
+  pais: Uruguay
+  categoria: 9
+  vigente: true
