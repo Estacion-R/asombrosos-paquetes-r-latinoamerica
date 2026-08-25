@@ -590,3 +590,11 @@ paquetes:
   pais: Uruguay
   categoria: 9
   vigente: true
+- nombre: annotater
+  url: https://github.com/luisDVA/annotater
+  descripcion: Addin de RStudio que añade anotaciones automáticas sobre el propósito
+    de los paquetes cargados con library() o require(), directamente en el script.
+  autores: Luis D. Verde Arregoitia
+  pais: México
+  categoria: 4
+  vigente: true
