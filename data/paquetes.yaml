@@ -590,3 +590,11 @@ paquetes:
   pais: Uruguay
   categoria: 9
   vigente: true
+- nombre: shinyinvoer
+  url: https://github.com/datasketch/shinyinvoer
+  descripcion: 'Paquete de inputs personalizados de JavaScript para aplicaciones Shiny:
+    upload por imagen, sliders con imágenes, selectores de imágenes y más.'
+  autores: David Daza, Camila Achuri, Juan Pablo Marin Diaz (Datasketch)
+  pais: Colombia
+  categoria: 4
+  vigente: true
