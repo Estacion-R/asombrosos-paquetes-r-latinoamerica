@@ -581,3 +581,13 @@ paquetes:
   pais: Chile
   categoria: 5
   vigente: true
+- nombre: "dosr"
+  url: "https://cran.r-project.org/web/packages/dosr/index.html"
+  descripcion: "Herramientas de análisis de encuestas para el Observatorio Social del Ministerio de Desarrollo Social de Chile.
+
+dosr provee funciones de alto nivel para calcular estimaciones (medias, proporciones, totales, razones y cuantiles) sobre diseños de encuestas complejas (como la CASEN) y generar reportes estandarizados en Excel con clasificación automática de fiabilidad estadística.
+https://gabrielsotomayorl.github.io/dosr/"
+  autores: "Gabriel Sotomayor"
+  pais: "Chile"
+  categoria: 1
+  vigente: yes
