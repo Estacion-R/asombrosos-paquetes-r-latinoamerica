@@ -590,3 +590,11 @@ paquetes:
   pais: Uruguay
   categoria: 9
   vigente: true
+- nombre: latinr
+  url: https://github.com/LatinR/latinr
+  descripcion: Automatiza el envío y gestión de propuestas de trabajos para la conferencia
+    LatinR, facilitando la interacción con el sistema de envíos.
+  autores: Elio Campitelli
+  pais: Argentina
+  categoria: 8
+  vigente: true
