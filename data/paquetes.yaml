@@ -590,3 +590,11 @@ paquetes:
   pais: Uruguay
   categoria: 9
   vigente: true
+- nombre: inexact
+  url: https://github.com/arcruz0/inexact
+  descripcion: Addin de RStudio para supervisar y aprobar uniones fuzzy (inexactas)
+    de bases de datos, con interfaz visual para revisar los matches antes de confirmarlos.
+  autores: Andrés Cruz
+  pais: Chile
+  categoria: 4
+  vigente: true
