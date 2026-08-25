@@ -600,3 +600,10 @@ https://gabrielsotomayorl.github.io/dosr/"
   pais: Uruguay
   categoria: 9
   vigente: true
+- nombre: "ClustMC"
+  url: "https://cran.r-project.org/web/packages/ClustMC/index.html"
+  descripcion: "Pruebas de comparaciones múltiples basadas en clústeres."
+  autores: "Santiago Garcia Sanchez"
+  pais: "Argentina"
+  categoria: 4
+  vigente: yes
