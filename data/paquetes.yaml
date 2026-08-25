@@ -590,3 +590,12 @@ paquetes:
   pais: Uruguay
   categoria: 9
   vigente: true
+- nombre: fastmatrix
+  url: https://github.com/faosorios/fastmatrix
+  descripcion: 'Funciones para acelerar operaciones matriciales usadas en estadística
+    y econometría: matrices estructuradas, descomposiciones matriciales y procedimientos
+    con mínimo overhead de memoria.'
+  autores: Felipe Osorio, Alonso Ogueda
+  pais: Chile
+  categoria: 5
+  vigente: true
