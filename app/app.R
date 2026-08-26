@@ -869,6 +869,20 @@ ui <- page_fluid(
           HTML('<i class="fa-brands fa-bluesky"></i>')
         ),
         tags$a(
+          href = "https://www.instagram.com/estacion.erre/",
+          target = "_blank",
+          title = "Instagram @estacion.erre",
+          class = "footer-social-link",
+          HTML('<i class="fa-brands fa-instagram"></i>')
+        ),
+        tags$a(
+          href = "https://www.linkedin.com/company/estacion-r/",
+          target = "_blank",
+          title = "LinkedIn Estación R",
+          class = "footer-social-link",
+          HTML('<i class="fa-brands fa-linkedin"></i>')
+        ),
+        tags$a(
           href = "mailto:hola@estacion-r.com",
           title = "Escribinos a hola@estacion-r.com",
           class = "footer-social-link",
