@@ -277,7 +277,7 @@ ui <- page_fluid(
       /* === Footer === */
       .footer-brand {
         text-align: center;
-        padding: 2rem 1.5rem;
+        padding: 2.5rem 1.5rem 2rem 1.5rem;
         background: #151515;
         color: #FFFFFF;
         margin-top: 4rem;
@@ -293,8 +293,41 @@ ui <- page_fluid(
         font-weight: 500;
       }
       .footer-brand a:hover {
-        color: #447099;
+        color: #EAFF38;
         text-decoration: underline;
+      }
+      .footer-logo-link img {
+        opacity: 0.9;
+        transition: opacity 0.2s ease;
+      }
+      .footer-logo-link:hover img {
+        opacity: 1;
+      }
+      .footer-social-links {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1.75rem;
+        margin: 1.25rem 0 1.5rem 0;
+        flex-wrap: wrap;
+      }
+      .footer-social-link {
+        color: #EAFF38 !important;
+        font-size: 1.6rem;
+        text-decoration: none !important;
+        display: inline-flex;
+        align-items: center;
+        transition: color 0.2s ease, transform 0.2s ease;
+      }
+      .footer-social-link:hover {
+        color: #FFFFFF !important;
+        transform: translateY(-3px);
+      }
+      .footer-social-link.bsky-link {
+        font-size: 0.95rem;
+        font-weight: 700;
+        gap: 0.3rem;
+        letter-spacing: 0.3px;
       }
       /* === Bandera en esquina superior derecha === */
       .package-flag {
@@ -786,16 +819,80 @@ ui <- page_fluid(
     # Footer
     div(
       class = "footer-brand",
-      tags$img(
-        src = "img/logo_estacion_r_ancho.png",
-        alt = "Estación R",
-        style = "height: 60px; margin-bottom: 20px;"
+
+      # Logo con link a la página de Estación R
+      tags$a(
+        href = "https://estacion-r.com",
+        target = "_blank",
+        class = "footer-logo-link",
+        style = "text-decoration: none;",
+        tags$img(
+          src = "img/logo_estacion_r_ancho.png",
+          alt = "Estación R",
+          style = "height: 60px; margin-bottom: 12px; display: block; margin-left: auto; margin-right: auto;"
+        )
       ),
-      h5(style = "color: #447099; margin-bottom: 20px;",
-         icon("heart"), " Desarrollado por Estación R"),
-      p("Escuela de Datos - Formación en R y Ciencia de Datos"),
+
+      h5(style = "color: #EAFF38; margin-bottom: 4px; font-weight: 700;", "Estación R"),
+      p(style = "color: #C2C2C4; margin-bottom: 0.5rem; font-size: 0.95rem;",
+        "Escuela de Datos · Formación en R y Ciencia de Datos"),
+
+      # Íconos de redes sociales
       div(
-        style = "margin-top: 20px;",
+        class = "footer-social-links",
+        tags$a(
+          href = "https://estacion-r.com",
+          target = "_blank",
+          title = "Sitio web",
+          class = "footer-social-link",
+          HTML('<i class="fa fa-globe"></i>')
+        ),
+        tags$a(
+          href = "https://x.com/estacion_erre",
+          target = "_blank",
+          title = "X / Twitter @estacion_erre",
+          class = "footer-social-link",
+          HTML('<i class="fa-brands fa-x-twitter"></i>')
+        ),
+        tags$a(
+          href = "https://mastodon.social/@pablote",
+          target = "_blank",
+          title = "Mastodon @pablote",
+          class = "footer-social-link",
+          HTML('<i class="fa-brands fa-mastodon"></i>')
+        ),
+        tags$a(
+          href = "https://bsky.app/profile/pablote.bsky.social",
+          target = "_blank",
+          title = "Bluesky",
+          class = "footer-social-link bsky-link",
+          HTML('<i class="fa-brands fa-bluesky"></i>')
+        ),
+        tags$a(
+          href = "https://www.instagram.com/estacion.erre/",
+          target = "_blank",
+          title = "Instagram @estacion.erre",
+          class = "footer-social-link",
+          HTML('<i class="fa-brands fa-instagram"></i>')
+        ),
+        tags$a(
+          href = "https://www.linkedin.com/company/estacion-r/",
+          target = "_blank",
+          title = "LinkedIn Estación R",
+          class = "footer-social-link",
+          HTML('<i class="fa-brands fa-linkedin"></i>')
+        ),
+        tags$a(
+          href = "mailto:pablotiscornia@estacion-r.com",
+          title = "Escribinos a pablotiscornia@estacion-r.com",
+          class = "footer-social-link",
+          HTML('<i class="fa fa-envelope"></i>')
+        )
+      ),
+
+      # Botones de acción
+      div(
+        style = "margin-bottom: 20px;",
         actionButton(
           inputId = "contribuir",
           label = "Proponer un paquete",
@@ -812,7 +909,8 @@ ui <- page_fluid(
           onclick = "window.open('https://github.com/Estacion-R/asombrosos-paquetes-r-latinoamerica', '_blank')"
         )
       ),
-      p(style = "margin-top: 30px; color: #707073; font-size: 0.9rem;",
+
+      p(style = "margin-top: 20px; color: #707073; font-size: 0.85rem;",
         "© 2026 Estación R | Todos los paquetes son propiedad de sus respectivos autores")
     )
   )
