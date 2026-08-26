@@ -811,6 +811,23 @@ ui <- page_fluid(
           uiOutput("resultados_info"),
           uiOutput("lista_paquetes"),
           uiOutput("paginacion")
+        ),
+
+        # CTA: Proponer un paquete
+        div(
+          style = "margin-top: 48px; margin-bottom: 24px; background: #EAFF38; border-radius: 12px; padding: 36px 24px; text-align: center;",
+          h4(style = "color: #1a1a1a; margin-bottom: 8px; font-weight: 800; font-size: 1.4rem;",
+             "¿Conocés un paquete que falta?"),
+          p(style = "color: #333; margin-bottom: 24px; font-size: 1rem;",
+            "El catálogo lo construimos entre todxs. Proponé un paquete latinoamericano y lo sumamos."),
+          actionButton(
+            inputId = "contribuir",
+            label = "Proponer un paquete",
+            icon = icon("plus-circle"),
+            class = "btn btn-dark",
+            style = "background: #1a1a1a; color: #EAFF38; border: none; font-weight: 700; padding: 12px 32px; font-size: 1rem; border-radius: 8px;",
+            onclick = "window.open('https://github.com/Estacion-R/asombrosos-paquetes-r-latinoamerica/issues/new/choose', '_blank')"
+          )
         )
         )  # cierra div.container del catálogo
       )
@@ -833,7 +850,6 @@ ui <- page_fluid(
         )
       ),
 
-      h5(style = "color: #EAFF38; margin-bottom: 4px; font-weight: 700;", "Estación R"),
       p(style = "color: #C2C2C4; margin-bottom: 0.5rem; font-size: 0.95rem;",
         "Escuela de Datos · Formación en R y Ciencia de Datos"),
 
@@ -890,17 +906,9 @@ ui <- page_fluid(
         )
       ),
 
-      # Botones de acción
+      # Botón GitHub
       div(
         style = "margin-bottom: 20px;",
-        actionButton(
-          inputId = "contribuir",
-          label = "Proponer un paquete",
-          icon = icon("plus-circle"),
-          class = "btn-estacion",
-          style = "margin-right: 10px;",
-          onclick = "window.open('https://github.com/Estacion-R/asombrosos-paquetes-r-latinoamerica/issues/new/choose', '_blank')"
-        ),
         actionButton(
           inputId = "ir_repo",
           label = "Ver en GitHub",
