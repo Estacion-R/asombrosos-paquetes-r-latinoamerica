@@ -883,8 +883,8 @@ ui <- page_fluid(
           HTML('<i class="fa-brands fa-linkedin"></i>')
         ),
         tags$a(
-          href = "mailto:hola@estacion-r.com",
-          title = "Escribinos a hola@estacion-r.com",
+          href = "mailto:pablotiscornia@estacion-r.com",
+          title = "Escribinos a pablotiscornia@estacion-r.com",
           class = "footer-social-link",
           HTML('<i class="fa fa-envelope"></i>')
         )
