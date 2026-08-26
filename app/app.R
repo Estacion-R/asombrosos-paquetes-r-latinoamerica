@@ -274,6 +274,50 @@ ui <- page_fluid(
         font-size: 0.85rem;
         font-weight: 500;
       }
+      /* === FAB: Proponer paquete (botón flotante) === */
+      .fab-proponer {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        background: #EAFF38;
+        border: 2px solid #151515;
+        box-shadow: 4px 4px 0 #151515;
+        border-radius: 50%;
+        width: 64px;
+        height: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        z-index: 9999;
+        text-decoration: none;
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #151515;
+        line-height: 1;
+      }
+      .fab-proponer:hover {
+        width: auto;
+        min-width: 64px;
+        padding: 0 1.5rem;
+        border-radius: 40px;
+        box-shadow: 6px 6px 0 #151515;
+        transform: translateY(-2px);
+      }
+      .fab-proponer .fab-label {
+        display: none;
+        font-size: 0.95rem;
+        font-weight: 700;
+        margin-left: 0.5rem;
+        white-space: nowrap;
+      }
+      .fab-proponer:hover .fab-label {
+        display: inline;
+      }
+      .fab-proponer:active {
+        transform: translateY(0);
+      }
       /* === Footer === */
       .footer-brand {
         text-align: center;
@@ -813,23 +857,17 @@ ui <- page_fluid(
           uiOutput("paginacion")
         ),
 
-        # CTA: Proponer un paquete
-        div(
-          style = "margin-top: 48px; margin-bottom: 24px; background: #EAFF38; border-radius: 12px; padding: 36px 24px; text-align: center;",
-          h4(style = "color: #1a1a1a; margin-bottom: 8px; font-weight: 800; font-size: 1.4rem;",
-             "¿Conocés un paquete que falta?"),
-          p(style = "color: #333; margin-bottom: 24px; font-size: 1rem;",
-            "El catálogo lo construimos entre todxs. Proponé un paquete latinoamericano y lo sumamos."),
-          actionButton(
-            inputId = "contribuir",
-            label = "Proponer un paquete",
-            icon = icon("plus-circle"),
-            class = "btn btn-dark",
-            style = "background: #1a1a1a; color: #EAFF38; border: none; font-weight: 700; padding: 12px 32px; font-size: 1rem; border-radius: 8px;",
-            onclick = "window.open('https://github.com/Estacion-R/asombrosos-paquetes-r-latinoamerica/issues/new/choose', '_blank')"
-          )
-        )
         )  # cierra div.container del catálogo
+      ),
+
+      # FAB: Proponer un paquete (botón flotante)
+      tags$a(
+        href = "https://github.com/Estacion-R/asombrosos-paquetes-r-latinoamerica/issues/new/choose",
+        target = "_blank",
+        class = "fab-proponer",
+        title = "Proponer un paquete",
+        "+",
+        tags$span(class = "fab-label", "Proponer paquete")
       )
     ),
 
