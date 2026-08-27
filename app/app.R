@@ -62,7 +62,8 @@ categoria_emoji <- c(
   "9"  = "🗳️",
   "10" = "☁️",
   "11" = "💰",
-  "12" = "🧬"
+  "12" = "🧬",
+  "13" = "🛠️"
 )
 
 subcategoria_label <- c(
@@ -120,7 +121,8 @@ categorias <- c(
   "9"  = "Política y Elecciones",
   "10" = "Clima y Meteorología",
   "11" = "Economía",
-  "12" = "Bioinformática"
+  "12" = "Bioinformática",
+  "13" = "Herramientas de Desarrollo"
 )
 
 # Tema oficial Estación R — spec visual minimalista + paleta oficial
