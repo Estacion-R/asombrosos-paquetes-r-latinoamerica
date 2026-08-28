@@ -1111,3 +1111,14 @@ paquetes:
   pais: Uruguay
   categoria: 5
   vigente: true
+- nombre: bigbang
+  url: https://sebollin.github.io/bigbang/
+  descripcion: Genera metapaquetes al estilo tidyverse a partir de archivos locales
+    de paquetes de R. Produce un único artefacto autocontenido que viaja con sus
+    componentes y los instala en orden de dependencias, pensado para entornos sin
+    conexión o con paquetes internos que no están en ningún repositorio.
+  autores: Sebastián Lucas
+  pais: Uruguay
+  categoria: 13
+  vigente: true
+  hexlogo: https://github.com/sebollin/bigbang/raw/main/man/figures/logo.png
