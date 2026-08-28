@@ -1002,3 +1002,22 @@ paquetes:
   categoria: 1
   subcategoria: registros_administrativos
   vigente: true
+- nombre: redatam
+  url: https://github.com/litalbarkai/open-redatam
+  descripcion: Importa archivos en formato REDATAM a R mediante la librería C++ Open
+    REDATAM, permitiendo acceder a microdatos censales distribuidos por la CEPAL en
+    toda América Latina.
+  autores: Mauricio Vargas Sepúlveda, Lital Barkai
+  pais: Chile
+  categoria: 1
+  subcategoria: censos
+  vigente: true
+- nombre: FactoClass
+  url: https://cran.r-project.org/web/packages/FactoClass/index.html
+  descripcion: Combina métodos factoriales (ACP, ACM, AFC) con clasificación jerárquica
+    de Ward y K-means para obtener particiones de filas de tablas de datos con variables
+    cuantitativas, cualitativas o de frecuencia.
+  autores: Campo Elias Pardo, Pedro Cesar del Campo, Camilo Jose Torres
+  pais: Colombia
+  categoria: 5
+  vigente: true
