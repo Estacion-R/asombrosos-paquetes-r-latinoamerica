@@ -1021,3 +1021,93 @@ paquetes:
   pais: Colombia
   categoria: 5
   vigente: true
+- nombre: esaps
+  url: https://github.com/Nicolas-Schmidt/esaps
+  descripcion: 'Cálculo de indicadores de sistemas electorales y de partidos: volatilidad
+    (Pedersen), fragmentación, desproporcionalidad (Gallagher), número efectivo de
+    partidos (Laakso/Taagepera).'
+  autores: Nicolás Schmidt
+  pais: Uruguay
+  categoria: 9
+  vigente: true
+- nombre: annotater
+  url: https://github.com/luisDVA/annotater
+  descripcion: Addin de RStudio que añade anotaciones automáticas sobre el propósito
+    de los paquetes cargados con library() o require(), directamente en el script.
+  autores: Luis D. Verde Arregoitia
+  pais: México
+  categoria: 4
+  vigente: true
+- nombre: fastmatrix
+  url: https://github.com/faosorios/fastmatrix
+  descripcion: 'Funciones para acelerar operaciones matriciales usadas en estadística
+    y econometría: matrices estructuradas, descomposiciones matriciales y procedimientos
+    con mínimo overhead de memoria.'
+  autores: Felipe Osorio, Alonso Ogueda
+  pais: Chile
+  categoria: 5
+  vigente: true
+- nombre: d4t4tur
+  url: https://github.com/dnme-minturdep/d4t4tur
+  descripcion: Meta-paquete de la DNMyE (Ministerio de Turismo Argentina) que centraliza
+    funciones y datos para el análisis de estadísticas de turismo.
+  autores: Juan Pablo Ruiz Nicolini, Pablo Tiscornia (DNMyE - Ministerio de Turismo)
+  pais: Argentina
+  categoria: 1
+  vigente: true
+- nombre: karel
+  url: https://github.com/ropensci/karel
+  descripcion: Implementación del robot Karel en R para la enseñanza de programación.
+    Permite aprender conceptos de control de flujo y funciones de forma visual e interactiva.
+  autores: Marcos Prunello
+  pais: Argentina
+  categoria: 8
+  vigente: true
+- nombre: speech
+  url: https://github.com/Nicolas-Schmidt/speech
+  descripcion: Extrae, procesa y disponibiliza los discursos de legisladores del Parlamento
+    uruguayo para el análisis de texto de intervenciones parlamentarias históricas.
+  autores: Nicolás Schmidt, Elina Gómez
+  pais: Uruguay
+  categoria: 9
+  vigente: true
+- nombre: latinr
+  url: https://github.com/LatinR/latinr
+  descripcion: Automatiza el envío y gestión de propuestas de trabajos para la conferencia
+    LatinR, facilitando la interacción con el sistema de envíos.
+  autores: Elio Campitelli
+  pais: Argentina
+  categoria: 8
+  vigente: true
+- nombre: shinyinvoer
+  url: https://github.com/datasketch/shinyinvoer
+  descripcion: 'Paquete de inputs personalizados de JavaScript para aplicaciones Shiny:
+    upload por imagen, sliders con imágenes, selectores de imágenes y más.'
+  autores: David Daza, Camila Achuri, Juan Pablo Marin Diaz (Datasketch)
+  pais: Colombia
+  categoria: 4
+  vigente: true
+- nombre: inexact
+  url: https://github.com/arcruz0/inexact
+  descripcion: Addin de RStudio para supervisar y aprobar uniones fuzzy (inexactas)
+    de bases de datos, con interfaz visual para revisar los matches antes de confirmarlos.
+  autores: Andrés Cruz
+  pais: Chile
+  categoria: 4
+  vigente: true
+- nombre: shinyWYSIWYG
+  url: https://github.com/jcrodriguez1989/shinyWYSIWYG
+  descripcion: Editor WYSIWYG (What You See Is What You Get) para aplicaciones Shiny,
+    permite editar texto enriquecido directamente en la interfaz.
+  autores: Juan Cruz Rodriguez
+  pais: Argentina
+  categoria: 4
+  vigente: true
+- nombre: priorcovmatrix
+  url: https://github.com/nachalca/PriorCovmatrix
+  descripcion: Herramientas para explorar, visualizar y estimar matrices de covarianzas
+    a priori en modelos Bayesianos.
+  autores: Ignacio Alvarez-Castro
+  pais: Uruguay
+  categoria: 5
+  vigente: true
