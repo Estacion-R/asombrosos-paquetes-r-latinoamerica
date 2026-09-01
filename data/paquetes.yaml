@@ -1122,3 +1122,12 @@ paquetes:
   categoria: 13
   vigente: true
   hexlogo: https://github.com/sebollin/bigbang/raw/main/man/figures/logo.png
+- nombre: "ellmercodex"
+  url: "https://github.com/simxnherrera/ellmercodex"
+  descripcion: "{ellmercodex} conecta una cuenta de ChatGPT con la interfaz Chat de ellmer para usar Codex desde R, sin necesidad de una API key ni de instalar el CLI de Codex. Permite mantener conversaciones, obtener salidas estructuradas, registrar herramientas de R y trabajar con respuestas en streaming y métodos asíncronos, facilitando flujos reproducibles de análisis de texto.
+
+Categoría propuesta: Inteligencia Artificial/LLMs."
+  autores: "Simón Herrera"
+  pais: "Uruguay"
+  categoria: 4
+  vigente: yes
