@@ -1131,6 +1131,14 @@ Categoría propuesta: Inteligencia Artificial/LLMs."
   pais: "Uruguay"
   categoria: 4
   vigente: yes
+- nombre: readabilityes
+  url: https://github.com/JFormoso/readabilityes
+  descripcion: 'Calcula métricas de legibilidad para textos en español y catalán: conteo de palabras,
+    oraciones y sílabas, silabeo, limpieza y tokenización adaptados a las reglas ortográficas de cada
+    lengua, e índices unificados como Szigriszt-Pazos y Gutiérrez de Polini.'
+  autores: Jesica Formoso
+  pais: Argentina
+  categoria: 4
 - nombre: GridDER
   url: https://biogeographylab.github.io/GridDER.github.io/
   descripcion: Identifica registros de biodiversidad asignados a ubicaciones sobre sistemas de grilla
