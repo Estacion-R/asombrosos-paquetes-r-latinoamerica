@@ -1139,6 +1139,23 @@ Categoría propuesta: Inteligencia Artificial/LLMs."
   autores: Jesica Formoso
   pais: Argentina
   categoria: 4
+- nombre: GridDER
+  url: https://biogeographylab.github.io/GridDER.github.io/
+  descripcion: Identifica registros de biodiversidad asignados a ubicaciones sobre sistemas de grilla
+    ampliamente usados y estima el grado de heterogeneidad ambiental asociado, para decidir informadamente
+    sobre el uso de esos datos en estudios de cambio global.
+  autores: Tainá Rocha, Xiao Feng, Hanna Thammavong, Rima Tulaiha
+  pais: Brasil
+  categoria: 12
+  vigente: true
+  hexlogo: https://raw.githubusercontent.com/BiogeographyLab/gridder/master/man/figures/logo.png
+- nombre: botmaker
+  url: https://github.com/jcrodriguez1989/botmaker
+  descripcion: Asiste la configuración de bots basados en R que corren periódicamente en GitHub Actions,
+    ocupándose de la mayoría de los pasos de configuración con una interfaz similar a la de usethis.
+  autores: Juan Cruz Rodriguez
+  pais: Argentina
+  categoria: 13
   vigente: true
 - nombre: pRycollection
   url: https://schneiderpy.github.io/pRycollection/
