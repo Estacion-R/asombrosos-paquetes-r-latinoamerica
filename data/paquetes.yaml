@@ -1131,3 +1131,11 @@ Categoría propuesta: Inteligencia Artificial/LLMs."
   pais: "Uruguay"
   categoria: 4
   vigente: yes
+- nombre: botmaker
+  url: https://github.com/jcrodriguez1989/botmaker
+  descripcion: Asiste la configuración de bots basados en R que corren periódicamente en GitHub Actions,
+    ocupándose de la mayoría de los pasos de configuración con una interfaz similar a la de usethis.
+  autores: Juan Cruz Rodriguez
+  pais: Argentina
+  categoria: 13
+  vigente: true
