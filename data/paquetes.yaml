@@ -1140,3 +1140,38 @@ Categoría propuesta: Inteligencia Artificial/LLMs."
   categoria: 1
   subcategoria: encuestas
   vigente: true
+- nombre: readabilityes
+  url: https://github.com/JFormoso/readabilityes
+  descripcion: 'Calcula métricas de legibilidad para textos en español y catalán: conteo de palabras,
+    oraciones y sílabas, silabeo, limpieza y tokenización adaptados a las reglas ortográficas de cada
+    lengua, e índices unificados como Szigriszt-Pazos y Gutiérrez de Polini.'
+  autores: Jesica Formoso
+  pais: Argentina
+  categoria: 4
+- nombre: GridDER
+  url: https://biogeographylab.github.io/GridDER.github.io/
+  descripcion: Identifica registros de biodiversidad asignados a ubicaciones sobre sistemas de grilla
+    ampliamente usados y estima el grado de heterogeneidad ambiental asociado, para decidir informadamente
+    sobre el uso de esos datos en estudios de cambio global.
+  autores: Tainá Rocha, Xiao Feng, Hanna Thammavong, Rima Tulaiha
+  pais: Brasil
+  categoria: 12
+  vigente: true
+  hexlogo: https://raw.githubusercontent.com/BiogeographyLab/gridder/master/man/figures/logo.png
+- nombre: botmaker
+  url: https://github.com/jcrodriguez1989/botmaker
+  descripcion: Asiste la configuración de bots basados en R que corren periódicamente en GitHub Actions,
+    ocupándose de la mayoría de los pasos de configuración con una interfaz similar a la de usethis.
+  autores: Juan Cruz Rodriguez
+  pais: Argentina
+  categoria: 13
+  vigente: true
+- nombre: pRycollection
+  url: https://schneiderpy.github.io/pRycollection/
+  descripcion: Colección de datasets de Paraguay de diversos campos (delincuencia, salud, finanzas, clima
+    y otros), con cobertura nacional y de las cinco ciudades más grandes del país.
+  autores: Andreas Schneider
+  pais: Paraguay
+  categoria: 7
+  vigente: true
+  hexlogo: https://raw.githubusercontent.com/schneiderpy/pRycollection/main/man/figures/logo.png
