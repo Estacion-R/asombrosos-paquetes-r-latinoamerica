@@ -1141,3 +1141,20 @@ Categoría propuesta: Inteligencia Artificial/LLMs."
   categoria: 12
   vigente: true
   hexlogo: https://raw.githubusercontent.com/BiogeographyLab/gridder/master/man/figures/logo.png
+- nombre: botmaker
+  url: https://github.com/jcrodriguez1989/botmaker
+  descripcion: Asiste la configuración de bots basados en R que corren periódicamente en GitHub Actions,
+    ocupándose de la mayoría de los pasos de configuración con una interfaz similar a la de usethis.
+  autores: Juan Cruz Rodriguez
+  pais: Argentina
+  categoria: 13
+  vigente: true
+- nombre: pRycollection
+  url: https://schneiderpy.github.io/pRycollection/
+  descripcion: Colección de datasets de Paraguay de diversos campos (delincuencia, salud, finanzas, clima
+    y otros), con cobertura nacional y de las cinco ciudades más grandes del país.
+  autores: Andreas Schneider
+  pais: Paraguay
+  categoria: 7
+  vigente: true
+  hexlogo: https://raw.githubusercontent.com/schneiderpy/pRycollection/main/man/figures/logo.png
