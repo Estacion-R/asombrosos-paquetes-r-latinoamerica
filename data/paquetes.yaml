@@ -1131,6 +1131,15 @@ Categoría propuesta: Inteligencia Artificial/LLMs."
   pais: "Uruguay"
   categoria: 4
   vigente: yes
+- nombre: desuctools
+  url: https://desuc.github.io/desuctools
+  descripcion: Funciones y datos útiles para la limpieza, revisión, tabulación y graficación de datos
+    de encuestas sociales, desarrolladas para el trabajo de la Dirección de Estudios Sociales UC (DESUC).
+  autores: Cristián Ayala, Cristina Marchant, Jonatan Salazar
+  pais: Chile
+  categoria: 1
+  subcategoria: encuestas
+  vigente: true
 - nombre: readabilityes
   url: https://github.com/JFormoso/readabilityes
   descripcion: 'Calcula métricas de legibilidad para textos en español y catalán: conteo de palabras,
