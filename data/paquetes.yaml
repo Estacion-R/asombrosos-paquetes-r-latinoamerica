@@ -1131,3 +1131,13 @@ Categoría propuesta: Inteligencia Artificial/LLMs."
   pais: "Uruguay"
   categoria: 4
   vigente: yes
+- nombre: GridDER
+  url: https://biogeographylab.github.io/GridDER.github.io/
+  descripcion: Identifica registros de biodiversidad asignados a ubicaciones sobre sistemas de grilla
+    ampliamente usados y estima el grado de heterogeneidad ambiental asociado, para decidir informadamente
+    sobre el uso de esos datos en estudios de cambio global.
+  autores: Tainá Rocha, Xiao Feng, Hanna Thammavong, Rima Tulaiha
+  pais: Brasil
+  categoria: 12
+  vigente: true
+  hexlogo: https://raw.githubusercontent.com/BiogeographyLab/gridder/master/man/figures/logo.png
