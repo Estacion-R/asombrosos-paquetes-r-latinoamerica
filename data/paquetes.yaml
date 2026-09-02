@@ -1139,3 +1139,12 @@ Categoría propuesta: Inteligencia Artificial/LLMs."
   pais: Argentina
   categoria: 13
   vigente: true
+- nombre: pRycollection
+  url: https://schneiderpy.github.io/pRycollection/
+  descripcion: Colección de datasets de Paraguay de diversos campos (delincuencia, salud, finanzas, clima
+    y otros), con cobertura nacional y de las cinco ciudades más grandes del país.
+  autores: Andreas Schneider
+  pais: Paraguay
+  categoria: 7
+  vigente: true
+  hexlogo: https://raw.githubusercontent.com/schneiderpy/pRycollection/main/man/figures/logo.png
