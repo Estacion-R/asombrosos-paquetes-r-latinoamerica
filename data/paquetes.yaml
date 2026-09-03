@@ -1131,6 +1131,15 @@ Categoría propuesta: Inteligencia Artificial/LLMs."
   pais: "Uruguay"
   categoria: 4
   vigente: yes
+- nombre: GeoModels
+  url: https://vmoprojs.github.io/GeoModels-page/
+  descripcion: 'Procedimientos para el análisis de datos geoestadísticos gaussianos y no gaussianos: simulación
+    rápida de campos aleatorios, inferencia mediante verosimilitud estándar y verosimilitud compuesta
+    ponderada, y predicción espacial.'
+  autores: Moreno Bevilacqua, Víctor Morales-Oñate, Francisco Cuevas-Pacheco, Christian Caamaño-Carrillo
+  pais: Chile
+  categoria: 5
+  vigente: true
 - nombre: desuctools
   url: https://desuc.github.io/desuctools
   descripcion: Funciones y datos útiles para la limpieza, revisión, tabulación y graficación de datos
