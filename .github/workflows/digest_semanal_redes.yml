@@ -48,6 +48,16 @@ jobs:
             "Costa Rica": "🇨🇷", "Guatemala": "🇬🇹", "Panamá": "🇵🇦",
           }
 
+          # Mismo mapeo categoria -> nombre que usa app/app.R
+          CATEGORIAS = {
+            "1": "Datos Oficiales", "2": "Datos Espaciales",
+            "4": "Tratamiento de Datos", "5": "Modelado",
+            "6": "Visualización", "7": "Datasets", "8": "Enseñanza",
+            "9": "Política y Elecciones", "10": "Clima y Meteorología",
+            "11": "Economía", "12": "Bioinformática",
+            "13": "Herramientas de Desarrollo",
+          }
+
           with open("data/paquetes.yaml", encoding="utf-8") as f:
               actual = yaml.safe_load(f)["paquetes"]
           with open("/tmp/paquetes_old.yaml", encoding="utf-8") as f:
@@ -61,20 +71,41 @@ jobs:
               sys.exit(0)
 
           hoy = date.today().isoformat()
-          lineas = []
-          for p in nuevos:
-              flag = PAISES_FLAG.get(p.get("pais", ""), "🌎")
-              url = p.get("url", "")
-              # URL corta: quitar https://
-              url_corta = url.replace("https://", "").replace("http://", "").rstrip("/")
-              desc = p.get("descripcion", "")
-              if len(desc) > 100:
-                  desc = desc[:97] + "..."
-              lineas.append(f"{flag} **{p['nombre']}** — {desc}\n🔗 {url_corta}")
-
-          cuerpo_post = "\n\n".join(lineas)
           n = len(nuevos)
-          titulo_post = f"📦 {'Hay' if n > 1 else 'Hay'} {n} paquete{'s' if n > 1 else ''} nuevo{'s' if n > 1 else ''} en el catálogo esta semana:"
+
+          # Agrupar por país, preservando el orden de aparición de las categorías
+          por_pais = {}
+          for p in nuevos:
+              pais = p.get("pais") or "No especificado"
+              por_pais.setdefault(pais, []).append(p)
+
+          bloques = []
+          detalle = []
+          for pais in sorted(por_pais, key=lambda x: -len(por_pais[x])):
+              paquetes_pais = por_pais[pais]
+              flag = PAISES_FLAG.get(pais, "🌎")
+              cant = len(paquetes_pais)
+
+              cat_ids = list(dict.fromkeys(str(p.get("categoria", "")) for p in paquetes_pais))
+              cat_nombres = [CATEGORIAS.get(cid, "Sin categoría") for cid in cat_ids]
+
+              bloques.append(
+                  f"{flag} **{pais}** — {cant} paquete{'s' if cant > 1 else ''}\n"
+                  f"Categorías: {', '.join(cat_nombres)}"
+              )
+
+              detalle.append(
+                  f"**{pais}**\n" + "\n".join(f"- {p['nombre']}" for p in paquetes_pais)
+              )
+
+          cuerpo_post = "\n\n".join(bloques)
+          n_paises = len(por_pais)
+          titulo_post = (
+              f"📦 {n} paquete{'s' if n > 1 else ''} nuevo{'s' if n > 1 else ''} "
+              f"esta semana en {n_paises} país{'es' if n_paises > 1 else ''}:"
+          )
+
+          cuerpo_detalle = "\n\n".join(detalle)
 
           issue_body = f"""## Borrador para redes — {hoy}
 
@@ -90,17 +121,24 @@ jobs:
 
           > Generado automáticamente. Editá el texto antes de publicar.
           > Ver catálogo completo: https://estacionr-asombrosos-paquetes-r-latinoamerica.share.connect.posit.cloud/
+
+          <details>
+          <summary>Detalle (paquetes incluidos)</summary>
+
+          {cuerpo_detalle}
+
+          </details>
           """
 
           # Escribir a archivo para que el siguiente step lo use
           with open("/tmp/digest_issue.json", "w") as f:
               json.dump({
-                  "title": f"📢 Borrador redes — {n} paquete(s) nuevo(s) — {hoy}",
+                  "title": f"📢 Borrador redes — {n} paquete(s) en {n_paises} país(es) — {hoy}",
                   "body": issue_body,
                   "n": n
               }, f)
 
-          print(f"OK: {n} paquetes nuevos detectados")
+          print(f"OK: {n} paquetes nuevos detectados en {n_paises} paises")
           PYEOF
 
       - name: Crear issue con el borrador
