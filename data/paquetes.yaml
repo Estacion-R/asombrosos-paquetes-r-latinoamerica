@@ -26,7 +26,7 @@ paquetes:
   categoria: 1
   subcategoria: censos
   vigente: true
-  hexlogo: https://github.com/ipeaGIT/censobr/blob/main/man/figures/logo.png
+  hexlogo: https://github.com/ipeaGIT/censobr/raw/main/man/figures/logo.png
 - nombre: DatosAbiertosCEP
   url: https://github.com/CEProduccionXXI/DatosAbiertosCEP
   descripcion: La librería DatosAbiertosCEP tiene por objetivo colaborar en el acceso
@@ -56,7 +56,7 @@ paquetes:
   categoria: 1
   subcategoria: encuestas
   vigente: true
-  hexlogo: https://camo.githubusercontent.com/0886e9e7740713bd689510d08c10c97edf6a6258c8dcddffcda02bbbd37edef4/68747470733a2f2f63616c636974612e6769746875622e696f2f6563682f7265666572656e63652f666967757265732f6563685f6c6f676f2e706e67
+  hexlogo: https://calcita.github.io/ech/reference/figures/ech_logo.png
 - nombre: electoAr
   url: https://github.com/PoliticaArgentina/electorAr/
   descripcion: Toolbox for Argentina's Electoral Data
@@ -138,7 +138,7 @@ paquetes:
   pais: Costa Rica
   categoria: 2
   vigente: true
-  hexlogo: https://github.com/ManuelSpinola/cageo/blob/main/man/figures/logo.png
+  hexlogo: https://github.com/ManuelSpinola/cageo/raw/main/man/figures/logo.png
 - nombre: crgeo
   url: https://manuelspinola.github.io/crgeo/
   descripcion: crgeo es un paquete de R que contiene datos geoespaciales de Costa
@@ -147,7 +147,7 @@ paquetes:
   pais: Costa Rica
   categoria: 2
   vigente: true
-  hexlogo: https://github.com/ManuelSpinola/crgeo/blob/main/man/figures/logo.png
+  hexlogo: https://github.com/ManuelSpinola/crgeo/raw/main/man/figures/logo.png
 - nombre: geoAr
   url: https://github.com/PoliticaArgentina/geoAr
   descripcion: Argentina's Spatial Data Toolbox
@@ -201,7 +201,7 @@ paquetes:
   pais: Argentina
   categoria: 10
   vigente: true
-  hexlogo: https://github.com/AgRoMeteorologiaINTA/agromet/raw/master/man/figures/logo.png
+  hexlogo: https://github.com/ropensci/agroclimatico/raw/main/man/figures/logo.png
 - nombre: ASpli
   url: https://bioconductor.org/packages/release/bioc/html/ASpli.html
   descripcion: An integrative R package for analysing alternative splicing using RNAseq
@@ -232,7 +232,7 @@ paquetes:
   pais: Paraguay
   categoria: 11
   vigente: true
-  hexlogo: https://github.com/ropensci/concstats/blob/master/man/figures/logo.png
+  hexlogo: https://github.com/ropensci/concstats/raw/main/man/figures/logo.png
 - nombre: metR
   url: https://eliocamp.github.io/metR/
   descripcion: Funciones útiles y extensiones de ggplot2 para manejar y graficar datos
@@ -241,7 +241,7 @@ paquetes:
   pais: Argentina
   categoria: 10
   vigente: true
-  hexlogo: https://camo.githubusercontent.com/48a6848fa54967a8e4113fe6e55ecbd14b855de6c169ac75ed6c5fbfc1991ad8/68747470733a2f2f656c696f63616d702e6769746875622e696f2f6d6574522f7265666572656e63652f666967757265732f6c6f676f2e706e67
+  hexlogo: https://eliocamp.github.io/metR/reference/figures/logo.png
 - nombre: opinAr
   url: https://github.com/PoliticaArgentina/opinAr
   descripcion: Argentina´s Public Opinion Toolbox
@@ -258,7 +258,7 @@ paquetes:
   pais: Argentina
   categoria: 9
   vigente: true
-  hexlogo: https://camo.githubusercontent.com/7086944caf9b9ba06dd6d90226a81694a9f71c36ccbd2cfd4420d6dc000a880e/68747470733a2f2f706f6c6974696361617267656e74696e612e6769746875622e696f2f706f6c417276657273652f7265666572656e63652f666967757265732f6c6f676f2e706e67
+  hexlogo: https://politicaargentina.github.io/polArverse/reference/figures/logo.png
 - nombre: frost
   url: https://github.com/anadiedrichs/frost
   descripcion: Predicción de la temperatura mínima para la previsión de heladas en
@@ -285,7 +285,7 @@ paquetes:
   pais: México
   categoria: 4
   vigente: true
-  hexlogo: https://github.com/luisDVA/unheadr/raw/master/man/figures/logosmall.png
+  hexlogo: https://github.com/luisDVA/unheadr/raw/master/man/figures/logo.png
 - nombre: sknifedatar
   url: https://rafzamb.github.io/sknifedatar/
   descripcion: Una extensión del ecosistema modeltime. Con este paquete vas a poder
@@ -294,7 +294,7 @@ paquetes:
   pais: Argentina
   categoria: 5
   vigente: true
-  hexlogo: https://camo.githubusercontent.com/96312cc1dc9e7667393dd53a4945ef4e882c4aced55e6544fe38f3a9e44ffef7/68747470733a2f2f7261667a616d622e6769746875622e696f2f736b6e69666564617461722f7265666572656e63652f666967757265732f6c6f676f2e706e67
+  hexlogo: https://rafzamb.github.io/sknifedatar/reference/figures/logo.png
 - nombre: funModeling
   url: http://pablo14.github.io/funModeling/
   descripcion: Este paquete contiene un conjunto de funciones relacionadas con el
@@ -303,7 +303,7 @@ paquetes:
   pais: Argentina
   categoria: 5
   vigente: true
-  hexlogo: https://camo.githubusercontent.com/52411c3ab2079010da71b6749d45912eee7890207895dff78ebe91f239e91521/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f64617461736369656e63656865726f65732e636f6d2f696d672f626c6f672f66756e4d6f64656c696e675f6c6f676f5f68712e706e67
+  hexlogo: https://s3.amazonaws.com/datascienceheroes.com/img/blog/funModeling_logo_hq.png
 - nombre: rsppfp
   url: https://github.com/melvidoni/rsppfp
   descripcion: Implementa diferentes algoritmos para transformar grafos en el problema
@@ -312,7 +312,7 @@ paquetes:
   pais: Argentina
   categoria: 5
   vigente: true
-  hexlogo: https://github.com/melvidoni/rsppfp/blob/master/man/figs/logo.png
+  hexlogo: https://github.com/melvidoni/rsppfp/raw/master/man/figs/logo.png
 - nombre: ggperiodic
   url: https://github.com/eliocamp/ggperiodic
   descripcion: ggperiodic is an attempt to solve the issue of plotting periodic data
@@ -331,7 +331,7 @@ paquetes:
   pais: Argentina
   categoria: 6
   vigente: true
-  hexlogo: https://camo.githubusercontent.com/832610c74855a838332287661c9382517654248ce5cc90fb7649000f4538d56c/68747470733a2f2f656c696f63616d702e6769746875622e696f2f67676e65777363616c652f7265666572656e63652f666967757265732f6c6f676f2e706e67
+  hexlogo: https://eliocamp.github.io/ggnewscale/reference/figures/logo.png
 - nombre: makePalette
   url: https://github.com/musajajorge/makePalette/
   descripcion: Paquete que contiene funciones que le permiten crear su propia paleta
@@ -370,7 +370,7 @@ paquetes:
   pais: Chile
   categoria: 7
   vigente: true
-  hexlogo: https://camo.githubusercontent.com/145140f540c1baa91ccd9a16b753e70793283f9e0056c0254e5282b5b4e855d6/68747470733a2f2f6369656e63696164656461746f732e6769746875622e696f2f6461746f732f7265666572656e63652f666967757265732f6c6f676f2e706e67
+  hexlogo: https://cienciadedatos.github.io/datos/reference/figures/logo.png
 - nombre: guaguas
   url: https://rivaquiroga.github.io/guaguas/index.html
   descripcion: Datos sobre nombres de guaguas (bebés) registrados en Chile entre 1920
@@ -382,7 +382,7 @@ paquetes:
   pais: Chile
   categoria: 7
   vigente: true
-  hexlogo: https://camo.githubusercontent.com/d911a6c0f699ed2dd77a4181d5fc2db2e21c76805e453d5563b2b36db5659818/68747470733a2f2f72697661717569726f67612e6769746875622e696f2f677561677561732f7265666572656e63652f666967757265732f677561677561732d6865782e706e67
+  hexlogo: https://rivaquiroga.github.io/guaguas/reference/figures/guaguas-hex.png
 - nombre: codehover
   url: https://arthurwelle.github.io/codehover/articles/codehover_intro.html
   descripcion: El objetivo de codehover es facilitar la creación de una tabla HTML
@@ -392,7 +392,7 @@ paquetes:
   pais: Brasil
   categoria: 8
   vigente: true
-  hexlogo: https://github.com/arthurwelle/codehover/blob/master/docs/HexSticker/HexSticker.png
+  hexlogo: https://github.com/arthurwelle/codehover/raw/master/docs/HexSticker/HexSticker.png
 - nombre: metamer
   url: https://eliocamp.github.io/metamer/#metamer
   descripcion: Implementa el algoritmo propuesto por Matejka & Fitzmaurice (2017)
