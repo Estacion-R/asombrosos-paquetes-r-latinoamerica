@@ -453,7 +453,7 @@ paquetes:
     (ISMT), elaborado por el Observatorio de Ciudades UC de Chile.
   autores: Martín Rosas Araya
   pais: Chile
-  categoria: 3
+  categoria: 2
   vigente: true
 - nombre: importinegi
   url: https://github.com/crenteriam/importinegi
@@ -471,6 +471,7 @@ paquetes:
     soporte para mapas interactivos con Leaflet.
   autores: Diego Valle-Jones
   pais: México
+  categoria: 2
   vigente: true
 - nombre: rsinaica
   url: https://hoyodesmog.diegovalle.net/rsinaica/
