@@ -785,7 +785,7 @@ paquetes:
     y de distribución.
   autores: Weverton Trindade
   pais: Brasil
-  categoria: 3
+  categoria: 12
   vigente: true
 - nombre: flora
   url: https://CRAN.R-project.org/package=flora
@@ -793,7 +793,7 @@ paquetes:
     2020.
   autores: Gustavo Carvalho
   pais: Brasil
-  categoria: 3
+  categoria: 12
   vigente: true
 - nombre: genderBR
   url: https://CRAN.R-project.org/package=genderBR
@@ -894,7 +894,8 @@ paquetes:
     2015.
   autores: Marcelo Rigon
   pais: Brasil
-  categoria: 3
+  categoria: 1
+  subcategoria: registros_administrativos
   vigente: true
 - nombre: ispdata
   url: https://CRAN.R-project.org/package=ispdata
@@ -902,7 +903,8 @@ paquetes:
     (ISP) de Río de Janeiro.
   autores: Vitor Marinho
   pais: Brasil
-  categoria: 3
+  categoria: 1
+  subcategoria: registros_administrativos
   vigente: true
 - nombre: flightsbr
   url: https://ipeagit.github.io/flightsbr
@@ -910,14 +912,16 @@ paquetes:
     de Aviación Civil (ANAC).
   autores: Rafael H. M. Pereira, Ipea - Institute for Applied Economic Research
   pais: Brasil
-  categoria: 3
+  categoria: 1
+  subcategoria: registros_administrativos
   vigente: true
 - nombre: odbr
   url: https://hsvab.github.io/odbr/
   descripcion: Descarga datos de las encuestas origen-destino de Brasil.
   autores: Haydee Svab
   pais: Brasil
-  categoria: 3
+  categoria: 1
+  subcategoria: encuestas
   vigente: true
 - nombre: aopdata
   url: https://ipeagit.github.io/aopdata
@@ -925,7 +929,8 @@ paquetes:
     de accesibilidad urbana para ciudades brasileñas.
   autores: Rafael H. M. Pereira, Ipea - Institute for Applied Economic Research
   pais: Brasil
-  categoria: 3
+  categoria: 1
+  subcategoria: registros_administrativos
   vigente: true
 - nombre: abjData
   url: https://abjur.github.io/abjData/
@@ -959,7 +964,8 @@ paquetes:
     múltiples fuentes oficiales.
   autores: DataZoom, PUC-Rio
   pais: Brasil
-  categoria: 3
+  categoria: 1
+  subcategoria: registros_administrativos
   vigente: true
 - nombre: documentosbr
   url: https://CRAN.R-project.org/package=documentosbr
@@ -1020,15 +1026,6 @@ paquetes:
   autores: Campo Elias Pardo, Pedro Cesar del Campo, Camilo Jose Torres
   pais: Colombia
   categoria: 5
-  vigente: true
-- nombre: esaps
-  url: https://github.com/Nicolas-Schmidt/esaps
-  descripcion: 'Cálculo de indicadores de sistemas electorales y de partidos: volatilidad
-    (Pedersen), fragmentación, desproporcionalidad (Gallagher), número efectivo de
-    partidos (Laakso/Taagepera).'
-  autores: Nicolás Schmidt
-  pais: Uruguay
-  categoria: 9
   vigente: true
 - nombre: annotater
   url: https://github.com/luisDVA/annotater
