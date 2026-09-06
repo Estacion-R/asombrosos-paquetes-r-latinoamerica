@@ -269,6 +269,7 @@ paquetes:
   pais: Argentina
   categoria: 10
   vigente: true
+  hexlogo: https://raw.githubusercontent.com/anadiedrichs/frost/master/vignettes/logo-frost.png
 - nombre: tradepolicy
   url: https://github.com/pachadotdev/tradepolicy
   descripcion: Este paquete proporciona funciones para replicar los resultados originales
@@ -473,6 +474,7 @@ paquetes:
   pais: México
   categoria: 2
   vigente: true
+  hexlogo: https://raw.githubusercontent.com/diegovalle/mxmaps/master/man/figures/logo.png
 - nombre: rsinaica
   url: https://hoyodesmog.diegovalle.net/rsinaica/
   descripcion: Facilita la descarga de datos de calidad del aire del Sistema Nacional
@@ -508,6 +510,7 @@ paquetes:
   pais: Colombia
   categoria: 12
   vigente: true
+  hexlogo: https://raw.githubusercontent.com/epiverse-trace/sivirep/main/man/figures/logo.svg
 - nombre: vaccineff
   url: https://github.com/epiverse-trace/vaccineff
   descripcion: Herramientas para la estimación de la efectividad vacunal y cálculo
@@ -516,6 +519,7 @@ paquetes:
   pais: Colombia
   categoria: 12
   vigente: true
+  hexlogo: https://raw.githubusercontent.com/epiverse-trace/vaccineff/main/man/figures/logo.png
 - nombre: serofoi
   url: https://github.com/epiverse-trace/serofoi
   descripcion: Estima la fuerza de infección histórica de un patógeno a partir de
@@ -524,6 +528,7 @@ paquetes:
   pais: Colombia
   categoria: 12
   vigente: true
+  hexlogo: https://raw.githubusercontent.com/epiverse-trace/serofoi/main/man/figures/logo.png
 - nombre: argendataR
   url: https://github.com/argendatafundar/argendataR
   descripcion: Librería de R para ETL de Argendata, plataforma de datos económicos
@@ -533,6 +538,7 @@ paquetes:
   categoria: 1
   subcategoria: registros_administrativos
   vigente: true
+  hexlogo: https://raw.githubusercontent.com/argendatafundar/argendataR/master/inst/hex_sticker_transparent_border.png
 - nombre: UnalR
   url: https://github.com/estadisticaun/UnalR
   descripcion: Simplifica y unifica herramientas de procesamiento estadístico y visualización
@@ -542,6 +548,7 @@ paquetes:
   pais: Colombia
   categoria: 5
   vigente: true
+  hexlogo: https://raw.githubusercontent.com/estadisticaun/UnalR/master/man/figures/Logo.png
 - nombre: rcdo
   url: https://github.com/eliocamp/rcdo
   descripcion: Wrapper de R para CDO (Climate Data Operators), la herramienta de línea
@@ -550,6 +557,7 @@ paquetes:
   pais: Argentina
   categoria: 10
   vigente: true
+  hexlogo: https://raw.githubusercontent.com/eliocamp/rcdo/main/man/figures/logo.png
 - nombre: SisINTAR
   url: https://github.com/INTA-Suelos/SisINTAR
   descripcion: Permite procesar y acceder a los datos del Sistema de Información de
@@ -582,6 +590,7 @@ paquetes:
   pais: Chile
   categoria: 1
   vigente: true
+  hexlogo: https://raw.githubusercontent.com/GabrielSotomayorl/dosr/main/man/figures/logo.png
 - nombre: esaps
   url: https://github.com/Nicolas-Schmidt/esaps
   descripcion: 'Cálculo de indicadores de sistemas electorales y de partidos: volatilidad
@@ -591,6 +600,7 @@ paquetes:
   pais: Uruguay
   categoria: 9
   vigente: true
+  hexlogo: https://raw.githubusercontent.com/Nicolas-Schmidt/esaps/master/man/figures/logo.png
 - nombre: ClustMC
   url: https://cran.r-project.org/web/packages/ClustMC/index.html
   descripcion: Pruebas de comparaciones múltiples basadas en clústeres.
@@ -606,6 +616,7 @@ paquetes:
   pais: Brasil
   categoria: 11
   vigente: true
+  hexlogo: https://raw.githubusercontent.com/ipea/ipeadatar/master/man/figures/logo.png
 - nombre: orcamentoBR
   url: https://CRAN.R-project.org/package=orcamentoBR
   descripcion: Descarga datos oficiales sobre el presupuesto federal de Brasil.
@@ -638,6 +649,7 @@ paquetes:
   pais: Brasil
   categoria: 11
   vigente: true
+  hexlogo: https://raw.githubusercontent.com/rtheodoro/bacenR/main/man/figures/logo.png
 - nombre: BacenAPI
   url: https://CRAN.R-project.org/package=BacenAPI
   descripcion: Recopila datos del Banco Central de Brasil mediante su API pública.
@@ -653,6 +665,7 @@ paquetes:
   pais: Brasil
   categoria: 11
   vigente: true
+  hexlogo: https://raw.githubusercontent.com/wilsonfreitas/rbcb/master/man/figures/logo.png
 - nombre: brfinance
   url: https://CRAN.R-project.org/package=brfinance
   descripcion: Accede a series de tiempo macroeconómicas y financieras de Brasil con
@@ -701,6 +714,7 @@ paquetes:
   pais: Brasil
   categoria: 11
   vigente: true
+  hexlogo: https://raw.githubusercontent.com/viniciusoike/realestatebr/main/man/figures/hexlogo.png
 - nombre: educabR
   url: https://CRAN.R-project.org/package=educabR
   descripcion: Descarga y procesa datos educativos de Brasil del Instituto Nacional
@@ -726,6 +740,7 @@ paquetes:
   pais: Brasil
   categoria: 9
   vigente: true
+  hexlogo: https://raw.githubusercontent.com/dcardosos/speechbr/master/man/figures/hexlogo.png
 - nombre: agregR
   url: https://cran.r-project.org/package=agregR
   descripcion: Agrega encuestas de intención de voto presidencial de Brasil mediante
@@ -734,6 +749,7 @@ paquetes:
   pais: Brasil
   categoria: 9
   vigente: true
+  hexlogo: https://raw.githubusercontent.com/rnmag/agregR/main/man/figures/logo.png
 - nombre: enderecobr
   url: https://ipeagit.github.io/enderecobr
   descripcion: Estandariza y normaliza direcciones postales brasileñas para facilitar
@@ -742,6 +758,7 @@ paquetes:
   pais: Brasil
   categoria: 2
   vigente: true
+  hexlogo: https://raw.githubusercontent.com/ipea/enderecobr/main/man/figures/logo.svg
 - nombre: geocodebr
   url: https://ipeagit.github.io/geocodebr
   descripcion: Geolocaliza direcciones brasileñas usando fuentes de datos geoespaciales
@@ -750,6 +767,7 @@ paquetes:
   pais: Brasil
   categoria: 2
   vigente: true
+  hexlogo: https://raw.githubusercontent.com/ipea/geocodebr/main/r-package/man/figures/logo.png
 - nombre: cepR
   url: https://CRAN.R-project.org/package=cepR
   descripcion: Busca y valida códigos postales (CEPs) brasileños.
@@ -773,6 +791,7 @@ paquetes:
   pais: Brasil
   categoria: 10
   vigente: true
+  hexlogo: https://raw.githubusercontent.com/FilgueirasR/BrazilMet/master/man/figures/logo_BrazilMet.png
 - nombre: rmet
   url: https://cran.r-project.org/package=rmet
   descripcion: Automatiza la descarga y procesamiento de datos meteorológicos históricos
@@ -789,6 +808,7 @@ paquetes:
   pais: Brasil
   categoria: 12
   vigente: true
+  hexlogo: https://raw.githubusercontent.com/wevertonbio/florabr/main/man/figures/logo.png
 - nombre: flora
   url: https://CRAN.R-project.org/package=flora
   descripcion: Herramientas para interactuar con la base de datos Flora do Brasil
@@ -908,6 +928,7 @@ paquetes:
   categoria: 1
   subcategoria: registros_administrativos
   vigente: true
+  hexlogo: https://raw.githubusercontent.com/cran/ispdata/master/man/figures/logo.png
 - nombre: flightsbr
   url: https://ipeagit.github.io/flightsbr
   descripcion: Descarga datos de vuelos y aeropuertos de Brasil de la Agencia Nacional
@@ -917,6 +938,7 @@ paquetes:
   categoria: 1
   subcategoria: registros_administrativos
   vigente: true
+  hexlogo: https://raw.githubusercontent.com/ipeagit/flightsbr/main/man/figures/logo.png
 - nombre: odbr
   url: https://hsvab.github.io/odbr/
   descripcion: Descarga datos de las encuestas origen-destino de Brasil.
@@ -925,6 +947,7 @@ paquetes:
   categoria: 1
   subcategoria: encuestas
   vigente: true
+  hexlogo: https://raw.githubusercontent.com/hsvab/odbr/main/man/figures/logo.png
 - nombre: aopdata
   url: https://ipeagit.github.io/aopdata
   descripcion: Datos del Proyecto de Acceso a Oportunidades del IPEA con métricas
@@ -934,6 +957,7 @@ paquetes:
   categoria: 1
   subcategoria: registros_administrativos
   vigente: true
+  hexlogo: https://raw.githubusercontent.com/ipea/aopdata/main/r-package/man/figures/logo.png
 - nombre: abjData
   url: https://abjur.github.io/abjData/
   descripcion: Bases de datos de uso rutinario de la Asociación Brasileña de Jurimetría
@@ -942,6 +966,7 @@ paquetes:
   pais: Brasil
   categoria: 7
   vigente: true
+  hexlogo: https://raw.githubusercontent.com/abjur/abjData/master/man/figures/logo.png
 - nombre: aebdata
   url: https://ipea.github.io/aebdata/
   descripcion: Accede a datos del Atlas del Estado Brasileño del IPEA sobre instituciones
@@ -969,6 +994,7 @@ paquetes:
   categoria: 1
   subcategoria: registros_administrativos
   vigente: true
+  hexlogo: https://raw.githubusercontent.com/datazoompuc/datazoom.amazonia/master/logo.png
 - nombre: documentosbr
   url: https://CRAN.R-project.org/package=documentosbr
   descripcion: Valida registros administrativos brasileños como CPF, CNPJ y otros
@@ -977,6 +1003,7 @@ paquetes:
   pais: Brasil
   categoria: 4
   vigente: true
+  hexlogo: https://raw.githubusercontent.com/ipea/documentosbr/main/man/figures/documentosbr.svg
 - nombre: numbersBR
   url: https://CRAN.R-project.org/package=numbersBR
   descripcion: Valida, compara y formatea números de identificación de Brasil (CPF,
@@ -1010,6 +1037,7 @@ paquetes:
   categoria: 1
   subcategoria: registros_administrativos
   vigente: true
+  hexlogo: https://raw.githubusercontent.com/StrategicProjects/ibger/main/man/figures/logo.svg
 - nombre: redatam
   url: https://github.com/litalbarkai/open-redatam
   descripcion: Importa archivos en formato REDATAM a R mediante la librería C++ Open
@@ -1020,6 +1048,7 @@ paquetes:
   categoria: 1
   subcategoria: censos
   vigente: true
+  hexlogo: https://raw.githubusercontent.com/litalbarkai/open-redatam/main/rpkg/man/figures/logo.svg
 - nombre: FactoClass
   url: https://cran.r-project.org/web/packages/FactoClass/index.html
   descripcion: Combina métodos factoriales (ACP, ACM, AFC) con clasificación jerárquica
@@ -1037,6 +1066,7 @@ paquetes:
   pais: México
   categoria: 4
   vigente: true
+  hexlogo: https://raw.githubusercontent.com/luisDVA/annotater/master/man/figures/logo.png
 - nombre: fastmatrix
   url: https://github.com/faosorios/fastmatrix
   descripcion: 'Funciones para acelerar operaciones matriciales usadas en estadística
@@ -1054,6 +1084,7 @@ paquetes:
   pais: Argentina
   categoria: 1
   vigente: true
+  hexlogo: https://raw.githubusercontent.com/dnme-minturdep/d4t4tur/main/man/figures/logo.png
 - nombre: karel
   url: https://github.com/ropensci/karel
   descripcion: Implementación del robot Karel en R para la enseñanza de programación.
@@ -1070,6 +1101,7 @@ paquetes:
   pais: Uruguay
   categoria: 9
   vigente: true
+  hexlogo: https://raw.githubusercontent.com/Nicolas-Schmidt/speech/master/man/figures/logo.png
 - nombre: latinr
   url: https://github.com/LatinR/latinr
   descripcion: Automatiza el envío y gestión de propuestas de trabajos para la conferencia
@@ -1078,6 +1110,7 @@ paquetes:
   pais: Argentina
   categoria: 8
   vigente: true
+  hexlogo: https://raw.githubusercontent.com/LatinR/latinr/master/man/figures/logo.png
 - nombre: shinyinvoer
   url: https://github.com/datasketch/shinyinvoer
   descripcion: 'Paquete de inputs personalizados de JavaScript para aplicaciones Shiny:
@@ -1130,6 +1163,7 @@ Categoría propuesta: Inteligencia Artificial/LLMs."
   pais: "Uruguay"
   categoria: 4
   vigente: yes
+  hexlogo: https://raw.githubusercontent.com/simxnherrera/ellmercodex/main/man/figures/logo.png
 - nombre: GeoModels
   url: https://vmoprojs.github.io/GeoModels-page/
   descripcion: 'Procedimientos para el análisis de datos geoestadísticos gaussianos y no gaussianos: simulación
