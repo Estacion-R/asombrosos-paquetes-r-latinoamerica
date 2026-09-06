@@ -499,6 +499,7 @@ paquetes:
   pais: Argentina
   categoria: 1
   subcategoria: encuestas
+  vigente: true
 - nombre: sivirep
   url: https://github.com/epiverse-trace/sivirep
   descripcion: Permite procesar datos del sistema de vigilancia epidemiológica SIVIGILA
@@ -1155,6 +1156,7 @@ Categoría propuesta: Inteligencia Artificial/LLMs."
   autores: Jesica Formoso
   pais: Argentina
   categoria: 4
+  vigente: true
 - nombre: GridDER
   url: https://biogeographylab.github.io/GridDER.github.io/
   descripcion: Identifica registros de biodiversidad asignados a ubicaciones sobre sistemas de grilla
