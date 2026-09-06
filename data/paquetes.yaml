@@ -1182,3 +1182,12 @@ Categoría propuesta: Inteligencia Artificial/LLMs."
   categoria: 7
   vigente: true
   hexlogo: https://raw.githubusercontent.com/schneiderpy/pRycollection/main/man/figures/logo.png
+- nombre: mapeAr
+  url: https://github.com/dnme-minturdep/mapeAr
+  descripcion: Shiny app para generar y descargar mapas con datos de Argentina a
+    partir de bases propias (puntos, líneas o polígonos), pensada para visualizar
+    información geográfica de turismo.
+  autores: Juan Pablo Ruiz Nicolini
+  pais: Argentina
+  categoria: 2
+  vigente: true
