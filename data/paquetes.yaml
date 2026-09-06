@@ -1193,3 +1193,42 @@ Categoría propuesta: Inteligencia Artificial/LLMs."
   pais: Argentina
   categoria: 2
   vigente: true
+- nombre: ENDES.PE
+  url: https://github.com/horaciochacon/ENDES.PE
+  descripcion: Funciones para manipular, extraer y descargar la base de datos de
+    la Encuesta Demográfica y de Salud Familiar (ENDES) de Perú.
+  autores: Horacio Chacón-Torrico
+  pais: Perú
+  categoria: 1
+  subcategoria: encuestas
+  vigente: true
+  hexlogo: https://raw.githubusercontent.com/horaciochacon/ENDES.PE/master/man/figures/logo.png
+- nombre: geoperu
+  url: https://paulesantos.github.io/geoperu/
+  descripcion: Descarga datasets espaciales oficiales de Perú como objetos sf, incluyendo
+    límites administrativos del INEI y áreas naturales protegidas del SERNANP.
+  autores: Paul E. Santos Andrade
+  pais: Perú
+  categoria: 2
+  vigente: true
+  hexlogo: https://raw.githubusercontent.com/paulesantos/geoperu/master/man/figures/logo.png
+- nombre: simulMGF
+  url: https://github.com/mngar/simulMGF
+  descripcion: Simula matrices SNP de genotipos para organismos diploides y rasgos
+    fenotípicos controlados por loci de rasgos cuantitativos, útil para probar modelos
+    de asociación y predicción genómica.
+  autores: Martín Nahuel García
+  pais: Argentina
+  categoria: 12
+  vigente: true
+  hexlogo: https://raw.githubusercontent.com/mngar/simulMGF/master/logo_simulMGF.png
+- nombre: timeSeriesDataSets
+  url: https://lightbluetitan.github.io/timeseriesdatasets_R/index.html
+  descripcion: Colección de datasets de series de tiempo de distintas disciplinas
+    (economía, finanzas, energía, salud y más) para apoyar el análisis de series
+    de tiempo en R.
+  autores: Renzo Caceres Rossi
+  pais: Perú
+  categoria: 7
+  vigente: true
+  hexlogo: https://raw.githubusercontent.com/lightbluetitan/timeseriesdatasets_R/main/man/figures/logo.png
