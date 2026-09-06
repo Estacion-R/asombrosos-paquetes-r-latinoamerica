@@ -7,9 +7,10 @@
 Una lista curada de paquetes R desarrollados por personas de Latinoamérica  
 para el acceso, procesamiento, visualización y comunicación de datos.
 
-[![Paquetes](https://img.shields.io/badge/paquetes-46-blue?style=flat-square)](data/paquetes.yaml)
-[![Países](https://img.shields.io/badge/países-9-green?style=flat-square)](#)
+[![Paquetes](https://img.shields.io/badge/paquetes-135-blue?style=flat-square)](data/paquetes.yaml)
+[![Países](https://img.shields.io/badge/países-10-green?style=flat-square)](#)
 [![Contribuciones bienvenidas](https://img.shields.io/badge/contribuciones-bienvenidas-brightgreen?style=flat-square)](CONTRIBUTING.md)
+[![Código de conducta](https://img.shields.io/badge/código%20de%20conducta-Contributor%20Covenant-purple?style=flat-square)](CODE_OF_CONDUCT.md)
 [![CC BY 4.0](https://img.shields.io/badge/licencia-CC%20BY%204.0-lightgrey?style=flat-square)](http://creativecommons.org/licenses/by/4.0/)
 
 **🚀 [Explorá el catálogo interactivo](https://connect.posit.cloud/estacionr/content/01a01b3b-6f6f-dc53-6f10-a43f944b71e0)**
@@ -44,6 +45,7 @@ Un paquete entra al catálogo si:
 - [☁️ Clima y Meteorología](#️-clima-y-meteorología)
 - [💰 Economía](#-economía)
 - [🧬 Bioinformática](#-bioinformática)
+- [🛠️ Herramientas de Desarrollo](#️-herramientas-de-desarrollo)
 
 ---
 
@@ -65,7 +67,7 @@ Editá [`data/paquetes.yaml`](data/paquetes.yaml) agregando una entrada con este
 - nombre: nombre_del_paquete
   url: https://url-de-documentacion.com
   descripcion: Descripción breve en español (1–2 oraciones).
-  autor: Nombre Apellido
+  autores: Nombre Apellido
   pais: Argentina
   categoria: 1
   hexlogo: https://url-del-hexlogo.png   # opcional
@@ -92,7 +94,7 @@ Si preferís no usar GitHub, podés contactarnos por correo o redes sociales y n
 - 🐦 **X/Twitter:** [@estacion_erre](https://twitter.com/estacion_erre)
 - 💼 **LinkedIn:** [Estación R](https://www.linkedin.com/company/estacion-r)
 
-Más detalles en [CONTRIBUTING.md](CONTRIBUTING.md).
+Más detalles en [CONTRIBUTING.md](CONTRIBUTING.md). Participar de este proyecto implica aceptar nuestro [Código de Conducta](CODE_OF_CONDUCT.md).
 
 ---
 
