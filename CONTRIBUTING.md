@@ -56,6 +56,7 @@ Cada paquete tiene la siguiente estructura en `data/paquetes.yaml`:
 | 10 | Clima y Meteorología |
 | 11 | Economía |
 | 12 | Bioinformática |
+| 13 | Herramientas de Desarrollo |
 
 Si tu paquete no encaja en ninguna categoría, proponé una nueva en el issue o PR.
 
