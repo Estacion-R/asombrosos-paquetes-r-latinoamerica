@@ -8,12 +8,17 @@ jobs:
   bienvenida:
     runs-on: ubuntu-latest
     if: contains(github.event.issue.labels.*.name, 'agregar paquete')
+    permissions:
+      issues: write
     steps:
       - name: Verificar URL del paquete
         id: check_url
+        env:
+          # El body va por variable de entorno, nunca dentro del script: interpolarlo
+          # en el shell rompe con backticks y permite ejecutar comandos con $(...).
+          BODY: ${{ github.event.issue.body }}
         run: |
-          BODY="${{ github.event.issue.body }}"
-          URL=$(echo "$BODY" | grep -A2 "URL de documentación" | grep "http" | head -1 | xargs)
+          URL=$(printf '%s\n' "$BODY" | grep -A2 "URL de documentación" | grep -oE 'https?://[^[:space:]]+' | head -1)
           if [ -n "$URL" ]; then
             STATUS=$(curl -o /dev/null -s -w "%{http_code}" --max-time 10 "$URL" || echo "error")
             if [ "$STATUS" = "200" ] || [ "$STATUS" = "301" ] || [ "$STATUS" = "302" ]; then
@@ -27,9 +32,11 @@ jobs:
 
       - name: Comentar bienvenida
         uses: actions/github-script@v7
+        env:
+          URL_STATUS: ${{ steps.check_url.outputs.url_ok }}
         with:
           script: |
-            const urlStatus = '${{ steps.check_url.outputs.url_ok }}';
+            const urlStatus = process.env.URL_STATUS;
             github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
