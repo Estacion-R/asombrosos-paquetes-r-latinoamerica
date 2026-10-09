@@ -1266,3 +1266,10 @@ Categoría propuesta: Inteligencia Artificial/LLMs."
   categoria: 7
   vigente: true
   hexlogo: https://raw.githubusercontent.com/lightbluetitan/timeseriesdatasets_R/main/man/figures/logo.png
+- nombre: "gtfstools"
+  url: "https://ipea.github.io/gtfstools/"
+  descripcion: "Paquete que ofrece un conjunto de herramientas para editar y analizar feeds de tránsito en formato GTFS. Los feeds se leen como una lista de data.tables, lo que permite una manipulación de datos fácil y rápida."
+  autores: "Daniel Herszenhut, Rafael H. M. Pereira, Pedro R. Andrade, Joao Bazzo, Ipea - Institute for Applied Economic Research"
+  pais: "Brasil"
+  categoria: 4
+  vigente: yes
