@@ -1266,10 +1266,16 @@ Categoría propuesta: Inteligencia Artificial/LLMs."
   categoria: 7
   vigente: true
   hexlogo: https://raw.githubusercontent.com/lightbluetitan/timeseriesdatasets_R/main/man/figures/logo.png
+- nombre: "geoidep"
+  url: "https://geografo.pe/geoidep/"
+  descripcion: "geoidep es un paquete en R que facilita el acceso oficial a la información cartográfica de diversas temáticas publicadas por entidades técnico científicas de Perú y/o gobiernos regionales las cuales están administradas por la infraestructura de datos espaciales de Perú [(IDEP)](https://www.geoidep.gob.pe/)."
+  autores: "Antony Barja"
+  pais: "Perú"
+  categoria: 2
 - nombre: "gtfstools"
   url: "https://ipea.github.io/gtfstools/"
   descripcion: "Paquete que ofrece un conjunto de herramientas para editar y analizar feeds de tránsito en formato GTFS. Los feeds se leen como una lista de data.tables, lo que permite una manipulación de datos fácil y rápida."
   autores: "Daniel Herszenhut, Rafael H. M. Pereira, Pedro R. Andrade, Joao Bazzo, Ipea - Institute for Applied Economic Research"
   pais: "Brasil"
   categoria: 4
-  vigente: yes
+  vigente: true
