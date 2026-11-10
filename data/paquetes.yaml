@@ -165,14 +165,14 @@ paquetes:
   vigente: true
   hexlogo: https://github.com/ipeaGIT/geobr/raw/master/r-package/man/figures/geobr_logo_y.png?raw=true
 - nombre: geouy
-  url: https://github.com/RichDeto/geouy
+  url: https://github.com/Richard-Detomasi/geouy
   descripcion: geouy is an R package that allows users to easily access official spatial
     data sets of Uruguay
-  autores: Richard Detomasi
+  autores: Richard Detomasi, Sebastián Lucas
   pais: Uruguay
   categoria: 2
   vigente: true
-  hexlogo: https://github.com/RichDeto/geouy/raw/master/man/figures/geouy_logo_b.png
+  hexlogo: https://github.com/Richard-Detomasi/geouy/raw/master/man/figures/geouy_logo_b.png
 - nombre: mapsPERU
   url: https://github.com/musajajorge/mapsPERU
   descripcion: mapsPERU es un paquete que proporciona conjuntos de datos con información
