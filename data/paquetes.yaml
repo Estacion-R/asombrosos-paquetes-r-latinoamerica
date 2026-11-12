@@ -1279,3 +1279,14 @@ Categoría propuesta: Inteligencia Artificial/LLMs."
   pais: "Brasil"
   categoria: 4
   vigente: true
+- nombre: lupa
+  url: https://sebollin.github.io/lupa/
+  descripcion: Perfila tablas y bases de datos, mide su calidad con marcos declarados
+    —entre ellos los de AGESIC, CEPAL e ISO/IEC 25012— y limpia una copia con un
+    plan editable. Cada resultado declara su alcance, su evidencia y lo que no pudo
+    medir.
+  autores: Sebastián Lucas
+  pais: Uruguay
+  categoria: 4
+  vigente: true
+  hexlogo: https://github.com/sebollin/lupa/raw/main/man/figures/logo.png
