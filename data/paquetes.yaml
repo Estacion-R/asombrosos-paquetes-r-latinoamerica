@@ -1298,3 +1298,11 @@ Categoría propuesta: Inteligencia Artificial/LLMs."
   categoria: 7
   vigente: yes
   hexlogo: "https://github.com/bastianolea/poblador/raw/main/man/figures/logo.png"
+- nombre: "geoecu"
+  url: "https://f-slg.github.io/geoecu/"
+  descripcion: "Paquete que proporciona datos geográficos y espaciales de Ecuador, facilitando el acceso a capas geográficas y herramientas para su manipulación."
+  autores: "Ronald Fabricio Salas Guerrero"
+  pais: "Ecuador"
+  categoria: 2
+  vigente: yes
+  hexlogo: "https://github.com/f-slg/geoecu/raw/main/man/figures/logo.png"
