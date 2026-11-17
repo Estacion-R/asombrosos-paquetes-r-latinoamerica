@@ -1290,3 +1290,10 @@ Categoría propuesta: Inteligencia Artificial/LLMs."
   categoria: 4
   vigente: true
   hexlogo: https://github.com/sebollin/lupa/raw/main/man/figures/logo.png
+- nombre: "poblador"
+  url: "https://bastianolea.github.io/poblador/"
+  descripcion: "Tablas de población oficial de Chile (censo 2017 y 2024, proyecciones, pobreza) con funciones para complementar otros datasets: agregar población a otras fuentes, calcular tasas y más."
+  autores: "Bastián Olea Herrera"
+  pais: "Chile"
+  categoria: 7
+  vigente: yes
