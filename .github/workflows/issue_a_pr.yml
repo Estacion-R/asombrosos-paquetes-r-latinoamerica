@@ -41,7 +41,7 @@ jobs:
             const autores     = campo('Autor/es');
             const paisRaw     = campo('País de origen del/los autor/es');
             const catRaw      = campo('Categoría principal');
-            const hexlogo     = campo('URL del hexlogo \\(opcional\\)');
+            const hexlogo     = campo('URL del hexlogo (opcional)');
 
             // Validar campos obligatorios
             if (!nombre || !url || !descripcion || !autores) {
