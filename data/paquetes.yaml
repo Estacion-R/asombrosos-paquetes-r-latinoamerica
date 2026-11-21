@@ -1350,3 +1350,11 @@ Categoría propuesta: Inteligencia Artificial/LLMs."
   pais: "Uruguay"
   categoria: 5
   vigente: yes
+- nombre: "rsppfp"
+  url: "https://cran.r-project.org/package=rsppfp"
+  descripcion: "Presentado en LatinR 2018. Algoritmos para el problema del camino más corto con subcaminos prohibidos en redes."
+  autores: "Melina Vidoni"
+  pais: "Argentina"
+  categoria: 5
+  vigente: yes
+  hexlogo: "https://raw.githubusercontent.com/cran/rsppfp/master/man/figures/logo.png"
