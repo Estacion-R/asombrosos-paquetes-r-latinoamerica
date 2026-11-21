@@ -1357,3 +1357,10 @@ Categoría propuesta: Inteligencia Artificial/LLMs."
   pais: "Chile"
   categoria: 1
   vigente: yes
+- nombre: "ZOIP"
+  url: "https://cran.r-project.org/package=ZOIP"
+  descripcion: "Presentado en LatinR 2018 (póster). Distribución ZOIP y modelos de regresión y regresión mixta para datos proporcionales inflados con ceros y/o unos."
+  autores: "Juan Camilo Diaz Zapata, Freddy Hernández Barajas"
+  pais: "Colombia"
+  categoria: 5
+  vigente: yes
