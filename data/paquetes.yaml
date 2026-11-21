@@ -1321,3 +1321,10 @@ Categoría propuesta: Inteligencia Artificial/LLMs."
   categoria: 7
   vigente: yes
   hexlogo: "https://raw.githubusercontent.com/GlobalFishingWatch/gfwr/main/man/figures/logo.png"
+- nombre: "ggdatasaver"
+  url: "https://github.com/eliocamp/ggdatasaver"
+  descripcion: "Presentado en LatinR 2022. Guarda automáticamente los datos asociados a un gráfico de ggplot2, junto a la imagen."
+  autores: "Elio Campitelli"
+  pais: "Argentina"
+  categoria: 6
+  vigente: yes
