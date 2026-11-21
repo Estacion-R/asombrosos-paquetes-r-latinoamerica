@@ -1372,3 +1372,10 @@ Categoría propuesta: Inteligencia Artificial/LLMs."
   categoria: 12
   vigente: yes
   hexlogo: "https://raw.githubusercontent.com/ropensci/taxlist/main/man/figures/logo.png"
+- nombre: "analogsea"
+  url: "https://github.com/pachadotdev/analogsea"
+  descripcion: "Presentado en LatinR 2021. Interfaz de R para la API de DigitalOcean: crear y administrar droplets, imágenes, snapshots y regiones desde R."
+  autores: "Scott Chamberlain, Hadley Wickham, Winston Chang, Mauricio Vargas y otros"
+  pais: "Chile"
+  categoria: 13
+  vigente: yes
