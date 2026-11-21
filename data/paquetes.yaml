@@ -1328,3 +1328,11 @@ Categoría propuesta: Inteligencia Artificial/LLMs."
   pais: "Argentina"
   categoria: 6
   vigente: yes
+- nombre: "missMSPC"
+  url: "https://github.com/DiegoNOB/missMSPC"
+  descripcion: "Presentado en LatinR 2021. Cartas de control para procesos multivariados con datos faltantes: Hotelling T² de componentes principales y SPE, con estimación de scores vía CMR y TSR."
+  autores: "Julia Inés Fernández, Diego Marfetán Molina"
+  pais: "Argentina"
+  categoria: 5
+  vigente: yes
+  hexlogo: "https://raw.githubusercontent.com/DiegoNOB/missMSPC/main/man/figures/logo.png"
