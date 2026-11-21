@@ -1343,3 +1343,10 @@ Categoría propuesta: Inteligencia Artificial/LLMs."
   pais: "Chile"
   categoria: 6
   vigente: yes
+- nombre: "QR"
+  url: "https://cran.r-project.org/package=QR"
+  descripcion: "Presentado en LatinR 2021. Factorización QR sin pivoteo: métodos numéricos de álgebra lineal."
+  autores: "Juan Claramunt González"
+  pais: "Uruguay"
+  categoria: 5
+  vigente: yes
