@@ -1350,3 +1350,10 @@ Categoría propuesta: Inteligencia Artificial/LLMs."
   pais: "Uruguay"
   categoria: 5
   vigente: yes
+- nombre: "tradestatistics"
+  url: "https://cran.r-project.org/package=tradestatistics"
+  descripcion: "Presentado en LatinR 2019. Acceso a los datos de comercio internacional de Open Trade Statistics: wrapper de la API con datos y herramientas de análisis."
+  autores: "Mauricio Vargas"
+  pais: "Chile"
+  categoria: 1
+  vigente: yes
