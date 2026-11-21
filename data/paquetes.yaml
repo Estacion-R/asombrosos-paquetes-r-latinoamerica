@@ -1306,3 +1306,10 @@ Categoría propuesta: Inteligencia Artificial/LLMs."
   categoria: 2
   vigente: yes
   hexlogo: "https://github.com/f-slg/geoecu/raw/main/man/figures/logo.png"
+- nombre: "autokeras"
+  url: "https://cran.r-project.org/package=autokeras"
+  descripcion: "Presentado en LatinR 2019. Interfaz de R para AutoKeras: aprendizaje automático automático (AutoML) con deep learning."
+  autores: "Juan Cruz Rodriguez (maintainer), Javier Luraschi, Yuan Tang y otros"
+  pais: "Argentina"
+  categoria: 5
+  vigente: yes
