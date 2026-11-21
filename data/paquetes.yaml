@@ -1313,3 +1313,11 @@ Categoría propuesta: Inteligencia Artificial/LLMs."
   pais: "Argentina"
   categoria: 5
   vigente: yes
+- nombre: "gfwr"
+  url: "https://github.com/GlobalFishingWatch/gfwr"
+  descripcion: "Presentado en LatinR 2022. Acceso a las APIs de Global Fishing Watch: datos de embarcaciones y eventos en formato amigable para R."
+  autores: "Andrea Sánchez-Tapia (maintainer), Tyler Clavelle, Rocío Joo, Nate Miller, Jorge Cornejo-Donoso"
+  pais: "Chile"
+  categoria: 7
+  vigente: yes
+  hexlogo: "https://raw.githubusercontent.com/GlobalFishingWatch/gfwr/main/man/figures/logo.png"
