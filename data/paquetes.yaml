@@ -1336,3 +1336,10 @@ Categoría propuesta: Inteligencia Artificial/LLMs."
   categoria: 5
   vigente: yes
   hexlogo: "https://raw.githubusercontent.com/DiegoNOB/missMSPC/main/man/figures/logo.png"
+- nombre: "plyLoadR"
+  url: "https://github.com/lucio-cornejo/plyLoadR"
+  descripcion: "Presentado en LatinR 2022. Htmlwidget para visualizar la evolución de mallas 3D, resolviendo limitaciones de la librería rgl."
+  autores: "Lucio Cornejo"
+  pais: "Chile"
+  categoria: 6
+  vigente: yes
