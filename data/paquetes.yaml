@@ -1364,3 +1364,11 @@ Categoría propuesta: Inteligencia Artificial/LLMs."
   pais: "Colombia"
   categoria: 5
   vigente: yes
+- nombre: "taxlist"
+  url: "https://github.com/ropensci/taxlist"
+  descripcion: "Presentado en el ReproHack de LatinR 2020. Manejo de listas taxonómicas: importa listas de especies desde Turboveg, crea respaldos y ofrece visualizaciones rápidas."
+  autores: "Miguel Alvarez"
+  pais: "No especificado"
+  categoria: 12
+  vigente: yes
+  hexlogo: "https://raw.githubusercontent.com/ropensci/taxlist/main/man/figures/logo.png"
