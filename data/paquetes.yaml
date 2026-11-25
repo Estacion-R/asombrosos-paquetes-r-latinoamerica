@@ -1379,3 +1379,11 @@ Categoría propuesta: Inteligencia Artificial/LLMs."
   pais: "Chile"
   categoria: 13
   vigente: yes
+- nombre: "land4health"
+  url: "https://cran.r-project.org/package=land4health"
+  descripcion: "land4health ofrece a los usuarios de R una forma sencilla y eficiente de extraer métricas de teledetección orientadas a la epidemiología espacial. Facilita el cálculo de estadísticas zonales para analizar las condiciones ambientales y modelar la distribución y dinámica de enfermedades infecciosas y transmitidas por vectores."
+  autores: "Antony Barja, Yomali Ferreyra, Diego Villa y Gabriel Carrasco-Escobar"
+  pais: "Perú"
+  categoria: 2
+  vigente: yes
+  hexlogo: "https://harmonize-tools.github.io/land4health/logo.png"
